@@ -1,0 +1,27 @@
+
+.home-form {
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.error-panel {
+    color: #e74c3c;
+    text-align: center;
+}
+
+.loginform {
+  max-width: 300px;
+}
+
+
+
+@media (max-width: 767px) {
+    .home-container {
+        width: 100%;
+    }
+
+  h2 {
+    margin-top: 3px;
+  }
+}
+

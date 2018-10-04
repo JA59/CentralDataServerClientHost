@@ -1,0 +1,7 @@
+@media (max-width: 767px) {
+  /* On small screens, dont waste space at top of the screen */
+
+  h2 {
+    margin-top: 3px;
+  }
+}

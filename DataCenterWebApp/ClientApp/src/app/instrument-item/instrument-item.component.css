@@ -1,0 +1,17 @@
+
+.myClass {
+  font-size: 16px;
+  color: black;
+  margin-left: 5px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.demoClass {
+  margin-top: 3px;
+  border: 1px solid white;
+}
+
+.aClass {
+  color: white;
+}

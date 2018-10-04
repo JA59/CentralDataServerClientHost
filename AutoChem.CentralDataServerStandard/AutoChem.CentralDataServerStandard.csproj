@@ -1,0 +1,119 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\AutoChem.CentralDataServer\Applications\ApplicationInfo.cs" Link="Applications\ApplicationInfo.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Applications\ApplicationReference.cs" Link="Applications\ApplicationReference.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Config\ConfigurationManagementClientAdminAsync.cs" Link="Config\ConfigurationManagementClientAdminAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Config\ConfigurationManagementClientAsync.cs" Link="Config\ConfigurationManagementClientAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Config\ConfigurationSettings.cs" Link="Config\ConfigurationSettings.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Config\DeviceSettings.cs" Link="Config\DeviceSettings.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Config\EmailSettings.cs" Link="Config\EmailSettings.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Config\ExperimentProviderSettings.cs" Link="Config\ExperimentProviderSettings.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Config\FolderSettings.cs" Link="Config\FolderSettings.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Config\IConfigurationManagementServiceAdminAsync.cs" Link="Config\IConfigurationManagementServiceAdminAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Config\IConfigurationManagementServiceAsync.cs" Link="Config\IConfigurationManagementServiceAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Config\iControlSettings.cs" Link="Config\iControlSettings.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Config\MetadataSettings.cs" Link="Config\MetadataSettings.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Config\ProcessingSettings.cs" Link="Config\ProcessingSettings.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Config\ProductHelper.cs" Link="Config\ProductHelper.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Config\ReportSettings.cs" Link="Config\ReportSettings.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Config\RxeTouchPadSettings.cs" Link="Config\RxeTouchPadSettings.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Experiments\ExperimentInfo.cs" Link="Experiments\ExperimentInfo.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Experiments\ExperimentInformationClientAsync.cs" Link="Experiments\ExperimentInformationClientAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Experiments\ExperimentManagementClientAsync.cs" Link="Experiments\ExperimentManagementClientAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Experiments\ExperimentReference.cs" Link="Experiments\ExperimentReference.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Experiments\ExperimentSearchRequest.cs" Link="Experiments\ExperimentSearchRequest.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Experiments\ExperimentSearchResult.cs" Link="Experiments\ExperimentSearchResult.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Experiments\ExperimentSourceReference.cs" Link="Experiments\ExperimentSourceReference.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Experiments\ExperimentStatus.cs" Link="Experiments\ExperimentStatus.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Experiments\FileType.cs" Link="Experiments\FileType.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Experiments\IExperimentInformationServiceAsync.cs" Link="Experiments\IExperimentInformationServiceAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Experiments\IExperimentManagementServiceAsync.cs" Link="Experiments\IExperimentManagementServiceAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Experiments\UploadFileInfo.cs" Link="Experiments\UploadFileInfo.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\FileServer\DownloadFileRequest.cs" Link="FileServer\DownloadFileRequest.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\FileServer\DownloadFileResult.cs" Link="FileServer\DownloadFileResult.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\FileServer\FileServerClientAsync.cs" Link="FileServer\FileServerClientAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\FileServer\IFileServerServiceAsync.cs" Link="FileServer\IFileServerServiceAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\General\GeneralAuthorizationClient.cs" Link="General\GeneralAuthorizationClient.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\General\GeneralAuthorizationClientAsync.cs" Link="General\GeneralAuthorizationClientAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\General\GeneralManagementAdminClient.cs" Link="General\GeneralManagementAdminClient.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\General\GeneralManagementAdminClientAsync.cs" Link="General\GeneralManagementAdminClientAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\General\GeneralManagementClient.cs" Link="General\GeneralManagementClient.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\General\GeneralManagementClientAsync.cs" Link="General\GeneralManagementClientAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\General\IGeneralAuthorizationService.cs" Link="General\IGeneralAuthorizationService.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\General\IGeneralAuthorizationServiceAsync.cs" Link="General\IGeneralAuthorizationServiceAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\General\IGeneralManagementService.cs" Link="General\IGeneralManagementService.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\General\IGeneralManagementServiceAdmin.cs" Link="General\IGeneralManagementServiceAdmin.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\General\IGeneralManagementServiceAdminAsync.cs" Link="General\IGeneralManagementServiceAdminAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\General\IGeneralManagementServiceAsync.cs" Link="General\IGeneralManagementServiceAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Instruments\IInstrumentManagementService.cs" Link="Instruments\IInstrumentManagementService.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Instruments\IInstrumentManagementServiceAdmin.cs" Link="Instruments\IInstrumentManagementServiceAdmin.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Instruments\IInstrumentManagementServiceAdminAsync.cs" Link="Instruments\IInstrumentManagementServiceAdminAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Instruments\IInstrumentManagementServiceAsync.cs" Link="Instruments\IInstrumentManagementServiceAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Instruments\IInstrumentManager.cs" Link="Instruments\IInstrumentManager.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Instruments\InstrumentInfo.cs" Link="Instruments\InstrumentInfo.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Instruments\InstrumentManagementAdminClient.cs" Link="Instruments\InstrumentManagementAdminClient.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Instruments\InstrumentManagementAdminClientAsync.cs" Link="Instruments\InstrumentManagementAdminClientAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Instruments\InstrumentManagementClient.cs" Link="Instruments\InstrumentManagementClient.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Instruments\InstrumentManagementClientAsync.cs" Link="Instruments\InstrumentManagementClientAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Instruments\InstrumentReference.cs" Link="Instruments\InstrumentReference.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Instruments\InstrumentStatus.cs" Link="Instruments\InstrumentStatus.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Instruments\LiveInstrumentInfo.cs" Link="Instruments\LiveInstrumentInfo.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Licensing\ILicenseManagementServiceAdminAsync.cs" Link="Licensing\ILicenseManagementServiceAdminAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Licensing\LicenseManagementAdminClientAsync.cs" Link="Licensing\LicenseManagementAdminClientAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Licensing\LicenseSettings.cs" Link="Licensing\LicenseSettings.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Logging\UserLogCodes.cs" Link="Logging\UserLogCodes.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Logging\UserLogEntry.cs" Link="Logging\UserLogEntry.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Logging\UserLogEntryEqualityComparer.cs" Link="Logging\UserLogEntryEqualityComparer.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Logging\UserLogEntryType.cs" Link="Logging\UserLogEntryType.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Security\AuthorizationClient.cs" Link="Security\AuthorizationClient.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Security\IAuthorizationService.cs" Link="Security\IAuthorizationService.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Security\UserAuthorization.cs" Link="Security\UserAuthorization.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Server\IServerObserver.cs" Link="Server\IServerObserver.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Server\ServerEvents.cs" Link="Server\ServerEvents.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Server\ServerEventType.cs" Link="Server\ServerEventType.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\ServicesHelper.cs" Link="ServicesHelper.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Statistics\DiskSpaceInfo.cs" Link="Statistics\DiskSpaceInfo.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Statistics\ExperimentStatsInfo.cs" Link="Statistics\ExperimentStatsInfo.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Statistics\InstrumentAppStatsInfo.cs" Link="Statistics\InstrumentAppStatsInfo.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Statistics\InstrumentStatsInfo.cs" Link="Statistics\InstrumentStatsInfo.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Statistics\IStatisticsServiceAsync.cs" Link="Statistics\IStatisticsServiceAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Statistics\LatestExpInfo.cs" Link="Statistics\LatestExpInfo.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Statistics\StatisticsManagmentClientAsync.cs" Link="Statistics\StatisticsManagmentClientAsync.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Statistics\SystemStateInfo.cs" Link="Statistics\SystemStateInfo.cs" />
+    <Compile Include="..\AutoChem.CentralDataServer\Versions\SoftwareVersion.cs" Link="Versions\SoftwareVersion.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AutoChem.CoreStandard\AutoChem.CoreStandard.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Applications\" />
+    <Folder Include="Config\" />
+    <Folder Include="Experiments\" />
+    <Folder Include="FileServer\" />
+    <Folder Include="General\" />
+    <Folder Include="Instruments\" />
+    <Folder Include="Licensing\" />
+    <Folder Include="Logging\" />
+    <Folder Include="Versions\" />
+    <Folder Include="Statistics\" />
+    <Folder Include="Server\" />
+    <Folder Include="Security\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ServiceModel.Http" Version="4.5.3" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="4.5.3" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <div class="row">
+    <h2>{{title}}</h2>
+    <p>Quick Logins for Demo purposes.</p>
+  </div>
+
+  <div class="row">
+    <div *ngFor="let item of items">
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><button (click)="doLogin(item.Name, item.Password)" [disabled]="!item.Enabled" class="btn-default" style="width: 200px; margin-top: 5px;">{{item.Name}}</button></div>
+    </div>
+  </div>
+
+</div>
+
+
