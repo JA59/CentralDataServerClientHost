@@ -1,4 +1,4 @@
-using DataCenterWebApp.CustomIdentity;
+using iCDataCenterClientHost.CustomIdentity;
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace DataCenterWebApp
+namespace iCDataCenterClientHost
 {
     public class Startup
     {

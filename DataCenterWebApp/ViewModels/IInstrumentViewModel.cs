@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DataCenterWebApp.ViewModels
+namespace iCDataCenterClientHost.ViewModels
 {
     public interface IInstrumentViewModel
     {

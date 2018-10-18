@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace DataCenterWebApp.CustomIdentity
+namespace iCDataCenterClientHost.CustomIdentity
 {
     public class MyRoleStore : IRoleStore<MyRole>
     {

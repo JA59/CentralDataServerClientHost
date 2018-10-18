@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DataCenterWebApp
+namespace iCDataCenterClientHost
 {
     public static class StartupConstants
     {

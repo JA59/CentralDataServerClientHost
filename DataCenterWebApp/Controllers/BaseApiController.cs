@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DataCenterWebApp.CustomIdentity;
+using iCDataCenterClientHost.CustomIdentity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
-namespace DataCenterWebApp.Controllers
+namespace iCDataCenterClientHost.Controllers
 {
     [Route("api/[controller]")]
     public class BaseApiController : Controller

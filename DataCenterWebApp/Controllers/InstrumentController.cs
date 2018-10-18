@@ -6,8 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-using DataCenterWebApp.CustomIdentity;
-using DataCenterWebApp.ViewModels;
+using iCDataCenterClientHost.CustomIdentity;
+using iCDataCenterClientHost.ViewModels;
 using System.Collections.Generic;
 using AutoChem.Core.CentralDataServer.Instruments;
 using AutoChem.Core.CentralDataServer;
@@ -15,7 +15,7 @@ using System.ServiceModel;
 using AutoChem.Core.CentralDataServer.Config;
 using System.Linq;
 
-namespace DataCenterWebApp.Controllers
+namespace iCDataCenterClientHost.Controllers
 {
     /// <summary>
     /// Controller for handling the Instrument route

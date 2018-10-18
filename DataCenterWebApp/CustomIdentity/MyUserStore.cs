@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
-namespace DataCenterWebApp.CustomIdentity
+namespace iCDataCenterClientHost.CustomIdentity
 {
     public class MyUserStore :  IUserStore<MyUser>,
                                 IUserPasswordStore<MyUser>,

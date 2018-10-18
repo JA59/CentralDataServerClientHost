@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DataCenterWebApp.ViewModels
+namespace iCDataCenterClientHost.ViewModels
 {
     public abstract class PagedResultBase
     {

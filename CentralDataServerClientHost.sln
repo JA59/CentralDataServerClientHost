@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataCenterWebApp", "DataCenterWebApp\DataCenterWebApp.csproj", "{0CB5E01E-3AB7-4AC2-92D4-79D990E5A26B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iCDataCenterClientHost", "DataCenterWebApp\iCDataCenterClientHost.csproj", "{0CB5E01E-3AB7-4AC2-92D4-79D990E5A26B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoChem.CoreStandard", "..\..\Team2\Trunk\AutoChem\Src\Projects\AutoChem.CoreStandard\AutoChem.CoreStandard.csproj", "{70286C10-0891-465E-8751-D0B979B793EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoChem.Core", "AutoChem.Core\AutoChem.Core.csproj", "{A391F359-B8C9-4AA4-A2E1-13F4614754A7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoChem.CentralDataServerStandard", "..\..\Team2\Trunk\AutoChem\Src\Projects\AutoChem.CentralDataServerStandard\AutoChem.CentralDataServerStandard.csproj", "{ECEFFBC9-3771-41E4-8571-0FD8B484874D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoChem.CentralDataServer", "AutoChem.CentralDataServer\AutoChem.CentralDataServer.csproj", "{C4A59419-4E08-4949-9F27-753A673DFE21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{0CB5E01E-3AB7-4AC2-92D4-79D990E5A26B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CB5E01E-3AB7-4AC2-92D4-79D990E5A26B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CB5E01E-3AB7-4AC2-92D4-79D990E5A26B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{70286C10-0891-465E-8751-D0B979B793EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{70286C10-0891-465E-8751-D0B979B793EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{70286C10-0891-465E-8751-D0B979B793EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{70286C10-0891-465E-8751-D0B979B793EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ECEFFBC9-3771-41E4-8571-0FD8B484874D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ECEFFBC9-3771-41E4-8571-0FD8B484874D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ECEFFBC9-3771-41E4-8571-0FD8B484874D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ECEFFBC9-3771-41E4-8571-0FD8B484874D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A391F359-B8C9-4AA4-A2E1-13F4614754A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A391F359-B8C9-4AA4-A2E1-13F4614754A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A391F359-B8C9-4AA4-A2E1-13F4614754A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A391F359-B8C9-4AA4-A2E1-13F4614754A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4A59419-4E08-4949-9F27-753A673DFE21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4A59419-4E08-4949-9F27-753A673DFE21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4A59419-4E08-4949-9F27-753A673DFE21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4A59419-4E08-4949-9F27-753A673DFE21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

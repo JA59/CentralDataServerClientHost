@@ -12,11 +12,11 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Net.Http;
 using Newtonsoft.Json;
-using DataCenterWebApp.CustomIdentity;
-using DataCenterWebApp.ViewModels;
+using iCDataCenterClientHost.CustomIdentity;
+using iCDataCenterClientHost.ViewModels;
 using Microsoft.Extensions.Logging;
 
-namespace DataCenterWebApp.Controllers
+namespace iCDataCenterClientHost.Controllers
 {
     public class TokenController : BaseApiController
     {

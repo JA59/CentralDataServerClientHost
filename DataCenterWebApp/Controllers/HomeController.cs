@@ -4,12 +4,12 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Identity;
-using DataCenterWebApp.CustomIdentity;
+using iCDataCenterClientHost.CustomIdentity;
 using Microsoft.Extensions.Configuration;
-using DataCenterWebApp.ViewModels;
+using iCDataCenterClientHost.ViewModels;
 using System.Diagnostics;
 
-namespace DataCenterWebApp.Controllers
+namespace iCDataCenterClientHost.Controllers
 {
     public class HomeController : Controller
     {

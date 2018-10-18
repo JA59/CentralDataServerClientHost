@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="row">
+    <h2>{{title}}</h2>
+    <p>There are {{instrumentCount}} instruments</p>
+  </div>
+
+    <instrument-item *ngFor="let instrument of instruments" [myInstrument]="instrument"
+          (selectEvent)='setSelectedName($event)'>
+  </instrument-item>
+
+
+</div>
+
+

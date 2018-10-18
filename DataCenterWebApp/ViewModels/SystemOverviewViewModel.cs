@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DataCenterWebApp.ViewModels
+namespace iCDataCenterClientHost.ViewModels
 {
     [JsonObject(MemberSerialization.OptOut)]
     public class SystemOverviewViewModel
@@ -23,9 +23,9 @@ namespace DataCenterWebApp.ViewModels
         public string ICDataCenterAddress { get; set; }
         public string ICDataCenterVersion { get; set; }
         public string ICDataCenterStatus { get; set; }
-        public string DataCenterWebAppAddress { get; set; }
-        public string DataCenterWebAppVersion { get; set; }
-        public string DataCenterWebAppStatus { get; set; }
+        public string iCDataCenterClientHostAddress { get; set; }
+        public string iCDataCenterClientHostVersion { get; set; }
+        public string iCDataCenterClientHostStatus { get; set; }
         public string LoggedOnUser { get; set; }
         public string LoggedOnRole { get; set; }
         public DateTime LastUpdate { get; set; }

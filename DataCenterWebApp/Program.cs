@@ -11,7 +11,7 @@ using System;
 
 
 
-namespace DataCenterWebApp
+namespace iCDataCenterClientHost
 {
     public class Program
     {

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Arrays\" />
+    <Folder Include="Controls\" />
+    <Folder Include="DataAccess\MetaData\" />
+    <Folder Include="Events\" />
+    <Folder Include="Versions\" />
+    <Folder Include="Time\" />
+    <Folder Include="StartPage\" />
+    <Folder Include="Servicemodel\" />
+  </ItemGroup>
+
+</Project>

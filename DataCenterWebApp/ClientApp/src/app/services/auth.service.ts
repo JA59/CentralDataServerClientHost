@@ -1,4 +1,4 @@
-﻿import { EventEmitter, Inject, Injectable, PLATFORM_ID } from "@angular/core";
+import { EventEmitter, Inject, Injectable, PLATFORM_ID } from "@angular/core";
 import { isPlatformBrowser } from '@angular/common';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
@@ -6,7 +6,7 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class AuthService {
-    clientId: string = "DataCenterWebApp";  // client identifier passed in login request
+    clientId: string = "iCDataCenterClientHost";  // client identifier passed in login request
     userToken: string | null = null;        // token for the logged on user
     loggedOnUser: string | null = null;     // user name of the logged on user, or null if not logged on
     displayName: string | null = "Guest";   // display name for logged on user (Guest if not logged on)

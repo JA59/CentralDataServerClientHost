@@ -1,0 +1,12 @@
+D:\Repos\CentralDataServerClientHost\AutoChem.CentralDataServer\obj\Debug\netstandard2.0\AutoChem.CentralDataServer.csproj.CoreCompileInputs.cache
+D:\Repos\CentralDataServerClientHost\AutoChem.CentralDataServer\obj\Debug\netstandard2.0\AutoChem.CentralDataServer.AssemblyInfoInputs.cache
+D:\Repos\CentralDataServerClientHost\AutoChem.CentralDataServer\obj\Debug\netstandard2.0\AutoChem.CentralDataServer.AssemblyInfo.cs
+D:\Repos\CentralDataServerClientHost\AutoChem.CentralDataServer\obj\Debug\netstandard2.0\AutoChem.CentralDataServer.csprojAssemblyReference.cache
+D:\Repos\CentralDataServerClientHost\AutoChem.CentralDataServer\bin\Debug\netstandard2.0\AutoChem.CentralDataServer.deps.json
+D:\Repos\CentralDataServerClientHost\AutoChem.CentralDataServer\bin\Debug\netstandard2.0\AutoChem.CentralDataServer.dll
+D:\Repos\CentralDataServerClientHost\AutoChem.CentralDataServer\bin\Debug\netstandard2.0\AutoChem.Core.dll
+D:\Repos\CentralDataServerClientHost\AutoChem.CentralDataServer\bin\Debug\netstandard2.0\AutoChem.Core.pdb
+D:\Repos\CentralDataServerClientHost\AutoChem.CentralDataServer\obj\Debug\netstandard2.0\AutoChem.CentralDataServer.csproj.CopyComplete
+D:\Repos\CentralDataServerClientHost\AutoChem.CentralDataServer\bin\Debug\netstandard2.0\AutoChem.CentralDataServer.pdb
+D:\Repos\CentralDataServerClientHost\AutoChem.CentralDataServer\obj\Debug\netstandard2.0\AutoChem.CentralDataServer.dll
+D:\Repos\CentralDataServerClientHost\AutoChem.CentralDataServer\obj\Debug\netstandard2.0\AutoChem.CentralDataServer.pdb

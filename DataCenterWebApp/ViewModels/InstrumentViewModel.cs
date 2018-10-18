@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace DataCenterWebApp.ViewModels
+namespace iCDataCenterClientHost.ViewModels
 {
     [JsonObject(MemberSerialization.OptOut)]
     public class InstrumentViewModel : IInstrumentViewModel

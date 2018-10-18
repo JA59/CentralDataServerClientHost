@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting.WindowsServices;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace DataCenterWebApp
+namespace iCDataCenterClientHost
 {
     internal class CustomWebHostService : WebHostService
     {
