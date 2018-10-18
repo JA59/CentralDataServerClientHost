@@ -15,9 +15,6 @@
 
 using System;
 using System.Runtime.Serialization;
-#if !SILVERLIGHT
-using AutoChem.Core.CentralDataServer.DataAccess;
-#endif
 using AutoChem.Core.CentralDataServer.Instruments;
 using AutoChem.Core.Time;
 using AutoChem.Core.CentralDataServer.Applications;
@@ -46,30 +43,6 @@ namespace AutoChem.Core.CentralDataServer.Experiments
         {
             ExperimentReference = new ExperimentReference();
         }
-
-#if !SILVERLIGHT
-        internal ExperimentInfo(ExperimentRecord record, InstrumentRecord instrumentRecord, ApplicationRecord applicationRecord) : this()
-        {
-            StartTime = record.StartTime;
-            EndTime = record.EndTime;
-            StoredTime = record.StoredTime;
-            Status = record.Status;
-            UserDefinedField = record.UserDefinedField;
-            InstrumentType = record.InstrumentType;
-
-            ExperimentReference.Name = record.Name;
-            ExperimentReference.UncorrectedStartTime = record.UncorrectedStartTime;
-            ExperimentReference.User = record.User;
-            if (instrumentRecord != null)
-            {
-                ExperimentReference.Source = new InstrumentReference(instrumentRecord);
-            }
-            else if (applicationRecord != null)
-            {
-                ExperimentReference.Source = new ApplicationReference(applicationRecord);
-            }
-        }
-#endif
 
         /// <summary>
         /// The ExperimentReference object

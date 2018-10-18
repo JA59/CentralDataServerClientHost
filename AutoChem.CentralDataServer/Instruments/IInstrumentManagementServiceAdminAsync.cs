@@ -54,14 +54,6 @@ namespace AutoChem.Core.CentralDataServer.Instruments
         ///</summary>
         InstrumentInfo EndAddInstrument(System.IAsyncResult result);
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling AddInstrument on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<InstrumentInfo> AddInstrumentAsync(string hostAddress, string hostDescription);
-#endif
-
         ///<summary>
         /// Calls AddInstrument on the server and may or may not wait for a response see client.
         /// If this is synchronous it should not be called on the UI thread.
@@ -78,14 +70,6 @@ namespace AutoChem.Core.CentralDataServer.Instruments
         /// Returns the result of calling RemoveInstrument on the server that corresponds to the result.
         ///</summary>
         void EndRemoveInstrument(System.IAsyncResult result);
-
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling RemoveInstrument on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task RemoveInstrumentAsync(string hostAddress);
-#endif
 
         ///<summary>
         /// Calls RemoveInstrument on the server and may or may not wait for a response see client.

@@ -53,14 +53,6 @@ namespace AutoChem.Core.CentralDataServer.Config
         ///</summary>
         ExperimentProviderSettings EndGetExperimentProviderSettings(System.IAsyncResult result);
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetExperimentProviderSettings on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<ExperimentProviderSettings> GetExperimentProviderSettingsAsync();
-#endif
-
         ///<summary>
         /// Calls GetExperimentProviderSettings on the server and may or may not wait for a response see client.
         /// If this is synchronous it should not be called on the UI thread.
@@ -77,14 +69,6 @@ namespace AutoChem.Core.CentralDataServer.Config
         /// Returns the result of calling GetPartialConfigurationSettings on the server that corresponds to the result.
         ///</summary>
         ConfigurationSettings EndGetPartialConfigurationSettings(System.IAsyncResult result);
-
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetPartialConfigurationSettings on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<ConfigurationSettings> GetPartialConfigurationSettingsAsync();
-#endif
 
         ///<summary>
         /// Calls GetPartialConfigurationSettings on the server and may or may not wait for a response see client.

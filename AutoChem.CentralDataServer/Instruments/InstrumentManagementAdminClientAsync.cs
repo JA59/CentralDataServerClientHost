@@ -67,15 +67,6 @@ namespace AutoChem.Core.CentralDataServer.Instruments
             return base.Channel.EndAddInstrument(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling AddInstrument on the server as an async Task.
-        ///</summary>
-        public Task<InstrumentInfo> AddInstrumentAsync(string hostAddress, string hostDescription)
-        {
-            return base.Channel.AddInstrumentAsync(hostAddress, hostDescription);
-        }
-#else
         ///<summary>
         /// Returns the result of calling AddInstrument on the server as an async Task.
         ///</summary>
@@ -96,7 +87,6 @@ namespace AutoChem.Core.CentralDataServer.Instruments
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls AddInstrument on the server and waits for a response (synchronous).
@@ -126,15 +116,6 @@ namespace AutoChem.Core.CentralDataServer.Instruments
             base.Channel.EndRemoveInstrument(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling RemoveInstrument on the server as an async Task.
-        ///</summary>
-        public Task RemoveInstrumentAsync(string hostAddress)
-        {
-            return base.Channel.RemoveInstrumentAsync(hostAddress);
-        }
-#else
         ///<summary>
         /// Returns the result of calling RemoveInstrument on the server as an async Task.
         ///</summary>
@@ -155,7 +136,6 @@ namespace AutoChem.Core.CentralDataServer.Instruments
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls RemoveInstrument on the server and waits for a response (synchronous).

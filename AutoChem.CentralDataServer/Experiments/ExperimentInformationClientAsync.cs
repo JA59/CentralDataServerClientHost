@@ -67,15 +67,6 @@ namespace AutoChem.Core.CentralDataServer.Experiments
             return base.Channel.EndGetExperimentInfos(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetExperimentInfos on the server as an async Task.
-        ///</summary>
-        public Task<ExperimentSearchResult> GetExperimentInfosAsync(int maxNumber)
-        {
-            return base.Channel.GetExperimentInfosAsync(maxNumber);
-        }
-#else
         ///<summary>
         /// Returns the result of calling GetExperimentInfos on the server as an async Task.
         ///</summary>
@@ -96,7 +87,6 @@ namespace AutoChem.Core.CentralDataServer.Experiments
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls GetExperimentInfos on the server and waits for a response (synchronous).
@@ -126,15 +116,6 @@ namespace AutoChem.Core.CentralDataServer.Experiments
             return base.Channel.EndGetAllFileTypes(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetAllFileTypes on the server as an async Task.
-        ///</summary>
-        public Task<IEnumerable<FileType>> GetAllFileTypesAsync()
-        {
-            return base.Channel.GetAllFileTypesAsync();
-        }
-#else
         ///<summary>
         /// Returns the result of calling GetAllFileTypes on the server as an async Task.
         ///</summary>
@@ -155,7 +136,6 @@ namespace AutoChem.Core.CentralDataServer.Experiments
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls GetAllFileTypes on the server and waits for a response (synchronous).
@@ -185,15 +165,6 @@ namespace AutoChem.Core.CentralDataServer.Experiments
             return base.Channel.EndSearchExperiments(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling SearchExperiments on the server as an async Task.
-        ///</summary>
-        public Task<ExperimentSearchResult> SearchExperimentsAsync(ExperimentSearchRequest searchRequest)
-        {
-            return base.Channel.SearchExperimentsAsync(searchRequest);
-        }
-#else
         ///<summary>
         /// Returns the result of calling SearchExperiments on the server as an async Task.
         ///</summary>
@@ -214,7 +185,6 @@ namespace AutoChem.Core.CentralDataServer.Experiments
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls SearchExperiments on the server and waits for a response (synchronous).

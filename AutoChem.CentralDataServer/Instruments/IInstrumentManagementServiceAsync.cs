@@ -54,14 +54,6 @@ namespace AutoChem.Core.CentralDataServer.Instruments
         ///</summary>
         IEnumerable<LiveInstrumentInfo> EndGetRegisteredInstruments(System.IAsyncResult result);
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetRegisteredInstruments on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<IEnumerable<LiveInstrumentInfo>> GetRegisteredInstrumentsAsync();
-#endif
-
         ///<summary>
         /// Calls GetRegisteredInstruments on the server and may or may not wait for a response see client.
         /// If this is synchronous it should not be called on the UI thread.

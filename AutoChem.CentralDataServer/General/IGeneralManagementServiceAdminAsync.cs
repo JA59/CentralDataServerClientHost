@@ -51,14 +51,6 @@ namespace AutoChem.Core.CentralDataServer.General
         ///</summary>
         IEnumerable<UserLogEntry> EndGetUserLogEntriesRecentDays(System.IAsyncResult result);
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetUserLogEntriesRecentDays on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<IEnumerable<UserLogEntry>> GetUserLogEntriesRecentDaysAsync(int maxDays);
-#endif
-
         ///<summary>
         /// Calls GetUserLogEntriesRecentDays on the server and may or may not wait for a response see client.
         /// If this is synchronous it should not be called on the UI thread.
@@ -75,14 +67,6 @@ namespace AutoChem.Core.CentralDataServer.General
         /// Returns the result of calling GetUserLogEntries on the server that corresponds to the result.
         ///</summary>
         IEnumerable<UserLogEntry> EndGetUserLogEntries(System.IAsyncResult result);
-
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetUserLogEntries on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<IEnumerable<UserLogEntry>> GetUserLogEntriesAsync();
-#endif
 
         ///<summary>
         /// Calls GetUserLogEntries on the server and may or may not wait for a response see client.
@@ -101,14 +85,6 @@ namespace AutoChem.Core.CentralDataServer.General
         ///</summary>
         void EndMarkResolved(System.IAsyncResult result);
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling MarkResolved on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task MarkResolvedAsync(UserLogEntry entry);
-#endif
-
         ///<summary>
         /// Calls MarkResolved on the server and may or may not wait for a response see client.
         /// If this is synchronous it should not be called on the UI thread.
@@ -125,14 +101,6 @@ namespace AutoChem.Core.CentralDataServer.General
         /// Returns the result of calling GetLogFileCode on the server that corresponds to the result.
         ///</summary>
         string EndGetLogFileCode(System.IAsyncResult result);
-
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetLogFileCode on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<string> GetLogFileCodeAsync();
-#endif
 
         ///<summary>
         /// Calls GetLogFileCode on the server and may or may not wait for a response see client.

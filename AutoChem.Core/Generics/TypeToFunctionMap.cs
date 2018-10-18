@@ -104,11 +104,7 @@ namespace AutoChem.Core.Generics
         {
             get
             {
-#if SILVERLIGHT
                 return m_Mappings.Cast<IFunctionMappingBase>();
-#else
-                return m_Mappings;
-#endif
             }
         }
 
@@ -176,11 +172,7 @@ namespace AutoChem.Core.Generics
         {
             get
             {
-#if SILVERLIGHT
                 return m_Mappings.Cast<IFunctionMappingBase>();
-#else
-                return m_Mappings;
-#endif
             }
         }
 
@@ -248,11 +240,7 @@ namespace AutoChem.Core.Generics
         {
             get
             {
-#if SILVERLIGHT
                 return m_Mappings.Cast<IFunctionMappingBase>();
-#else
-                return m_Mappings;
-#endif
             }
         }
 

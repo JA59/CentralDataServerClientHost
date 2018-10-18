@@ -19,9 +19,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
-#if !SILVERLIGHT
-using AutoChem.Core.CentralDataServer.DataAccess;
-#endif
 using AutoChem.Core.CentralDataServer.Experiments;
 using AutoChem.Core.Generics;
 
@@ -42,18 +39,6 @@ namespace AutoChem.Core.CentralDataServer.Applications
         public ApplicationReference()
         {
         }
-
-#if !SILVERLIGHT
-        /// <summary>
-        /// Creates an ApplicationReference with the specified values from the record
-        /// </summary>
-        internal ApplicationReference(ApplicationRecord record)
-        {
-            Name = record.Name;
-            HostAddress = record.HostAddress;
-            Version = record.Version;
-        }
-#endif
 
         /// <summary>
         /// The name of the application.

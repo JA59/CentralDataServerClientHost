@@ -52,14 +52,6 @@ namespace AutoChem.Core.CentralDataServer.Licensing
         ///</summary>
         LicenseSettings EndGetLicenseSettings(System.IAsyncResult result);
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetLicenseSettings on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<LicenseSettings> GetLicenseSettingsAsync();
-#endif
-
         ///<summary>
         /// Calls GetLicenseSettings on the server and may or may not wait for a response see client.
         /// If this is synchronous it should not be called on the UI thread.
@@ -76,14 +68,6 @@ namespace AutoChem.Core.CentralDataServer.Licensing
         /// Returns the result of calling UploadSiteLicenseFile on the server that corresponds to the result.
         ///</summary>
         LicenseSettings EndUploadSiteLicenseFile(System.IAsyncResult result);
-
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling UploadSiteLicenseFile on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<LicenseSettings> UploadSiteLicenseFileAsync(byte[] templateData);
-#endif
 
         ///<summary>
         /// Calls UploadSiteLicenseFile on the server and may or may not wait for a response see client.

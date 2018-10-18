@@ -102,20 +102,6 @@ namespace AutoChem.Core.CentralDataServer
             return hasProtocolRegex.IsMatch(url);
         }
 
-#if SILVERLIGHT
-        /// <summary>
-        /// Gets the default binding for Silverlight WCF communications.
-        /// </summary>        
-        public static Binding GetDefaultBinding()
-        {
-            BasicHttpBinding binding = new BasicHttpBinding(BasicHttpSecurityMode.TransportCredentialOnly);
-            binding.ReceiveTimeout = TimeSpan.FromMinutes(15);
-            binding.SendTimeout = TimeSpan.FromMinutes(15);
-            binding.MaxReceivedMessageSize = 16000000;
-            return binding;
-        }
-
-#else
         /// <summary>
         /// Gets the default binding for WPF WCF communications.
         /// </summary>        
@@ -130,6 +116,5 @@ namespace AutoChem.Core.CentralDataServer
 
             return binding;
         }
-#endif
     }
 }

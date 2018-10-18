@@ -32,16 +32,6 @@ using System.ServiceModel;
 using System.Windows;
 using System.Threading.Tasks;
 
-#if !SILVERLIGHT
-using System.Windows.Input;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-#endif
-
 namespace AutoChem.Core.CentralDataServer.Statistics
 {
     /// <summary>
@@ -62,14 +52,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
         ///</summary>
         IEnumerable<InstrumentStatsInfo> EndGetInstrumentStatsInfos(System.IAsyncResult result);
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetInstrumentStatsInfos on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<IEnumerable<InstrumentStatsInfo>> GetInstrumentStatsInfosAsync(DateTime startTime, DateTime endTime);
-#endif
-
         ///<summary>
         /// Calls GetInstrumentStatsInfos on the server and may or may not wait for a response see client.
         /// If this is synchronous it should not be called on the UI thread.
@@ -86,14 +68,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
         /// Returns the result of calling GetInstrumentStatsInfosWithinInterval on the server that corresponds to the result.
         ///</summary>
         IEnumerable<InstrumentStatsInfo> EndGetInstrumentStatsInfosWithinInterval(System.IAsyncResult result);
-
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetInstrumentStatsInfosWithinInterval on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<IEnumerable<InstrumentStatsInfo>> GetInstrumentStatsInfosWithinIntervalAsync(IntervalEnum interval);
-#endif
 
         ///<summary>
         /// Calls GetInstrumentStatsInfosWithinInterval on the server and may or may not wait for a response see client.
@@ -112,14 +86,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
         ///</summary>
         IEnumerable<InstrumentStatsInfo> EndGetiCInstrumentStatsInfosWithinInterval(System.IAsyncResult result);
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetiCInstrumentStatsInfosWithinInterval on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<IEnumerable<InstrumentStatsInfo>> GetiCInstrumentStatsInfosWithinIntervalAsync(IntervalEnum interval, string iCProductName);
-#endif
-
         ///<summary>
         /// Calls GetiCInstrumentStatsInfosWithinInterval on the server and may or may not wait for a response see client.
         /// If this is synchronous it should not be called on the UI thread.
@@ -136,14 +102,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
         /// Returns the result of calling GetExperimentStatsInfos on the server that corresponds to the result.
         ///</summary>
         IEnumerable<ExperimnetStatsInfo> EndGetExperimentStatsInfos(System.IAsyncResult result);
-
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetExperimentStatsInfos on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<IEnumerable<ExperimnetStatsInfo>> GetExperimentStatsInfosAsync(DateTime startTime, DateTime endTime);
-#endif
 
         ///<summary>
         /// Calls GetExperimentStatsInfos on the server and may or may not wait for a response see client.
@@ -162,14 +120,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
         ///</summary>
         IEnumerable<ExperimnetStatsInfo> EndGetExperimentStatsInfosWithinInterval(System.IAsyncResult result);
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetExperimentStatsInfosWithinInterval on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<IEnumerable<ExperimnetStatsInfo>> GetExperimentStatsInfosWithinIntervalAsync(IntervalEnum interval);
-#endif
-
         ///<summary>
         /// Calls GetExperimentStatsInfosWithinInterval on the server and may or may not wait for a response see client.
         /// If this is synchronous it should not be called on the UI thread.
@@ -186,14 +136,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
         /// Returns the result of calling GetAllSystemsStatsInfo on the server that corresponds to the result.
         ///</summary>
         IEnumerable<InstrumentAppStatsInfo> EndGetAllSystemsStatsInfo(System.IAsyncResult result);
-
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetAllSystemsStatsInfo on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<IEnumerable<InstrumentAppStatsInfo>> GetAllSystemsStatsInfoAsync();
-#endif
 
         ///<summary>
         /// Calls GetAllSystemsStatsInfo on the server and may or may not wait for a response see client.
@@ -212,14 +154,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
         ///</summary>
         IEnumerable<LatestExpInfo> EndGetLatestExperementsInfos(System.IAsyncResult result);
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetLatestExperementsInfos on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<IEnumerable<LatestExpInfo>> GetLatestExperementsInfosAsync();
-#endif
-
         ///<summary>
         /// Calls GetLatestExperementsInfos on the server and may or may not wait for a response see client.
         /// If this is synchronous it should not be called on the UI thread.
@@ -236,14 +170,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
         /// Returns the result of calling GetDiskSpaceInfo on the server that corresponds to the result.
         ///</summary>
         DiskSpaceInfo EndGetDiskSpaceInfo(System.IAsyncResult result);
-
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetDiskSpaceInfo on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<DiskSpaceInfo> GetDiskSpaceInfoAsync();
-#endif
 
         ///<summary>
         /// Calls GetDiskSpaceInfo on the server and may or may not wait for a response see client.

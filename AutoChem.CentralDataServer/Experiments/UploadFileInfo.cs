@@ -33,50 +33,32 @@ namespace AutoChem.Core.CentralDataServer.Experiments
         /// <summary>
         /// File extension for the experiment
         /// </summary>
-#if !SILVERLIGHT
-        [MessageHeader(MustUnderstand = true)]
-#endif
         public string Extension { get; set; }
 
 
         /// <summary>
         /// Metadata (user name, experiment name, project name)
         /// </summary>
-#if !SILVERLIGHT
-        [MessageHeader(MustUnderstand = true)]
-#endif        
         public DocumentMetadata MetaData { get; set; }
 
         /// <summary>
         /// Time the experiment was started
         /// </summary>
-#if !SILVERLIGHT
-        [MessageHeader(MustUnderstand = true)]
-#endif
         public DateTime StartTime { get; set; }
 
         /// <summary>
         /// The time the experiment ended
         /// </summary>
-#if !SILVERLIGHT
-        [MessageHeader(MustUnderstand = true)]
-#endif
         public DateTime EndTime { get; set; }
 
         /// <summary>
         /// Information about the application that is sending the experiment.
         /// </summary>
-#if !SILVERLIGHT
-        [MessageHeader(MustUnderstand = true)]
-#endif
         public ApplicationInfo ApplicationInfo { get; set; }
 
         /// <summary>
         /// Time the experiment was started
         /// </summary>
-#if !SILVERLIGHT
-        [MessageHeader(MustUnderstand = true)]
-#endif
         public string InstrumentType { get; set; }
 
         /// <summary>

@@ -16,9 +16,6 @@
 
 using System;
 using System.Collections.Generic;
-#if !SILVERLIGHT
-using AutoChem.Core.CentralDataServer.DataAccess;
-#endif
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -38,18 +35,6 @@ namespace AutoChem.Core.CentralDataServer.Applications
         public ApplicationInfo()
         {
         }
-
-#if !SILVERLIGHT
-        internal ApplicationInfo(ApplicationRecord applicationInfo)
-        {
-            Name = applicationInfo.Name;
-            if (!string.IsNullOrWhiteSpace(applicationInfo.Version))
-            {
-                Version = new Version(applicationInfo.Version);
-            }
-            HostAddress = applicationInfo.HostAddress;
-        }
-#endif
 
         /// <summary>
         /// The name of the application.

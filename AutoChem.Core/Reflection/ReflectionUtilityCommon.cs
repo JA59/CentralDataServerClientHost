@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 using System.Diagnostics;
-#if SILVERLIGHT
 using Trace = System.Diagnostics.Debug;
-#endif
+
 
 namespace AutoChem.Core.Reflection
 {

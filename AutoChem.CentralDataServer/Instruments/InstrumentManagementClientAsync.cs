@@ -67,15 +67,6 @@ namespace AutoChem.Core.CentralDataServer.Instruments
             return base.Channel.EndGetRegisteredInstruments(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetRegisteredInstruments on the server as an async Task.
-        ///</summary>
-        public Task<IEnumerable<LiveInstrumentInfo>> GetRegisteredInstrumentsAsync()
-        {
-            return base.Channel.GetRegisteredInstrumentsAsync();
-        }
-#else
         ///<summary>
         /// Returns the result of calling GetRegisteredInstruments on the server as an async Task.
         ///</summary>
@@ -96,7 +87,6 @@ namespace AutoChem.Core.CentralDataServer.Instruments
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls GetRegisteredInstruments on the server and waits for a response (synchronous).

@@ -18,9 +18,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-#if !SILVERLIGHT
-using System.ComponentModel.DataAnnotations;
-#endif
 using System.Runtime.Serialization;
 using AutoChem.Core.CentralDataServer.Instruments;
 using AutoChem.Core.CentralDataServer.Applications;

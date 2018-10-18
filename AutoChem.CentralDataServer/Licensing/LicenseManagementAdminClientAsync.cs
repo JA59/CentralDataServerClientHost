@@ -68,15 +68,6 @@ namespace AutoChem.Core.CentralDataServer.Licensing
             return base.Channel.EndGetLicenseSettings(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetLicenseSettings on the server as an async Task.
-        ///</summary>
-        public Task<LicenseSettings> GetLicenseSettingsAsync()
-        {
-            return base.Channel.GetLicenseSettingsAsync();
-        }
-#else
         ///<summary>
         /// Returns the result of calling GetLicenseSettings on the server as an async Task.
         ///</summary>
@@ -97,7 +88,6 @@ namespace AutoChem.Core.CentralDataServer.Licensing
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls GetLicenseSettings on the server and waits for a response (synchronous).
@@ -127,15 +117,6 @@ namespace AutoChem.Core.CentralDataServer.Licensing
             return base.Channel.EndUploadSiteLicenseFile(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling UploadSiteLicenseFile on the server as an async Task.
-        ///</summary>
-        public Task<LicenseSettings> UploadSiteLicenseFileAsync(byte[] templateData)
-        {
-            return base.Channel.UploadSiteLicenseFileAsync(templateData);
-        }
-#else
         ///<summary>
         /// Returns the result of calling UploadSiteLicenseFile on the server as an async Task.
         ///</summary>
@@ -156,7 +137,6 @@ namespace AutoChem.Core.CentralDataServer.Licensing
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls UploadSiteLicenseFile on the server and waits for a response (synchronous).

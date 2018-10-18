@@ -69,15 +69,6 @@ namespace AutoChem.Core.CentralDataServer.General
             return base.Channel.EndGetUserLogEntriesRecentDays(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetUserLogEntriesRecentDays on the server as an async Task.
-        ///</summary>
-        public Task<IEnumerable<UserLogEntry>> GetUserLogEntriesRecentDaysAsync(int maxDays)
-        {
-            return base.Channel.GetUserLogEntriesRecentDaysAsync(maxDays);
-        }
-#else
         ///<summary>
         /// Returns the result of calling GetUserLogEntriesRecentDays on the server as an async Task.
         ///</summary>
@@ -98,7 +89,6 @@ namespace AutoChem.Core.CentralDataServer.General
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls GetUserLogEntriesRecentDays on the server and waits for a response (synchronous).
@@ -128,15 +118,6 @@ namespace AutoChem.Core.CentralDataServer.General
             return base.Channel.EndGetUserLogEntries(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetUserLogEntries on the server as an async Task.
-        ///</summary>
-        public Task<IEnumerable<UserLogEntry>> GetUserLogEntriesAsync()
-        {
-            return base.Channel.GetUserLogEntriesAsync();
-        }
-#else
         ///<summary>
         /// Returns the result of calling GetUserLogEntries on the server as an async Task.
         ///</summary>
@@ -157,7 +138,6 @@ namespace AutoChem.Core.CentralDataServer.General
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls GetUserLogEntries on the server and waits for a response (synchronous).
@@ -187,15 +167,6 @@ namespace AutoChem.Core.CentralDataServer.General
             base.Channel.EndMarkResolved(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling MarkResolved on the server as an async Task.
-        ///</summary>
-        public Task MarkResolvedAsync(UserLogEntry entry)
-        {
-            return base.Channel.MarkResolvedAsync(entry);
-        }
-#else
         ///<summary>
         /// Returns the result of calling MarkResolved on the server as an async Task.
         ///</summary>
@@ -216,7 +187,6 @@ namespace AutoChem.Core.CentralDataServer.General
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls MarkResolved on the server and waits for a response (synchronous).
@@ -246,15 +216,6 @@ namespace AutoChem.Core.CentralDataServer.General
             return base.Channel.EndGetLogFileCode(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetLogFileCode on the server as an async Task.
-        ///</summary>
-        public Task<string> GetLogFileCodeAsync()
-        {
-            return base.Channel.GetLogFileCodeAsync();
-        }
-#else
         ///<summary>
         /// Returns the result of calling GetLogFileCode on the server as an async Task.
         ///</summary>
@@ -275,7 +236,6 @@ namespace AutoChem.Core.CentralDataServer.General
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls GetLogFileCode on the server and waits for a response (synchronous).

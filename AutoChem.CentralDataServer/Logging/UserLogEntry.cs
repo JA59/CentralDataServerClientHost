@@ -42,36 +42,7 @@ namespace AutoChem.Core.CentralDataServer.Logging
         {
         }
 
-#if !SILVERLIGHT
-        internal UserLogEntry(int code, UserLogEntryType type, string message)
-        {
-            Timestamp = DateTime.UtcNow;
-            Code = code;
-            Type = type;
-            Message = message;
-            UserLogEntry_Common();
-        }
 
-        internal UserLogEntry(int code, UserLogEntryType type, ExperimentReference experiment, string message)
-        {
-            Timestamp = DateTime.UtcNow;
-            Code = code;
-            Type = type;
-            Experiment = experiment;
-            Message = message;
-            UserLogEntry_Common();
-        }
-
-        internal UserLogEntry(int code, UserLogEntryType type, ExperimentSourceReference instrumentOrApplication, string message)
-        {
-            Timestamp = DateTime.UtcNow;
-            Code = code;
-            Type = type;
-            InstrumentOrApplication = instrumentOrApplication;
-            Message = message;
-            UserLogEntry_Common();
-        }
-#endif
 
         private void UserLogEntry_Common()
         {
@@ -183,38 +154,6 @@ namespace AutoChem.Core.CentralDataServer.Logging
 
             return true;
         }
-
-#if !SILVERLIGHT
-        /// <summary>
-        /// Return an XML representation of this UserLogEntry
-        /// </summary>
-        /// <returns>UserLogEntry formatted as an XML string</returns>
-        public string ToXmlFragement()
-        {
-            string entryText = String.Empty;
-
-            try
-            {
-                DataContractSerializer serializer = new DataContractSerializer(typeof(UserLogEntry));
-
-                StringBuilder stringData = new StringBuilder();
-                XmlWriterSettings settings = new XmlWriterSettings() { Indent = true, OmitXmlDeclaration = true };
-                using (var xmlWriter = XmlWriter.Create(stringData, settings))
-                {
-                    serializer.WriteObject(xmlWriter, this);
-                    // Need to flush the writer to make sure everything is written out to the string builder.
-                    xmlWriter.Flush();
-                }
-                entryText = stringData.ToString();
-            }
-            catch (Exception ex)
-            {
-                Trace.TraceError("Error converting UserLogEntry to XML: " + ex);
-            }
-
-            return entryText;
-        }
-#endif
 
     }
 }

@@ -19,9 +19,6 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 
-#if !SILVERLIGHT
-using AutoChem.Core.Serialization;
-#endif
 
 namespace AutoChem.Core
 {
@@ -36,15 +33,10 @@ namespace AutoChem.Core
     /// </summary>
     [Serializable]
     public class AutoChemException :
-#if !SILVERLIGHT
-        ApplicationException, ISerializable
-#else
+
         Exception
-#endif
+
     {
-#if !SILVERLIGHT
-        private const int Version = 3;
-#endif
         private const string DefaultMsg = "An unexpected error was encountered.";
         private AutoChemExceptionSeverity autoChemExceptionSeverity;
 
@@ -136,60 +128,6 @@ namespace AutoChem.Core
             this.autoChemExceptionSeverity = severity;
         }
 
-#if !SILVERLIGHT
-        /// <summary>
-        /// The is used for serialization.
-        /// </summary>
-        /// <param name="info">serialization information</param>
-        /// <param name="context">serialization context</param>
-        protected AutoChemException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {
-            string prefix = SerializationUtility.GetSerializationPrefix(this, typeof(AutoChemException));
-
-            int version;
-            try
-            {
-                version = info.GetInt32(prefix + "Version");
-            }
-            catch
-            {
-                version = 0;
-            }
-
-            switch (version)
-            {
-                case 0:
-                case 1:
-                    autoChemExceptionSeverity = AutoChemExceptionSeverity.UnexpectedError;
-                    break;
-                case 2:
-                    autoChemExceptionSeverity = (AutoChemExceptionSeverity)(int)info.GetValue(
-                        prefix + "VLExceptionSeverity", typeof(int));
-                    break;
-                case 3:
-                    autoChemExceptionSeverity = (AutoChemExceptionSeverity)(int)info.GetValue(
-                        prefix + "AutoChemExceptionSeverity", typeof(int));
-                    break;
-                default:
-                    throw new SerializationException("Unknown version of AutoChemException: " + version.ToString());
-            }
-        }
-
-        /// <summary>
-        /// The is used for serialization.
-        /// </summary>
-        /// <param name="info">serialization information</param>
-        /// <param name="context">serialization context</param>
-        public override void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            base.GetObjectData(info, context);
-            string prefix = SerializationUtility.GetSerializationPrefix(this, typeof(AutoChemException));
-
-            info.AddValue(prefix + "Version", Version);
-            info.AddValue(prefix + "AutoChemExceptionSeverity", (int)autoChemExceptionSeverity);
-        }
-#endif
 
         /// <summary>
         /// Creates a more detailed message than cantained in the message.

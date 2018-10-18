@@ -36,14 +36,6 @@ namespace AutoChem.Core.CentralDataServer.Config
         ///</summary>
         ConfigurationSettings EndGetConfigurationSettings(System.IAsyncResult result);
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetConfigurationSettings on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<ConfigurationSettings> GetConfigurationSettingsAsync();
-#endif
-
         ///<summary>
         /// Calls GetConfigurationSettings on the server and may or may not wait for a response see client.
         /// If this is synchronous it should not be called on the UI thread.
@@ -60,14 +52,6 @@ namespace AutoChem.Core.CentralDataServer.Config
         /// Returns the result of calling SetConfigurationSettings on the server that corresponds to the result.
         ///</summary>
         void EndSetConfigurationSettings(System.IAsyncResult result);
-
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling SetConfigurationSettings on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task SetConfigurationSettingsAsync(ConfigurationSettings settings);
-#endif
 
         ///<summary>
         /// Calls SetConfigurationSettings on the server and may or may not wait for a response see client.
@@ -86,14 +70,6 @@ namespace AutoChem.Core.CentralDataServer.Config
         ///</summary>
         void EndUploadWordTemplate(System.IAsyncResult result);
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling UploadWordTemplate on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task UploadWordTemplateAsync(string fileName, byte[] templateData);
-#endif
-
         ///<summary>
         /// Calls UploadWordTemplate on the server and may or may not wait for a response see client.
         /// If this is synchronous it should not be called on the UI thread.
@@ -111,14 +87,6 @@ namespace AutoChem.Core.CentralDataServer.Config
         ///</summary>
         void EndUploadRxeInstrumentReportTemplate(System.IAsyncResult result);
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling UploadRxeInstrumentReportTemplate on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task UploadRxeInstrumentReportTemplateAsync(string fileName, byte[] templateData);
-#endif
-
         ///<summary>
         /// Calls UploadRxeInstrumentReportTemplate on the server and may or may not wait for a response see client.
         /// If this is synchronous it should not be called on the UI thread.
@@ -135,14 +103,6 @@ namespace AutoChem.Core.CentralDataServer.Config
         /// Returns the result of calling UploadDefaultiControlReportTemplate on the server that corresponds to the result.
         ///</summary>
         void EndUploadDefaultiControlReportTemplate(System.IAsyncResult result);
-
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling UploadDefaultiControlReportTemplate on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task UploadDefaultiControlReportTemplateAsync(string fileName, byte[] templateData);
-#endif
 
         ///<summary>
         /// Calls UploadDefaultiControlReportTemplate on the server and may or may not wait for a response see client.
@@ -162,14 +122,6 @@ namespace AutoChem.Core.CentralDataServer.Config
         ///</summary>
         string EndConvertLocalFolderPathToUNCPath(System.IAsyncResult result);
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling ConvertLocalFolderPathToUNCPath on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<string> ConvertLocalFolderPathToUNCPathAsync(string localfolderPath);
-#endif
-
         ///<summary>
         /// Calls ConvertLocalFolderPathToUNCPath on the server and may or may not wait for a response see client.
         /// If this is synchronous it should not be called on the UI thread.
@@ -186,14 +138,6 @@ namespace AutoChem.Core.CentralDataServer.Config
         /// Returns the result of calling ValidateCanWriteToFolder on the server that corresponds to the result.
         ///</summary>
         IEnumerable<string> EndValidateCanWriteToFolder(System.IAsyncResult result);
-
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling ValidateCanWriteToFolder on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<IEnumerable<string>> ValidateCanWriteToFolderAsync(string folderPath);
-#endif
 
         ///<summary>
         /// Calls ValidateCanWriteToFolder on the server and may or may not wait for a response see client.
@@ -212,14 +156,6 @@ namespace AutoChem.Core.CentralDataServer.Config
         /// Returns the result of calling SendTestEmail on the server that corresponds to the result.
         ///</summary>
         bool EndSendTestEmail(System.IAsyncResult result);
-
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling SendTestEmail on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<bool> SendTestEmailAsync(string toAddress, string SMTPSenderEmail, string SMTPURL, string SMTPUser, string SMTPPassword, bool SMTPSecurityRequired);
-#endif
 
         ///<summary>
         /// Calls SendTestEmail on the server and may or may not wait for a response see client.

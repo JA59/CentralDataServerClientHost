@@ -35,12 +35,7 @@ namespace AutoChem.Core.Events
         /// The actual list of events.  This should not be used and is only public in Silverlight because of the DataContract serialization rules.
         /// </summary>
         [DataMember]
-#if !SILVERLIGHT
-        private
-#else
-        public
-#endif
-        readonly List<EventEntry<TEventKey>> m_Events;
+        public readonly List<EventEntry<TEventKey>> m_Events;
 
         /// <summary>
         /// The collection of handlers for each event type which is initialized by the derived class.

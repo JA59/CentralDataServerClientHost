@@ -54,14 +54,6 @@ namespace AutoChem.Core.CentralDataServer.Experiments
         ///</summary>
         ExperimentSearchResult EndGetExperimentInfos(System.IAsyncResult result);
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetExperimentInfos on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<ExperimentSearchResult> GetExperimentInfosAsync(int maxNumber);
-#endif
-
         ///<summary>
         /// Calls GetExperimentInfos on the server and may or may not wait for a response see client.
         /// If this is synchronous it should not be called on the UI thread.
@@ -79,14 +71,6 @@ namespace AutoChem.Core.CentralDataServer.Experiments
         ///</summary>
         IEnumerable<FileType> EndGetAllFileTypes(System.IAsyncResult result);
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetAllFileTypes on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<IEnumerable<FileType>> GetAllFileTypesAsync();
-#endif
-
         ///<summary>
         /// Calls GetAllFileTypes on the server and may or may not wait for a response see client.
         /// If this is synchronous it should not be called on the UI thread.
@@ -103,14 +87,6 @@ namespace AutoChem.Core.CentralDataServer.Experiments
         /// Returns the result of calling SearchExperiments on the server that corresponds to the result.
         ///</summary>
         ExperimentSearchResult EndSearchExperiments(System.IAsyncResult result);
-
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling SearchExperiments on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<ExperimentSearchResult> SearchExperimentsAsync(ExperimentSearchRequest searchRequest);
-#endif
 
         ///<summary>
         /// Calls SearchExperiments on the server and may or may not wait for a response see client.

@@ -15,9 +15,6 @@
 
 using System;
 using System.Runtime.Serialization;
-#if !SILVERLIGHT
-using AutoChem.Core.CentralDataServer.DataAccess;
-#endif
 using AutoChem.Core.CentralDataServer.Instruments;
 using AutoChem.Core.Time;
 using AutoChem.Core.CentralDataServer.Applications;

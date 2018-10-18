@@ -67,15 +67,7 @@ namespace AutoChem.Core.CentralDataServer.Config
             return base.Channel.EndGetConfigurationSettings(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetConfigurationSettings on the server as an async Task.
-        ///</summary>
-        public Task<ConfigurationSettings> GetConfigurationSettingsAsync()
-        {
-            return base.Channel.GetConfigurationSettingsAsync();
-        }
-#else
+
         ///<summary>
         /// Returns the result of calling GetConfigurationSettings on the server as an async Task.
         ///</summary>
@@ -96,7 +88,6 @@ namespace AutoChem.Core.CentralDataServer.Config
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls GetConfigurationSettings on the server and waits for a response (synchronous).
@@ -126,15 +117,6 @@ namespace AutoChem.Core.CentralDataServer.Config
             base.Channel.EndSetConfigurationSettings(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling SetConfigurationSettings on the server as an async Task.
-        ///</summary>
-        public Task SetConfigurationSettingsAsync(ConfigurationSettings settings)
-        {
-            return base.Channel.SetConfigurationSettingsAsync(settings);
-        }
-#else
         ///<summary>
         /// Returns the result of calling SetConfigurationSettings on the server as an async Task.
         ///</summary>
@@ -155,7 +137,6 @@ namespace AutoChem.Core.CentralDataServer.Config
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls SetConfigurationSettings on the server and waits for a response (synchronous).
@@ -185,15 +166,6 @@ namespace AutoChem.Core.CentralDataServer.Config
             base.Channel.EndUploadWordTemplate(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling UploadWordTemplate on the server as an async Task.
-        ///</summary>
-        public Task UploadWordTemplateAsync(string fileName, byte[] templateData)
-        {
-            return base.Channel.UploadWordTemplateAsync(fileName, templateData);
-        }
-#else
         ///<summary>
         /// Returns the result of calling UploadWordTemplate on the server as an async Task.
         ///</summary>
@@ -214,7 +186,6 @@ namespace AutoChem.Core.CentralDataServer.Config
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls UploadWordTemplate on the server and waits for a response (synchronous).
@@ -244,15 +215,6 @@ namespace AutoChem.Core.CentralDataServer.Config
             base.Channel.EndUploadRxeInstrumentReportTemplate(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling UploadRxeInstrumentReportTemplate on the server as an async Task.
-        ///</summary>
-        public Task UploadRxeInstrumentReportTemplateAsync(string fileName, byte[] templateData)
-        {
-            return base.Channel.UploadRxeInstrumentReportTemplateAsync(fileName, templateData);
-        }
-#else
         ///<summary>
         /// Returns the result of calling UploadRxeInstrumentReportTemplate on the server as an async Task.
         ///</summary>
@@ -273,7 +235,6 @@ namespace AutoChem.Core.CentralDataServer.Config
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls UploadRxeInstrumentReportTemplate on the server and waits for a response (synchronous).
@@ -303,15 +264,6 @@ namespace AutoChem.Core.CentralDataServer.Config
             base.Channel.EndUploadDefaultiControlReportTemplate(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling UploadDefaultiControlReportTemplate on the server as an async Task.
-        ///</summary>
-        public Task UploadDefaultiControlReportTemplateAsync(string fileName, byte[] templateData)
-        {
-            return base.Channel.UploadDefaultiControlReportTemplateAsync(fileName, templateData);
-        }
-#else
         ///<summary>
         /// Returns the result of calling UploadDefaultiControlReportTemplate on the server as an async Task.
         ///</summary>
@@ -332,7 +284,6 @@ namespace AutoChem.Core.CentralDataServer.Config
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls UploadDefaultiControlReportTemplate on the server and waits for a response (synchronous).
@@ -362,15 +313,6 @@ namespace AutoChem.Core.CentralDataServer.Config
             return base.Channel.EndConvertLocalFolderPathToUNCPath(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling ConvertLocalFolderPathToUNCPath on the server as an async Task.
-        ///</summary>
-        public Task<string> ConvertLocalFolderPathToUNCPathAsync(string localfolderPath)
-        {
-            return base.Channel.ConvertLocalFolderPathToUNCPathAsync(localfolderPath);
-        }
-#else
         ///<summary>
         /// Returns the result of calling ConvertLocalFolderPathToUNCPath on the server as an async Task.
         ///</summary>
@@ -391,7 +333,6 @@ namespace AutoChem.Core.CentralDataServer.Config
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls ConvertLocalFolderPathToUNCPath on the server and waits for a response (synchronous).
@@ -421,15 +362,6 @@ namespace AutoChem.Core.CentralDataServer.Config
             return base.Channel.EndValidateCanWriteToFolder(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling ValidateCanWriteToFolder on the server as an async Task.
-        ///</summary>
-        public Task<IEnumerable<string>> ValidateCanWriteToFolderAsync(string folderPath)
-        {
-            return base.Channel.ValidateCanWriteToFolderAsync(folderPath);
-        }
-#else
         ///<summary>
         /// Returns the result of calling ValidateCanWriteToFolder on the server as an async Task.
         ///</summary>
@@ -450,7 +382,6 @@ namespace AutoChem.Core.CentralDataServer.Config
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls ValidateCanWriteToFolder on the server and waits for a response (synchronous).
@@ -481,15 +412,6 @@ namespace AutoChem.Core.CentralDataServer.Config
             return base.Channel.EndSendTestEmail(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling SendTestEmail on the server as an async Task.
-        ///</summary>
-        public Task<bool> SendTestEmailAsync(string toAddress, string SMTPSenderEmail, string SMTPURL, string SMTPUser, string SMTPPassword, bool SMTPSecurityRequired)
-        {
-            return base.Channel.SendTestEmailAsync(toAddress, SMTPSenderEmail, SMTPURL, SMTPUser, SMTPPassword, SMTPSecurityRequired);
-        }
-#else
         ///<summary>
         /// Returns the result of calling SendTestEmail on the server as an async Task.
         ///</summary>
@@ -510,7 +432,6 @@ namespace AutoChem.Core.CentralDataServer.Config
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls SendTestEmail on the server and waits for a response (synchronous).

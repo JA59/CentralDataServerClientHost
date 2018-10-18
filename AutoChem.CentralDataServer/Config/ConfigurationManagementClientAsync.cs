@@ -67,15 +67,6 @@ namespace AutoChem.Core.CentralDataServer.Config
             return base.Channel.EndGetExperimentProviderSettings(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetExperimentProviderSettings on the server as an async Task.
-        ///</summary>
-        public Task<ExperimentProviderSettings> GetExperimentProviderSettingsAsync()
-        {
-            return base.Channel.GetExperimentProviderSettingsAsync();
-        }
-#else
         ///<summary>
         /// Returns the result of calling GetExperimentProviderSettings on the server as an async Task.
         ///</summary>
@@ -96,7 +87,6 @@ namespace AutoChem.Core.CentralDataServer.Config
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls GetExperimentProviderSettings on the server and waits for a response (synchronous).
@@ -126,15 +116,6 @@ namespace AutoChem.Core.CentralDataServer.Config
             return base.Channel.EndGetPartialConfigurationSettings(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetPartialConfigurationSettings on the server as an async Task.
-        ///</summary>
-        public Task<ConfigurationSettings> GetPartialConfigurationSettingsAsync()
-        {
-            return base.Channel.GetPartialConfigurationSettingsAsync();
-        }
-#else
         ///<summary>
         /// Returns the result of calling GetPartialConfigurationSettings on the server as an async Task.
         ///</summary>
@@ -155,7 +136,6 @@ namespace AutoChem.Core.CentralDataServer.Config
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls GetPartialConfigurationSettings on the server and waits for a response (synchronous).

@@ -17,9 +17,6 @@
 using System;
 using System.Runtime.Serialization;
 
-#if !SILVERLIGHT
-using AutoChem.Core.Serialization;
-#endif
 using System.Diagnostics;
 
 namespace AutoChem.Core.Time
@@ -27,13 +24,8 @@ namespace AutoChem.Core.Time
 	/// <summary>
 	/// Summary description for TimeRange.
 	/// </summary>
-#if !SILVERLIGHT
-	[Serializable]
-#endif
+
 	public class TimeRange : IComparable
-#if !SILVERLIGHT
-        , ISerializable 
-#endif
 	{
 		private const int Version = 1;
 
@@ -87,11 +79,8 @@ namespace AutoChem.Core.Time
                 else
                 {
                     string message = string.Format("TimeRange: The start and end time should be of the same kind ({0} != {1})", start.Kind, end.Kind);
-#if SILVERLIGHT
                     Debug.WriteLine(message);
-#else
-                    Trace.TraceWarning(message);
-#endif
+
                 }
             }
 
@@ -394,41 +383,5 @@ namespace AutoChem.Core.Time
             return (Start.GetHashCode() ^ End.GetHashCode());
         }
 		
-#if !SILVERLIGHT
-		#region serialization
-        /// <summary>
-        /// Gets the information for serializing the TimeRange.
-        /// </summary>
-	    public virtual void GetObjectData(SerializationInfo info, StreamingContext context) 
-		{
-			string prefix = SerializationUtility.GetSerializationPrefix(this, typeof(TimeRange));
-
-			info.AddValue(prefix+"Version", Version);
-			info.AddValue(prefix+"start",   start);
-			info.AddValue(prefix+"end",     end);
-		}
-
-        /// <summary>
-        /// Creates the TimeRange from the serialized information.
-        /// </summary>
-	    protected TimeRange(SerializationInfo info, StreamingContext context)
-	    {
-            string prefix = SerializationUtility.GetSerializationPrefix(this, typeof(TimeRange));
-
-	        int version = info.GetInt32(prefix+"Version");
-
-	        switch(version)
-	        {
-	            case 1:
-	                this.start	= (DateTime)info.GetValue(prefix+"start", typeof(DateTime));
-	                this.end	= (DateTime)info.GetValue(prefix+"end",   typeof(DateTime));
-	                break;
-	            default:
-	                throw new SerializationException("Unknown version of TimeRangeList: " + version.ToString());
-	        }
-	    }
-
-	    #endregion
-#endif
 	}
 }

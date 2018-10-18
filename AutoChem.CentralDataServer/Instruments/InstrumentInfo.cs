@@ -15,9 +15,6 @@
 **/
 using System;
 using System.Runtime.Serialization;
-#if !SILVERLIGHT
-using AutoChem.Core.CentralDataServer.DataAccess;
-#endif
 
 namespace AutoChem.Core.CentralDataServer.Instruments
 {
@@ -48,24 +45,6 @@ namespace AutoChem.Core.CentralDataServer.Instruments
             SerialNumber = serialNumber;
             Description = description;
         }
-
-#if !SILVERLIGHT
-        internal InstrumentInfo(InstrumentRecord instrumentRecord)
-        {
-            Status = instrumentRecord.Status;
-            HostAddress = instrumentRecord.HostAddress;
-            InstrumentType = instrumentRecord.InstrumentType;
-            Version = instrumentRecord.Version;
-            SerialNumber = instrumentRecord.SerialNumber;
-            Description = instrumentRecord.Description;
-            DateAdded = instrumentRecord.AddedOn;
-            //By Default entity framework does not set DateTime.Kind when pulling values from the database.
-            if (instrumentRecord.LastSuccessfullCommunication.HasValue)
-            {
-                LastSuccessfulCommunication = new DateTime(instrumentRecord.LastSuccessfullCommunication.Value.Ticks, DateTimeKind.Utc);
-            }
-        }
-#endif
 
         /// <summary>
         /// A reference to the instrument.

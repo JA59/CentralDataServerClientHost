@@ -132,22 +132,5 @@ namespace AutoChem.Core.CentralDataServer.Config
         [DataMember]
         public string ExperimentsRootUnc { get; set; }
 
-#if !SILVERLIGHT
-        /// <summary>
-        /// Saves the configuration to the specified path.
-        /// </summary>
-        internal void SaveSettings(string path)
-        {
-            using (var fs = new FileStream(path, FileMode.Create))
-            using (var streamWriter = new StreamWriter(fs))
-            using (var writer = new XmlTextWriter(streamWriter))
-            {
-                writer.Formatting = Formatting.Indented;
-                DataContractSerializer serializer =
-                    new DataContractSerializer(typeof(ExperimentProviderSettings));
-                serializer.WriteObject(writer, this);
-            }
-        }
-#endif
     }
 }

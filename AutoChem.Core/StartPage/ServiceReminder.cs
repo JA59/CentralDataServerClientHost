@@ -133,9 +133,6 @@ namespace AutoChem.Core.StartPage
         public string ServiceType
         {
             get { return m_ServiceType; }
-#if !SILVERLIGHT
-            private
-#endif
             set { m_ServiceType = value; }
         }
 

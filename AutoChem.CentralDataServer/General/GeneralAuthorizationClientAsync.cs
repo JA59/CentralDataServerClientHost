@@ -71,15 +71,6 @@ namespace AutoChem.Core.CentralDataServer.General
             return base.Channel.EndIsAnonymousAccessAllowed(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling IsAnonymousAccessAllowed on the server as an async Task.
-        ///</summary>
-        public Task<bool> IsAnonymousAccessAllowedAsync()
-        {
-            return base.Channel.IsAnonymousAccessAllowedAsync();
-        }
-#else
         ///<summary>
         /// Returns the result of calling IsAnonymousAccessAllowed on the server as an async Task.
         ///</summary>
@@ -100,7 +91,6 @@ namespace AutoChem.Core.CentralDataServer.General
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls IsAnonymousAccessAllowed on the server and waits for a response (synchronous).
@@ -131,15 +121,6 @@ namespace AutoChem.Core.CentralDataServer.General
             return base.Channel.EndIsClientComputerSameAsServer(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling IsClientComputerSameAsServer on the server as an async Task.
-        ///</summary>
-        public Task<bool> IsClientComputerSameAsServerAsync()
-        {
-            return base.Channel.IsClientComputerSameAsServerAsync();
-        }
-#else
         ///<summary>
         /// Returns the result of calling IsClientComputerSameAsServer on the server as an async Task.
         ///</summary>
@@ -160,7 +141,6 @@ namespace AutoChem.Core.CentralDataServer.General
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls IsClientComputerSameAsServer on the server and waits for a response (synchronous).

@@ -60,46 +60,6 @@ namespace AutoChem.Core.CentralDataServer.Security
             }
         }
 
-#if !SILVERLIGHT
-        /// <summary>
-        /// Constructor (from a security context)
-        /// </summary>
-        /// <param name="securityCtx">Security context for the user.</param>
-        /// <param name="forceToAdmin">Force user to be an admin.</param>
-        public static UserAuthorization GetUserAuthorization(ServiceSecurityContext securityCtx, bool forceToAdmin)
-        {
-            try
-            {
-                if (securityCtx != null)
-                {
-                    if (securityCtx.IsAnonymous)
-                        return new UserAuthorization(UnknownUserName, forceToAdmin);
-
-                    var wi = securityCtx.PrimaryIdentity as WindowsIdentity;
-                    if (wi != null)
-                    {
-                        string userId = securityCtx.PrimaryIdentity.Name;
-                        var wp = new WindowsPrincipal(wi);
-                        bool isAdmin = (forceToAdmin || wp.IsInRole(SecurityGroups.Instance.AdministratorGroupName));
-                        return new UserAuthorization(userId, isAdmin);
-                    }
-
-                }
-
-                return new UserAuthorization(UnknownUserName, forceToAdmin);
-            }
-            catch (Exception)
-            {
-                return new UserAuthorization(UnknownUserName, forceToAdmin);
-            }
-
-        }
-
-#endif
-
-
-
-
         /// <summary>
         /// Role ("Administrator" or "Not An Administrator")
         /// </summary>
@@ -107,10 +67,7 @@ namespace AutoChem.Core.CentralDataServer.Security
         public string Role
         {
             get;
-#if !SILVERLIGHT
-            private
-#endif
- set;
+             set;
         }
 
         /// <summary>
@@ -120,10 +77,7 @@ namespace AutoChem.Core.CentralDataServer.Security
         public string UserId
         {
             get;
-#if !SILVERLIGHT
-            private
-#endif
- set;
+            set;
         }
 
         /// <summary>

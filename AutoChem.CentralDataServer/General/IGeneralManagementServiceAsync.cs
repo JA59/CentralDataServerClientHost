@@ -52,14 +52,6 @@ namespace AutoChem.Core.CentralDataServer.General
         ///</summary>
         void EndTraceError(System.IAsyncResult result);
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling TraceError on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task TraceErrorAsync(string message);
-#endif
-
         ///<summary>
         /// Calls TraceError on the server and may or may not wait for a response see client.
         /// If this is synchronous it should not be called on the UI thread.
@@ -78,14 +70,6 @@ namespace AutoChem.Core.CentralDataServer.General
         ///</summary>
         void EndTraceClientLogMessages(System.IAsyncResult result);
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling TraceClientLogMessages on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task TraceClientLogMessagesAsync(string[] messages);
-#endif
-
         ///<summary>
         /// Calls TraceClientLogMessages on the server and may or may not wait for a response see client.
         /// If this is synchronous it should not be called on the UI thread.
@@ -102,14 +86,6 @@ namespace AutoChem.Core.CentralDataServer.General
         /// Returns the result of calling GetServerVersion on the server that corresponds to the result.
         ///</summary>
         string EndGetServerVersion(System.IAsyncResult result);
-
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetServerVersion on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<string> GetServerVersionAsync();
-#endif
 
         ///<summary>
         /// Calls GetServerVersion on the server and may or may not wait for a response see client.
@@ -128,14 +104,6 @@ namespace AutoChem.Core.CentralDataServer.General
         ///</summary>
         SystemStateInfo EndGetSystemStateInfo(System.IAsyncResult result);
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetSystemStateInfo on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<SystemStateInfo> GetSystemStateInfoAsync();
-#endif
-
         ///<summary>
         /// Calls GetSystemStateInfo on the server and may or may not wait for a response see client.
         /// If this is synchronous it should not be called on the UI thread.
@@ -153,14 +121,6 @@ namespace AutoChem.Core.CentralDataServer.General
         ///</summary>
         void EndAddServerObserver(System.IAsyncResult result);
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling AddServerObserver on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task AddServerObserverAsync(Guid observerID);
-#endif
-
         ///<summary>
         /// Calls AddServerObserver on the server and may or may not wait for a response see client.
         /// If this is synchronous it should not be called on the UI thread.
@@ -177,14 +137,6 @@ namespace AutoChem.Core.CentralDataServer.General
         /// Returns the result of calling GetEvents on the server that corresponds to the result.
         ///</summary>
         ServerEvents EndGetEvents(System.IAsyncResult result);
-
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetEvents on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<ServerEvents> GetEventsAsync(Guid observerID);
-#endif
 
         ///<summary>
         /// Calls GetEvents on the server and may or may not wait for a response see client.

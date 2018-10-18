@@ -69,15 +69,6 @@ namespace AutoChem.Core.CentralDataServer.General
             base.Channel.EndTraceError(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling TraceError on the server as an async Task.
-        ///</summary>
-        public Task TraceErrorAsync(string message)
-        {
-            return base.Channel.TraceErrorAsync(message);
-        }
-#else
         ///<summary>
         /// Returns the result of calling TraceError on the server as an async Task.
         ///</summary>
@@ -98,7 +89,6 @@ namespace AutoChem.Core.CentralDataServer.General
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         ///Asynchronously calls TraceError on the server and does not wait for a response.
@@ -145,15 +135,6 @@ namespace AutoChem.Core.CentralDataServer.General
             base.Channel.EndTraceClientLogMessages(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling TraceClientLogMessages on the server as an async Task.
-        ///</summary>
-        public Task TraceClientLogMessagesAsync(string[] messages)
-        {
-            return base.Channel.TraceClientLogMessagesAsync(messages);
-        }
-#else
         ///<summary>
         /// Returns the result of calling TraceClientLogMessages on the server as an async Task.
         ///</summary>
@@ -174,7 +155,6 @@ namespace AutoChem.Core.CentralDataServer.General
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls TraceClientLogMessages on the server and waits for a response (synchronous).
@@ -205,15 +185,6 @@ namespace AutoChem.Core.CentralDataServer.General
             return base.Channel.EndGetServerVersion(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetServerVersion on the server as an async Task.
-        ///</summary>
-        public Task<string> GetServerVersionAsync()
-        {
-            return base.Channel.GetServerVersionAsync();
-        }
-#else
         ///<summary>
         /// Returns the result of calling GetServerVersion on the server as an async Task.
         ///</summary>
@@ -234,7 +205,6 @@ namespace AutoChem.Core.CentralDataServer.General
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls GetServerVersion on the server and waits for a response (synchronous).
@@ -264,15 +234,7 @@ namespace AutoChem.Core.CentralDataServer.General
             return base.Channel.EndGetSystemStateInfo(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetSystemStateInfo on the server as an async Task.
-        ///</summary>
-        public Task<SystemStateInfo> GetSystemStateInfoAsync()
-        {
-            return base.Channel.GetSystemStateInfoAsync();
-        }
-#else
+
         ///<summary>
         /// Returns the result of calling GetSystemStateInfo on the server as an async Task.
         ///</summary>
@@ -293,7 +255,6 @@ namespace AutoChem.Core.CentralDataServer.General
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls GetSystemStateInfo on the server and waits for a response (synchronous).
@@ -323,15 +284,6 @@ namespace AutoChem.Core.CentralDataServer.General
             base.Channel.EndAddServerObserver(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling AddServerObserver on the server as an async Task.
-        ///</summary>
-        public Task AddServerObserverAsync(Guid observerID)
-        {
-            return base.Channel.AddServerObserverAsync(observerID);
-        }
-#else
         ///<summary>
         /// Returns the result of calling AddServerObserver on the server as an async Task.
         ///</summary>
@@ -352,7 +304,6 @@ namespace AutoChem.Core.CentralDataServer.General
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls AddServerObserver on the server and waits for a response (synchronous).
@@ -382,15 +333,6 @@ namespace AutoChem.Core.CentralDataServer.General
             return base.Channel.EndGetEvents(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetEvents on the server as an async Task.
-        ///</summary>
-        public Task<ServerEvents> GetEventsAsync(Guid observerID)
-        {
-            return base.Channel.GetEventsAsync(observerID);
-        }
-#else
         ///<summary>
         /// Returns the result of calling GetEvents on the server as an async Task.
         ///</summary>
@@ -411,7 +353,6 @@ namespace AutoChem.Core.CentralDataServer.General
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls GetEvents on the server and waits for a response (synchronous).

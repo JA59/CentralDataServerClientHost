@@ -70,15 +70,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
             return base.Channel.EndGetInstrumentStatsInfos(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetInstrumentStatsInfos on the server as an async Task.
-        ///</summary>
-        public Task<IEnumerable<InstrumentStatsInfo>> GetInstrumentStatsInfosAsync(DateTime startTime, DateTime endTime)
-        {
-            return base.Channel.GetInstrumentStatsInfosAsync(startTime, endTime);
-        }
-#else
         ///<summary>
         /// Returns the result of calling GetInstrumentStatsInfos on the server as an async Task.
         ///</summary>
@@ -99,7 +90,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls GetInstrumentStatsInfos on the server and waits for a response (synchronous).
@@ -130,15 +120,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
             return base.Channel.EndGetInstrumentStatsInfosWithinInterval(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetInstrumentStatsInfosWithinInterval on the server as an async Task.
-        ///</summary>
-        public Task<IEnumerable<InstrumentStatsInfo>> GetInstrumentStatsInfosWithinIntervalAsync(IntervalEnum interval)
-        {
-            return base.Channel.GetInstrumentStatsInfosWithinIntervalAsync(interval);
-        }
-#else
         ///<summary>
         /// Returns the result of calling GetInstrumentStatsInfosWithinInterval on the server as an async Task.
         ///</summary>
@@ -159,7 +140,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls GetInstrumentStatsInfosWithinInterval on the server and waits for a response (synchronous).
@@ -190,15 +170,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
             return base.Channel.EndGetiCInstrumentStatsInfosWithinInterval(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetiCInstrumentStatsInfosWithinInterval on the server as an async Task.
-        ///</summary>
-        public Task<IEnumerable<InstrumentStatsInfo>> GetiCInstrumentStatsInfosWithinIntervalAsync(IntervalEnum interval, string iCProductName)
-        {
-            return base.Channel.GetiCInstrumentStatsInfosWithinIntervalAsync(interval, iCProductName);
-        }
-#else
         ///<summary>
         /// Returns the result of calling GetiCInstrumentStatsInfosWithinInterval on the server as an async Task.
         ///</summary>
@@ -219,7 +190,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls GetiCInstrumentStatsInfosWithinInterval on the server and waits for a response (synchronous).
@@ -250,15 +220,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
             return base.Channel.EndGetExperimentStatsInfos(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetExperimentStatsInfos on the server as an async Task.
-        ///</summary>
-        public Task<IEnumerable<ExperimnetStatsInfo>> GetExperimentStatsInfosAsync(DateTime startTime, DateTime endTime)
-        {
-            return base.Channel.GetExperimentStatsInfosAsync(startTime, endTime);
-        }
-#else
         ///<summary>
         /// Returns the result of calling GetExperimentStatsInfos on the server as an async Task.
         ///</summary>
@@ -279,7 +240,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls GetExperimentStatsInfos on the server and waits for a response (synchronous).
@@ -310,15 +270,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
             return base.Channel.EndGetExperimentStatsInfosWithinInterval(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetExperimentStatsInfosWithinInterval on the server as an async Task.
-        ///</summary>
-        public Task<IEnumerable<ExperimnetStatsInfo>> GetExperimentStatsInfosWithinIntervalAsync(IntervalEnum interval)
-        {
-            return base.Channel.GetExperimentStatsInfosWithinIntervalAsync(interval);
-        }
-#else
         ///<summary>
         /// Returns the result of calling GetExperimentStatsInfosWithinInterval on the server as an async Task.
         ///</summary>
@@ -339,7 +290,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls GetExperimentStatsInfosWithinInterval on the server and waits for a response (synchronous).
@@ -370,15 +320,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
             return base.Channel.EndGetAllSystemsStatsInfo(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetAllSystemsStatsInfo on the server as an async Task.
-        ///</summary>
-        public Task<IEnumerable<InstrumentAppStatsInfo>> GetAllSystemsStatsInfoAsync()
-        {
-            return base.Channel.GetAllSystemsStatsInfoAsync();
-        }
-#else
         ///<summary>
         /// Returns the result of calling GetAllSystemsStatsInfo on the server as an async Task.
         ///</summary>
@@ -399,7 +340,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls GetAllSystemsStatsInfo on the server and waits for a response (synchronous).
@@ -430,15 +370,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
             return base.Channel.EndGetLatestExperementsInfos(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetLatestExperementsInfos on the server as an async Task.
-        ///</summary>
-        public Task<IEnumerable<LatestExpInfo>> GetLatestExperementsInfosAsync()
-        {
-            return base.Channel.GetLatestExperementsInfosAsync();
-        }
-#else
         ///<summary>
         /// Returns the result of calling GetLatestExperementsInfos on the server as an async Task.
         ///</summary>
@@ -459,7 +390,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls GetLatestExperementsInfos on the server and waits for a response (synchronous).
@@ -490,15 +420,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
             return base.Channel.EndGetDiskSpaceInfo(result);
         }
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling GetDiskSpaceInfo on the server as an async Task.
-        ///</summary>
-        public Task<DiskSpaceInfo> GetDiskSpaceInfoAsync()
-        {
-            return base.Channel.GetDiskSpaceInfoAsync();
-        }
-#else
         ///<summary>
         /// Returns the result of calling GetDiskSpaceInfo on the server as an async Task.
         ///</summary>
@@ -519,7 +440,6 @@ namespace AutoChem.Core.CentralDataServer.Statistics
             }, null);
             return taskSource.Task;
         }
-#endif
 
         ///<summary>
         /// Calls GetDiskSpaceInfo on the server and waits for a response (synchronous).

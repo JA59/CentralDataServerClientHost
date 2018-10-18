@@ -35,64 +35,11 @@ namespace AutoChem.Core.Time
 	    /// </summary>
 	    public const string InvalidTimeFormat = "Value must be specified in the format of hhh:mm:ss or ?h?m?s : {0}. Error: {1}";
 
-#if !SILVERLIGHT
-		/// <summary>
-		/// Provides English US culture information
-		/// </summary>
-		static public readonly CultureInfo CultureInfo_US = new CultureInfo("en-US", false);
 
-        /// <summary>
-        /// Returns the current value of the performance counter.
-        /// </summary>
-        /// <returns>False if there is no performance counter.</returns>
-        [DllImport("KERNEL32.DLL", SetLastError = true)]
-        public static extern bool QueryPerformanceCounter(out long count);
-
-        /// <summary>
-        /// Returns the frequency of the performance counter.
-        /// </summary>
-        /// <returns>False if there is no performance counter.</returns>
-        [DllImport("KERNEL32.DLL", SetLastError = true)]
-        public static extern bool QueryPerformanceFrequency(out long frequency);
-
-        /// <summary>
-        /// Returns the diference between the starting count and the current performance count as a TimeSpan.
-        /// </summary>
-        public static TimeSpan GetPerformanceCountDelta(long startCount)
-        {
-            long stopCount;
-            QueryPerformanceCounter(out stopCount);
-            return GetPerformanceCountDelta(startCount, stopCount);
-        }
-
-        /// <summary>
-        /// Takes the starting and stopping count of the performance counter and returns the difference as a TimeSpan.
-        /// </summary>
-        public static TimeSpan GetPerformanceCountDelta(long startCount, long stopCount)
-        {
-            long delta = stopCount - startCount;
-            return GetPerformanceCountAsTimeSpan(delta);
-        }
-
-        /// <summary>
-        /// Takes the difference between performance counts and returns them as a TimeSpan
-        /// </summary>
-        public static TimeSpan GetPerformanceCountAsTimeSpan(long countDiff)
-        {
-            long countsPerSec;
-            QueryPerformanceFrequency(out countsPerSec);
-            long countsPerMSec = countsPerSec / 1000;
-
-            long ticks = countDiff * TimeSpan.TicksPerMillisecond / countsPerMSec;
-
-            return TimeSpan.FromTicks(ticks);
-        }
-#else
 		/// <summary>
 		/// Provides English US culture information
 		/// </summary>
 		static public readonly CultureInfo CultureInfo_US = new CultureInfo("en-US");
-#endif
 
 		/// <summary>
         /// Returns the number of times the length of time divisor is equal to the length of time dividend.

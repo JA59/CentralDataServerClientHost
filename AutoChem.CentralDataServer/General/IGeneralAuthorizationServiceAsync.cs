@@ -37,13 +37,6 @@ namespace AutoChem.Core.CentralDataServer.General
         ///</summary>
         bool EndIsAnonymousAccessAllowed(System.IAsyncResult result);
 
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling IsAnonymousAccessAllowed on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<bool> IsAnonymousAccessAllowedAsync();
-#endif
 
         ///<summary>
         /// Calls IsAnonymousAccessAllowed on the server and may or may not wait for a response see client.
@@ -62,14 +55,6 @@ namespace AutoChem.Core.CentralDataServer.General
         /// Returns the result of calling IsClientComputerSameAsServer on the server that corresponds to the result.
         ///</summary>
         bool EndIsClientComputerSameAsServer(System.IAsyncResult result);
-
-#if !SILVERLIGHT
-        ///<summary>
-        /// Returns the result of calling IsClientComputerSameAsServer on the server as an async Task.
-        ///</summary>
-        [OperationContract(AsyncPattern=true)]
-        Task<bool> IsClientComputerSameAsServerAsync();
-#endif
 
         ///<summary>
         /// Calls IsClientComputerSameAsServer on the server and may or may not wait for a response see client.

@@ -19,9 +19,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-#if !SILVERLIGHT
-using AutoChem.Core.CentralDataServer.DataAccess;
-#endif
 using AutoChem.Core.CentralDataServer.Experiments;
 using AutoChem.Core.Generics;
 using System.Runtime.Serialization;
@@ -44,20 +41,6 @@ namespace AutoChem.Core.CentralDataServer.Instruments
         {
         }
 
-#if !SILVERLIGHT
-        /// <summary>
-        /// Creates a new InstrumentReference with the specified host address.
-        /// </summary>
-        public InstrumentReference(InstrumentRecord instrumentRecord)
-        {
-            HostAddress = instrumentRecord.HostAddress;
-            InstrumentType = instrumentRecord.InstrumentType;
-            Description = instrumentRecord.Description;
-            Version = instrumentRecord.Version;
-            SerialNumber = instrumentRecord.SerialNumber;
-            DateAdded = instrumentRecord.AddedOn;
-        }
-#endif
 
         /// <summary>
         /// Creates a new InstrumentReference with the specified host address.
@@ -78,16 +61,6 @@ namespace AutoChem.Core.CentralDataServer.Instruments
             SerialNumber = serialNumber;
             DateAdded = dateAdded;
         }
-
-        #if !SILVERLIGHT            
-        /// <summary>
-        /// Creates a new InstrumentReference with the specified host address.
-        /// </summary>
-        public static implicit operator InstrumentReference(InstrumentRecord instrumentRecord)
-        {
-            return new InstrumentReference(instrumentRecord);
-        }
-        #endif
 
         /// <summary>
         /// The address of an instrument. The inlcudes the host and optionally a port and /or path (e.g. IP or host name)
