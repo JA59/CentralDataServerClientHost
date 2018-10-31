@@ -1,9 +1,9 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NewInstrumentViewModel } from '../interfaces/newinstrumentviewmodel';
-import { INewInstrumentViewModel } from '../interfaces/inewinstrumentviewmodel';
+import { NewInstrumentViewModel } from '../../Instruments/newinstrumentviewmodel';
+import { INewInstrumentViewModel } from '../../Instruments/inewinstrumentviewmodel';
 import { Component, Inject, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs";
 import 'rxjs/Rx';

@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { HttpClient } from '@angular/common/http';
-import { IInstrumentViewModel } from '../interfaces/iinstrumentviewmodel';
+import { IInstrumentViewModel } from '../../Instruments/iinstrumentviewmodel';
 
 @Component({
     selector: "instruments-monitor",
@@ -35,6 +35,24 @@ export class InstrumentsMonitorComponent implements OnInit {
       this.instruments = new Array(0);
       this.instrumentCount = -1;
     });
+  }
+
+  setSelectedName(event: IInstrumentViewModel) {
+    this.removeInstrument(event.Address);
+  }
+
+  private removeInstrument(address: string) {
+    console.log("address is " + address);
+
+    var url = this.baseUrl + "api/Instrument/"+address;
+    this.http.delete<string>(url)
+      .subscribe(this.extractData), error => console.log(error);
+  }
+
+  extractData(res: any) {
+    console.log("extract data: " + res);
+    //let body = res.json();
+    //return body || {};
   }
 
 

@@ -16,11 +16,11 @@ import { HeaderBarComponent } from './headerbar/headerbar.component';
 import { ExperimentComponent } from './experiments/experiment.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
-import { InstrumentsComponent } from './instruments/instruments.component';
-import { InstrumentsConfigureComponent } from './instruments-configure/instruments-configure.component';
-import { InstrumentEditorComponent } from './instrument-editor/instrument-editor.component';
-import { InstrumentsMonitorComponent } from './instruments-monitor/instruments-monitor.component';
-import { InstrumentItemComponent } from './instrument-item/instrument-item.component';
+import { InstrumentsPageComponent } from './Instruments/instruments-page/instruments-page.component';
+import { InstrumentsConfigureComponent } from './Instruments/instruments-configure/instruments-configure.component';
+import { InstrumentEditorComponent } from './Instruments/instrument-editor/instrument-editor.component';
+import { InstrumentsMonitorComponent } from './Instruments/instruments-monitor/instruments-monitor.component';
+import { InstrumentItemComponent } from './Instruments/instrument-item/instrument-item.component';
 import { LogsEventsComponent } from './logs-events/logs-events.component';
 
 
@@ -31,7 +31,7 @@ import { LogsEventsComponent } from './logs-events/logs-events.component';
     LoginComponent,
     ConfigurationComponent,
     DemoComponent,
-    InstrumentsComponent,
+    InstrumentsPageComponent,
     InstrumentsConfigureComponent,
     InstrumentEditorComponent,
     InstrumentsMonitorComponent,
@@ -53,7 +53,7 @@ import { LogsEventsComponent } from './logs-events/logs-events.component';
       { path: '', component: LoginComponent, pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'demo', component: DemoComponent },
-      { path: 'instruments', component: InstrumentsComponent },
+      { path: 'instruments-page', component: InstrumentsPageComponent },
       { path: 'experiments', component: ExperimentComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'logs-events', component: LogsEventsComponent },

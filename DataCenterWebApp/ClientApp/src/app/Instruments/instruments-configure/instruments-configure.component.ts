@@ -1,17 +1,17 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { HttpClient } from '@angular/common/http';
-import { IInstrumentViewModel } from '../interfaces/iinstrumentviewmodel';
+import { IInstrumentViewModel } from '../../Instruments/iinstrumentviewmodel';
 
 @Component({
-    selector: "instruments",
-  templateUrl: "./instruments.component.html",
-  styleUrls: ['./instruments.component.css']
+    selector: "instruments-configure",
+  templateUrl: "./instruments-configure.component.html",
+  styleUrls: ['./instruments-configure.component.css']
 })
 
-export class InstrumentsComponent implements OnInit {
-  title = "Instruments";
+export class InstrumentsConfigureComponent implements OnInit {
+  title = "Configure Instruments";
   instrumentCount: number = 0;
   instruments: IInstrumentViewModel[];
 

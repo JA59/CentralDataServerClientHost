@@ -139,6 +139,50 @@ namespace iCDataCenterClientHost.Controllers
         }
 
         /// <summary>
+        /// Deletes the Planned Experiment with the given {id} from the Database
+        /// DELETE: api/plannedexperiment/{id}
+        /// </summary>
+        /// <param name="id">The ID of an existing planned experiment</param>
+        [HttpDelete("{address}")]
+        public async Task<IActionResult> Delete(string address)
+        {
+            try
+            {
+                // Log that we were called.
+                _logger.LogInformation("Delete");
+                if (!HasRole("admin"))
+                {
+                    return new UnauthorizedResult();
+                }
+
+                if (address == null)
+                    return new StatusCodeResult(500);
+
+                InstrumentManagementAdminClientAsync m_Client;
+
+                string serverUriString = string.Format("{0}{1}", GetServerURI(), ProductHelper.UrlInstrumentManagementAdmin);
+                m_Client = new InstrumentManagementAdminClientAsync(ServicesHelper.GetDefaultBinding(),
+                    new EndpointAddress(serverUriString));
+
+                await m_Client.RemoveInstrumentAsync(address);
+
+                // Return the result in JSON format
+                return new JsonResult(
+                    address,
+                    new JsonSerializerSettings()
+                    {
+                        Formatting = Formatting.Indented
+                    });
+            }
+            catch (Exception exc)
+            {
+                // Log the exception and return it to the caller
+                _logger.LogError(exc.ToString());
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Add an instrument 
         /// POST: api/instrument/{object}
         /// </summary>
@@ -176,6 +220,21 @@ namespace iCDataCenterClientHost.Controllers
                 // Log the exception and return it to the caller
                 _logger.LogError(exc.ToString());
                 throw;
+            }
+        }
+
+        private bool HasRole(string role)
+        {
+            //return true;
+            try
+            {
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                MyUser myUser = UserManager.FindByIdAsync(userId).Result;
+                return myUser.Roles.Contains(role);
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
 

@@ -1,4 +1,4 @@
-import { INewInstrumentViewModel } from '../interfaces/inewinstrumentviewmodel';
+import { INewInstrumentViewModel } from '../Instruments/inewinstrumentviewmodel';
 
 export class NewInstrumentViewModel implements INewInstrumentViewModel {
   Address: string;
