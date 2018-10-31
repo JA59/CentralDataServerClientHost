@@ -14,6 +14,7 @@ using AutoChem.Core.CentralDataServer;
 using System.ServiceModel;
 using AutoChem.Core.CentralDataServer.Config;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace iCDataCenterClientHost.Controllers
 {
@@ -45,7 +46,7 @@ namespace iCDataCenterClientHost.Controllers
         /// <returns>{num} Planned Experiments sorted by User</returns>
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         [HttpGet("RegisteredInstruments")]
-        public IActionResult RegisteredInstruments()
+        public async Task<IActionResult> RegisteredInstruments()
         {
             try
             {
@@ -59,7 +60,7 @@ namespace iCDataCenterClientHost.Controllers
                 m_Client = new InstrumentManagementClientAsync(ServicesHelper.GetDefaultBinding(),
                     new EndpointAddress(serverUriString));
 
-                enumerable = m_Client.GetRegisteredInstruments();
+                enumerable = await m_Client.GetRegisteredInstrumentsAsync();
                 LiveInstrumentInfo[] array = enumerable.Cast<LiveInstrumentInfo>().ToArray();
 
                 List<IInstrumentViewModel> list = new List<IInstrumentViewModel>();
@@ -103,7 +104,7 @@ namespace iCDataCenterClientHost.Controllers
         /// <returns>{num} Planned Experiments sorted by User</returns>
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         [HttpGet("Count")]
-        public IActionResult Count()
+        public async Task<IActionResult> Count()
         {
             try
             {
@@ -117,13 +118,54 @@ namespace iCDataCenterClientHost.Controllers
                 m_Client = new InstrumentManagementClientAsync(ServicesHelper.GetDefaultBinding(),
                     new EndpointAddress(serverUriString));
 
-                enumerable = m_Client.GetRegisteredInstruments();
+                enumerable = await m_Client.GetRegisteredInstrumentsAsync();
                 LiveInstrumentInfo[] array = enumerable.Cast<LiveInstrumentInfo>().ToArray();
                 int count = array.Length;
 
                 // Return the result in JSON format
                 return new JsonResult(
                     count,
+                    new JsonSerializerSettings()
+                    {
+                        Formatting = Formatting.Indented
+                    });
+            }
+            catch (Exception exc)
+            {
+                // Log the exception and return it to the caller
+                _logger.LogError(exc.ToString());
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Add an instrument 
+        /// POST: api/instrument/{object}
+        /// </summary>
+        /// <param name="newInstrument"></param>
+        [HttpPost("Add")]
+        public async Task<IActionResult> Add([FromBody]NewInstrumentViewModel newInstrument)
+        {
+            try
+            {
+                // Log that we were called.
+                _logger.LogInformation("AddInstrument");
+
+                if (newInstrument == null)
+                    return new StatusCodeResult(500);
+
+                InstrumentInfo instrumentInfo;
+                InstrumentManagementAdminClientAsync m_Client;
+
+                string serverUriString = string.Format("{0}{1}", GetServerURI(), ProductHelper.UrlInstrumentManagementAdmin);
+                m_Client = new InstrumentManagementAdminClientAsync(ServicesHelper.GetDefaultBinding(),
+                    new EndpointAddress(serverUriString));
+
+                instrumentInfo = await m_Client.AddInstrumentAsync(newInstrument.Address, newInstrument.Description);
+
+                // Return the result in JSON format
+                return new JsonResult(
+                    instrumentInfo.HostAddress,
                     new JsonSerializerSettings()
                     {
                         Formatting = Formatting.Indented

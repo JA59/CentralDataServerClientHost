@@ -14,8 +14,8 @@ fieldset {
 }
 
 legend.my-legend-border {
-  width: inherit;       /* Or auto */
-  padding: 0 10px;      /* To give a bit of padding on the left and right */
+  width: inherit; /* Or auto */
+  padding: 0 10px; /* To give a bit of padding on the left and right */
   border-bottom: none;
 }
 
@@ -33,4 +33,3 @@ legend.my-legend-border {
   margin-right: 10px;
   margin-top: 3px;
 }
-

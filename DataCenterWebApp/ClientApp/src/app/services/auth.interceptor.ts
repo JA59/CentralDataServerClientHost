@@ -1,4 +1,4 @@
-﻿import { Injectable, Injector } from "@angular/core";
+import { Injectable, Injector } from "@angular/core";
 import { HttpHandler, HttpEvent, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { AuthService } from "./auth.service";
 import { Observable } from "rxjs/Observable";
@@ -12,7 +12,7 @@ export class AuthInterceptor implements HttpInterceptor {
     intercept(
         request: HttpRequest<any>,
         next: HttpHandler): Observable<HttpEvent<any>> {
-
+      console.log('intercept');
         var auth = this.injector.get(AuthService);
         var token = (auth.isLoggedIn()) ? auth.getAuth()!.token : null;
         if (token) {
