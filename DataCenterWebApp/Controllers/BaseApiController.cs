@@ -57,7 +57,7 @@ namespace iCDataCenterClientHost.Controllers
         /// <returns></returns>
         protected bool IsAdmin()
         {
-            return HasRole("admin");
+            return HasRole(DataCenterIdentities.AdminRole);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace iCDataCenterClientHost.Controllers
         /// <returns></returns>
         protected bool IsUser()
         {
-            return HasRole("user");
+            return HasRole(DataCenterIdentities.UserRole);
         }
 
         /// <summary>

@@ -6,7 +6,7 @@ namespace iCDataCenterClientHost.ViewModels.Instrument
     [JsonObject(MemberSerialization.OptOut)]
     public interface IInstrumentIdVM
     {
-        string Address { get; set; }
-        string Description { get; set; }
+        string vm_address { get; set; }
+        string vm_description { get; set; }
     }
 }

@@ -77,16 +77,16 @@ namespace iCDataCenterClientHost.Controllers
                 foreach(var liveInstrumentInfo in array)
                 {
                     var instrumentViewModel = new InstrumentVM();
-                    instrumentViewModel.Address = liveInstrumentInfo.HostAddress;
-                    instrumentViewModel.Description = liveInstrumentInfo.HostAddress;
-                    instrumentViewModel.Instrument = liveInstrumentInfo.HostAddress;
-                    instrumentViewModel.Status = liveInstrumentInfo.Status.ToString();
-                    instrumentViewModel.Reactor1 = liveInstrumentInfo.Reactor1Value;
-                    instrumentViewModel.Reactor2 = liveInstrumentInfo.Reactor2Value;
-                    instrumentViewModel.Version = liveInstrumentInfo.InstrumentInfo.Version;
-                    instrumentViewModel.SerialNumber = liveInstrumentInfo.InstrumentInfo.SerialNumber;
-                    instrumentViewModel.TimeDifference = liveInstrumentInfo.TimeDifference.HasValue ? liveInstrumentInfo.TimeDifference.Value.ToString() : "";
-                    instrumentViewModel.LastUpdate = liveInstrumentInfo.LastSuccessfulCommunication.HasValue ? liveInstrumentInfo.LastSuccessfulCommunication.Value : DateTime.MinValue;
+                    instrumentViewModel.vm_address = liveInstrumentInfo.HostAddress;
+                    instrumentViewModel.vm_description = liveInstrumentInfo.HostAddress;
+                    instrumentViewModel.vm_instrument = liveInstrumentInfo.HostAddress;
+                    instrumentViewModel.vm_status = liveInstrumentInfo.Status.ToString();
+                    instrumentViewModel.vm_reactor_1 = liveInstrumentInfo.Reactor1Value;
+                    instrumentViewModel.vm_reactor_2 = liveInstrumentInfo.Reactor2Value;
+                    instrumentViewModel.vm_version = liveInstrumentInfo.InstrumentInfo.Version;
+                    instrumentViewModel.vm_serial_number = liveInstrumentInfo.InstrumentInfo.SerialNumber;
+                    instrumentViewModel.vm_time_difference = liveInstrumentInfo.TimeDifference.HasValue ? liveInstrumentInfo.TimeDifference.Value.ToString() : "";
+                    instrumentViewModel.vm_last_update = liveInstrumentInfo.LastSuccessfulCommunication.HasValue ? liveInstrumentInfo.LastSuccessfulCommunication.Value : DateTime.MinValue;
                     list.Add(instrumentViewModel);
                 }
 
@@ -219,7 +219,7 @@ namespace iCDataCenterClientHost.Controllers
                 m_Client = new InstrumentManagementAdminClientAsync(ServicesHelper.GetDefaultBinding(),
                     new EndpointAddress(serverUriString));
 
-                instrumentInfo = await m_Client.AddInstrumentAsync(newInstrument.Address, newInstrument.Description);
+                instrumentInfo = await m_Client.AddInstrumentAsync(newInstrument.vm_address, newInstrument.vm_description);
 
                 // Return the result in JSON format
                 return new JsonResult(

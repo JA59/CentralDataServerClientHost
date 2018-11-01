@@ -43,9 +43,9 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\interfaces\demouser.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Instruments\iinstrumentviewmodel.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Instruments\inewinstrumentviewmodel.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Instruments\newinstrumentviewmodel.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Instruments\IInstrumentVM.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Instruments\IInstrumentIdVM.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Instruments\InstrumentIdVM.ts" />
   </ItemGroup>
 
   <ItemGroup>

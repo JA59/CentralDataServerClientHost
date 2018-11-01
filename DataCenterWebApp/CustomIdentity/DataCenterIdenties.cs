@@ -19,6 +19,9 @@ namespace iCDataCenterClientHost.CustomIdentity
     /// </summary>
     public class DataCenterIdentities
     {
+        public const string UserRole = "user";
+        public const string AdminRole = "admin";
+
         // Singleton instance
         private static DataCenterIdentities instance = null;
 
@@ -65,8 +68,8 @@ namespace iCDataCenterClientHost.CustomIdentity
             // Roles are not user defined; there are always two roles; "user" and "admin".
             RoleDictionary = new Dictionary<string, DataCenterRole>()
             {
-                {"user", new DataCenterRole(){ Id = "user", Name = "User"} },
-                {"admin", new DataCenterRole(){ Id = "admin", Name = "Administrator"} }
+                {UserRole, new DataCenterRole(){ Id = UserRole, Name = "User"} },
+                {AdminRole, new DataCenterRole(){ Id = AdminRole, Name = "Administrator"} }
             }; 
         }
 
@@ -81,10 +84,10 @@ namespace iCDataCenterClientHost.CustomIdentity
                 // Load from text file failed, so create a default set of users
                 UserDictionary = new Dictionary<int, DataCenterUser>()
                 {
-                    {1, new DataCenterUser(){ Id = 1, UserName = "SomeUser", PasswordHash="USER1", Roles= new List<string>(){"user" }} },
-                    {2, new DataCenterUser(){ Id = 2, UserName = "SomeAdmin", PasswordHash="ADMIN1", Roles= new List<string>(){"user", "admin" }} },
-                    {3, new DataCenterUser(){ Id = 3, UserName = "Joe", PasswordHash="JOE", Roles= new List<string>(){"user", "admin" }} },
-                    {4, new DataCenterUser(){ Id = 4, UserName = "Ed", PasswordHash="ED", Roles= new List<string>(){"user" }} }
+                    {1, new DataCenterUser(){ Id = 1, UserName = "SomeUser", PasswordHash="USER1", Roles= new List<string>(){UserRole }} },
+                    {2, new DataCenterUser(){ Id = 2, UserName = "SomeAdmin", PasswordHash="ADMIN1", Roles= new List<string>(){ UserRole, AdminRole }} },
+                    {3, new DataCenterUser(){ Id = 3, UserName = "Joe", PasswordHash="JOE", Roles= new List<string>(){ UserRole, AdminRole }} },
+                    {4, new DataCenterUser(){ Id = 4, UserName = "Ed", PasswordHash="ED", Roles= new List<string>(){UserRole }} }
                 };
             }
         }
@@ -124,8 +127,8 @@ namespace iCDataCenterClientHost.CustomIdentity
                         if (subPieces.Length != 2) continue;
                         
                         // determine the roles
-                        var roles = new List<string>() { "user" };
-                        if (pieces[0] == "admin") roles.Add("admin");
+                        var roles = new List<string>() { UserRole };
+                        if (pieces[0] == AdminRole) roles.Add(AdminRole);
 
                         // Create the user and add it to the dictionary
                         var myUser = new DataCenterUser()

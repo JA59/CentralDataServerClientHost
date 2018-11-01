@@ -17,8 +17,8 @@ namespace iCDataCenterClientHost.ViewModels.Instrument
         #endregion
 
         #region Properties
-        public string Address { get; set; }
-        public string Description { get; set; }
+        public string vm_address { get; set; }
+        public string vm_description { get; set; }
         #endregion
     }
 }

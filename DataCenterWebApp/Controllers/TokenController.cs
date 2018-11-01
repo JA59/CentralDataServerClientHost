@@ -41,6 +41,7 @@ namespace iCDataCenterClientHost.Controllers
         public async Task<IActionResult> Auth([FromBody]TokenRequestVM model)
         {
             _logger.LogInformation("Auth");
+            
             // return a generic HTTP Status 500 (Server Error)
             // if the client payload is invalid.
             if (model == null) return new StatusCodeResult(500);
@@ -48,12 +49,6 @@ namespace iCDataCenterClientHost.Controllers
             switch (model.grant_type)
             {
                 case "password":
-                    //var response = new TokenResponseViewModel()
-                    //{
-                    //    token = "abc",
-                    //    expiration = 5
-                    //};
-                    //return Json(response);
                     return await GetToken(model);
                 default:
                     // not supported - return a HTTP 401 (Unauthorized)
@@ -67,12 +62,8 @@ namespace iCDataCenterClientHost.Controllers
             {
                 // check if there's an user with the given username
                 DataCenterUser user = await UserManager.FindByNameAsync(model.username);
-                // fallback to support e-mail address instead of username
-                if (user == null && model.username.Contains("@"))
-                    user = await UserManager.FindByEmailAsync(model.username);
 
-                if (user == null
-                    || !await UserManager.CheckPasswordAsync(user, model.password))
+                if (user == null || !await UserManager.CheckPasswordAsync(user, model.password))
                 {
                     // user does not exists or password mismatch
                     return new UnauthorizedResult();
@@ -82,18 +73,18 @@ namespace iCDataCenterClientHost.Controllers
 
                 DateTime now = DateTime.UtcNow;
 
-                // add the registered claims for JWT (RFC7519).
-                // For more info, see https://tools.ietf.org/html/rfc7519#section-4.1
+                // Add the registered claims for JWT (RFC7519).
+                // (For more info, see https://tools.ietf.org/html/rfc7519#section-4.1)
                 var claims = new[] {
                     new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                     new Claim(JwtRegisteredClaimNames.Iat,
                         new DateTimeOffset(now).ToUnixTimeSeconds().ToString())
-                    // TODO: add additional claims here
                 };
 
                 var tokenExpirationMins =
                     Configuration.GetValue<int>("Auth:Jwt:TokenExpirationInMinutes");
+
                 var issuerSigningKey = new SymmetricSecurityKey(
                     Encoding.UTF8.GetBytes(Configuration["Auth:Jwt:Key"]));
 
@@ -114,7 +105,7 @@ namespace iCDataCenterClientHost.Controllers
                     token = encodedToken,
                     expiration = tokenExpirationMins,
                     username = user.UserName,
-                    isadmin = user.Roles.Contains("admin")
+                    isadmin = user.Roles.Contains(DataCenterIdentities.AdminRole)
                 };
                 return Json(response);
             }

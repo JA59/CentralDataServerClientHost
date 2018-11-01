@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthService } from '../../services/auth.service';
 import { HttpClient } from '@angular/common/http';
-import { IInstrumentViewModel } from '../../Instruments/iinstrumentviewmodel';
+import { IInstrumentVM } from '../../Instruments/IInstrumentVM';
 
 @Component({
     selector: "instruments-configure",
@@ -13,7 +13,7 @@ import { IInstrumentViewModel } from '../../Instruments/iinstrumentviewmodel';
 export class InstrumentsConfigureComponent implements OnInit {
   title = "Configure Instruments";
   instrumentCount: number = 0;
-  instruments: IInstrumentViewModel[];
+  instruments: IInstrumentVM[];
 
     constructor(private router: Router,
         private authService: AuthService,
@@ -28,7 +28,7 @@ export class InstrumentsConfigureComponent implements OnInit {
 
   private doFetch() {
     // Get the latest experiment count from the SystemOverview controller
-    this.http.get<IInstrumentViewModel[]>('api/Instrument/RegisteredInstruments').subscribe(result => {
+    this.http.get<IInstrumentVM[]>('api/Instrument/RegisteredInstruments').subscribe(result => {
       this.instruments = result;
       this.instrumentCount = this.instruments.length;
     }, error => {

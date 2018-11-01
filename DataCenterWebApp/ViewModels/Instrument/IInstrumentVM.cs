@@ -4,15 +4,15 @@ namespace iCDataCenterClientHost.ViewModels.Instrument
 {
     public interface IInstrumentVM
     {
-        string Address { get; set; }
-        string Description { get; set; }
-        string Instrument { get; set; }
-        DateTime LastUpdate { get; set; }
-        string Reactor1 { get; set; }
-        string Reactor2 { get; set; }
-        string SerialNumber { get; set; }
-        string Status { get; set; }
-        string TimeDifference { get; set; }
-        string Version { get; set; }
+        string vm_address { get; set; }
+        string vm_description { get; set; }
+        string vm_instrument { get; set; }
+        DateTime vm_last_update { get; set; }
+        string vm_reactor_1 { get; set; }
+        string vm_reactor_2 { get; set; }
+        string vm_serial_number { get; set; }
+        string vm_status { get; set; }
+        string vm_time_difference { get; set; }
+        string vm_version { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { IInstrumentViewModel } from '../../Instruments/iinstrumentviewmodel';
+import { IInstrumentVM } from '../../Instruments/IInstrumentVM';
 
 @Component({
   selector: 'instrument-item',
@@ -8,7 +8,7 @@ import { IInstrumentViewModel } from '../../Instruments/iinstrumentviewmodel';
 })
 
 export class InstrumentItemComponent {
-  @Input() myInstrument: IInstrumentViewModel;
+  @Input() myInstrument: IInstrumentVM;
   @Output() selectEvent = new EventEmitter();
 
   constructor() {

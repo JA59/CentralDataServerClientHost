@@ -1,6 +1,5 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NewInstrumentViewModel } from '../../Instruments/newinstrumentviewmodel';
-import { INewInstrumentViewModel } from '../../Instruments/inewinstrumentviewmodel';
+import { InstrumentIdVM } from '../../Instruments/InstrumentIdVM';
 import { Component, Inject, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthService } from '../../services/auth.service';
@@ -16,9 +15,9 @@ import 'rxjs/Rx';
 export class InstrumentEditorComponent implements OnInit {
   title = "Configure Instruments";
   instrumentForm: FormGroup;
-  instrument: NewInstrumentViewModel = {
-    Address: 'localhost',
-    Description: 'simulated instrument'
+  instrument: InstrumentIdVM = {
+    vm_address: 'localhost',
+    vm_description: 'simulated instrument'
   };
   constructor
     (private formBuilder: FormBuilder,
@@ -30,19 +29,19 @@ export class InstrumentEditorComponent implements OnInit {
   }
   ngOnInit() {
     this.instrumentForm = this.formBuilder.group({
-      'address': [this.instrument.Address, [Validators.required]],
-      'description': [this.instrument.Description, [Validators.maxLength(50)]]
+      'address': [this.instrument.vm_address, [Validators.required]],
+      'description': [this.instrument.vm_description, [Validators.maxLength(50)]]
     });
   }
 
   logFormValue() {
-    var tempInstrument = <NewInstrumentViewModel>{};
-    tempInstrument.Address = this.instrumentForm.value.address;
-    tempInstrument.Description = this.instrumentForm.value.description;
-    console.log("address is " + tempInstrument.Address);
-    console.log("description is " + tempInstrument.Description);
+    var tempInstrument = <InstrumentIdVM>{};
+    tempInstrument.vm_address = this.instrumentForm.value.address;
+    tempInstrument.vm_description = this.instrumentForm.value.description;
+    console.log("address is " + tempInstrument.vm_address);
+    console.log("description is " + tempInstrument.vm_description);
     var url = this.baseUrl + "api/Instrument/Add";
-    this.http.post<NewInstrumentViewModel>(url, tempInstrument)
+    this.http.post<InstrumentIdVM>(url, tempInstrument)
       .subscribe(this.extractData), error => console.log(error);
   }
 
