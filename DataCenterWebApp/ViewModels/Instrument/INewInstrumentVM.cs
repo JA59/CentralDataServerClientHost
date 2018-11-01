@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace iCDataCenterClientHost.ViewModels
+namespace iCDataCenterClientHost.ViewModels.Instrument
 {
     [JsonObject(MemberSerialization.OptOut)]
-    public interface INewInstrumentViewModel
+    public interface IInstrumentIdVM
     {
         string Address { get; set; }
         string Description { get; set; }

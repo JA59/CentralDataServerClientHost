@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace iCDataCenterClientHost.ViewModels
+namespace iCDataCenterClientHost.ViewModels.Instrument
 {
-    public interface IInstrumentViewModel
+    public interface IInstrumentVM
     {
         string Address { get; set; }
         string Description { get; set; }

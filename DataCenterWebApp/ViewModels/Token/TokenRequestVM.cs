@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace iCDataCenterClientHost.ViewModels
+namespace iCDataCenterClientHost.ViewModels.Token
 {
     [JsonObject(MemberSerialization.OptOut)]
-    public class TokenRequestViewModel
+    public class TokenRequestVM
     {
         #region Constructor
-        public TokenRequestViewModel()
+        public TokenRequestVM()
         {
 
         }

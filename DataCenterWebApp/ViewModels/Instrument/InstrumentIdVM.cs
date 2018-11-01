@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace iCDataCenterClientHost.ViewModels
+namespace iCDataCenterClientHost.ViewModels.Instrument
 {
     [JsonObject(MemberSerialization.OptOut)]
-    public class NewInstrumentViewModel : INewInstrumentViewModel
+    public class InstrumentIdVM : IInstrumentIdVM
     {
         #region Constructor
-        public NewInstrumentViewModel()
+        public InstrumentIdVM()
         {
 
         }

@@ -14,22 +14,22 @@ namespace iCDataCenterClientHost.CustomIdentity
     {
         public Task<IdentityResult> CreateAsync(DataCenterRole role, CancellationToken cancellationToken)
         {
-            if (DataCenterIdentityStore.Instance.RoleDictionary.ContainsKey(role.Id))
+            if (DataCenterIdentities.Instance.RoleDictionary.ContainsKey(role.Id))
             {
                 return Task.FromResult(IdentityResult.Failed(new IdentityError { Description = "Role already exists" }));
 
             }
 
             // find the first free id
-            DataCenterIdentityStore.Instance.RoleDictionary.Add(role.Id, role);
+            DataCenterIdentities.Instance.RoleDictionary.Add(role.Id, role);
             return Task.FromResult(IdentityResult.Success);
         }
 
         public Task<IdentityResult> DeleteAsync(DataCenterRole role, CancellationToken cancellationToken)
         {
-            if (DataCenterIdentityStore.Instance.RoleDictionary.ContainsKey(role.Id))
+            if (DataCenterIdentities.Instance.RoleDictionary.ContainsKey(role.Id))
             {
-                DataCenterIdentityStore.Instance.RoleDictionary.Remove(role.Id);
+                DataCenterIdentities.Instance.RoleDictionary.Remove(role.Id);
                 return Task.FromResult(IdentityResult.Success);
             }
             return Task.FromResult(IdentityResult.Failed(new IdentityError { Description = "role did not exist" }));
@@ -42,7 +42,7 @@ namespace iCDataCenterClientHost.CustomIdentity
         public Task<DataCenterRole> FindByIdAsync(string roleId, CancellationToken cancellationToken)
         {
             DataCenterRole role = null;
-            IList<DataCenterRole> roles = DataCenterIdentityStore.Instance.RoleDictionary.Values.ToList<DataCenterRole>();
+            IList<DataCenterRole> roles = DataCenterIdentities.Instance.RoleDictionary.Values.ToList<DataCenterRole>();
             role = roles.SingleOrDefault(f => f.Id.ToString() == roleId);
             return Task.FromResult(role);
         }
@@ -50,7 +50,7 @@ namespace iCDataCenterClientHost.CustomIdentity
         public Task<DataCenterRole> FindByNameAsync(string normalizedRoleName, CancellationToken cancellationToken)
         {
             DataCenterRole role = null;
-            IList<DataCenterRole> roles = DataCenterIdentityStore.Instance.RoleDictionary.Values.ToList<DataCenterRole>();
+            IList<DataCenterRole> roles = DataCenterIdentities.Instance.RoleDictionary.Values.ToList<DataCenterRole>();
             role = roles.SingleOrDefault(f => f.Name == normalizedRoleName);
             return Task.FromResult(role);
         }
@@ -58,7 +58,7 @@ namespace iCDataCenterClientHost.CustomIdentity
         public Task<string> GetNormalizedRoleNameAsync(DataCenterRole role, CancellationToken cancellationToken)
         {
             DataCenterRole r = null;
-            IList<DataCenterRole> roles = DataCenterIdentityStore.Instance.RoleDictionary.Values.ToList<DataCenterRole>();
+            IList<DataCenterRole> roles = DataCenterIdentities.Instance.RoleDictionary.Values.ToList<DataCenterRole>();
             r = roles.SingleOrDefault(f => f.Id == role.Id);
             return Task.FromResult(r.Name);
         }
@@ -66,7 +66,7 @@ namespace iCDataCenterClientHost.CustomIdentity
         public Task<string> GetRoleIdAsync(DataCenterRole role, CancellationToken cancellationToken)
         {
             DataCenterRole r = null;
-            IList<DataCenterRole> roles = DataCenterIdentityStore.Instance.RoleDictionary.Values.ToList<DataCenterRole>();
+            IList<DataCenterRole> roles = DataCenterIdentities.Instance.RoleDictionary.Values.ToList<DataCenterRole>();
             r = roles.SingleOrDefault(f => f.Id == role.Id);
             return Task.FromResult(r.Id);
         }
@@ -74,7 +74,7 @@ namespace iCDataCenterClientHost.CustomIdentity
         public Task<string> GetRoleNameAsync(DataCenterRole role, CancellationToken cancellationToken)
         {
             DataCenterRole r = null;
-            IList<DataCenterRole> roles = DataCenterIdentityStore.Instance.RoleDictionary.Values.ToList<DataCenterRole>();
+            IList<DataCenterRole> roles = DataCenterIdentities.Instance.RoleDictionary.Values.ToList<DataCenterRole>();
             r = roles.SingleOrDefault(f => f.Id == role.Id);
             return Task.FromResult(r.Name);
         }
@@ -82,14 +82,14 @@ namespace iCDataCenterClientHost.CustomIdentity
         public Task SetNormalizedRoleNameAsync(DataCenterRole role, string normalizedName, CancellationToken cancellationToken)
         {
             DataCenterRole r = null;
-            IList<DataCenterRole> roles = DataCenterIdentityStore.Instance.RoleDictionary.Values.ToList<DataCenterRole>();
+            IList<DataCenterRole> roles = DataCenterIdentities.Instance.RoleDictionary.Values.ToList<DataCenterRole>();
             r = roles.SingleOrDefault(f => f.Id == role.Id);
             return Task.FromResult(r.Name);
         }
 
         public Task SetRoleNameAsync(DataCenterRole role, string roleName, CancellationToken cancellationToken)
         {
-            IList<DataCenterRole> roles = DataCenterIdentityStore.Instance.RoleDictionary.Values.ToList<DataCenterRole>();
+            IList<DataCenterRole> roles = DataCenterIdentities.Instance.RoleDictionary.Values.ToList<DataCenterRole>();
 
             role = roles.SingleOrDefault(f => f.Id == role.Id);
             role.Name = roleName;
@@ -99,9 +99,9 @@ namespace iCDataCenterClientHost.CustomIdentity
 
         public Task<IdentityResult> UpdateAsync(DataCenterRole role, CancellationToken cancellationToken)
         {
-            if (DataCenterIdentityStore.Instance.RoleDictionary.ContainsKey(role.Id))
+            if (DataCenterIdentities.Instance.RoleDictionary.ContainsKey(role.Id))
             {
-                DataCenterIdentityStore.Instance.RoleDictionary[role.Id] = role;
+                DataCenterIdentities.Instance.RoleDictionary[role.Id] = role;
                 return Task.FromResult(IdentityResult.Success);
             }
             return Task.FromResult(IdentityResult.Failed(new IdentityError { Description = "role did not exist to update" }));

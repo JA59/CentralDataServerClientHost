@@ -1,13 +1,13 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace iCDataCenterClientHost.ViewModels
+namespace iCDataCenterClientHost.ViewModels.Instrument
 {
     [JsonObject(MemberSerialization.OptOut)]
-    public class InstrumentViewModel : IInstrumentViewModel
+    public class InstrumentVM : IInstrumentVM
     {
         #region Constructor
-        public InstrumentViewModel()
+        public InstrumentVM()
         {
 
         }

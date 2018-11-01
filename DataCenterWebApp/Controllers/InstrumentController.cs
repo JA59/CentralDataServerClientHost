@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 using iCDataCenterClientHost.CustomIdentity;
-using iCDataCenterClientHost.ViewModels;
+using iCDataCenterClientHost.ViewModels.Instrument;
 using System.Collections.Generic;
 using AutoChem.Core.CentralDataServer.Instruments;
 using AutoChem.Core.CentralDataServer;
@@ -73,10 +73,10 @@ namespace iCDataCenterClientHost.Controllers
                 enumerable = await m_Client.GetRegisteredInstrumentsAsync();
                 LiveInstrumentInfo[] array = enumerable.Cast<LiveInstrumentInfo>().ToArray();
 
-                List<IInstrumentViewModel> list = new List<IInstrumentViewModel>();
+                List<IInstrumentVM> list = new List<IInstrumentVM>();
                 foreach(var liveInstrumentInfo in array)
                 {
-                    var instrumentViewModel = new InstrumentViewModel();
+                    var instrumentViewModel = new InstrumentVM();
                     instrumentViewModel.Address = liveInstrumentInfo.HostAddress;
                     instrumentViewModel.Description = liveInstrumentInfo.HostAddress;
                     instrumentViewModel.Instrument = liveInstrumentInfo.HostAddress;
@@ -198,7 +198,7 @@ namespace iCDataCenterClientHost.Controllers
         /// </summary>
         /// <param name="newInstrument"></param>
         [HttpPost("Add")]
-        public async Task<IActionResult> Add([FromBody]NewInstrumentViewModel newInstrument)
+        public async Task<IActionResult> Add([FromBody]InstrumentIdVM newInstrument)
         {
             try
             {

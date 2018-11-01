@@ -27,24 +27,24 @@ namespace iCDataCenterClientHost.CustomIdentity
 
         public Task<IdentityResult> CreateAsync(DataCenterUser user, CancellationToken cancellationToken)
         {
-            if (DataCenterIdentityStore.Instance.UserDictionary.ContainsKey(user.Id))
+            if (DataCenterIdentities.Instance.UserDictionary.ContainsKey(user.Id))
             {
                 return Task.FromResult(IdentityResult.Failed(new IdentityError { Description = "User already exists" }));
             }
 
             // find the first free id
             int newId = 1;
-            while (DataCenterIdentityStore.Instance.UserDictionary.ContainsKey(newId)) newId++;
+            while (DataCenterIdentities.Instance.UserDictionary.ContainsKey(newId)) newId++;
 
-            DataCenterIdentityStore.Instance.UserDictionary.Add(newId, user);
+            DataCenterIdentities.Instance.UserDictionary.Add(newId, user);
             return Task.FromResult(IdentityResult.Success);
         }
 
         public Task<IdentityResult> DeleteAsync(DataCenterUser user, CancellationToken cancellationToken)
         {
-            if (DataCenterIdentityStore.Instance.UserDictionary.ContainsKey(user.Id))
+            if (DataCenterIdentities.Instance.UserDictionary.ContainsKey(user.Id))
             {
-                DataCenterIdentityStore.Instance.UserDictionary.Remove(user.Id);
+                DataCenterIdentities.Instance.UserDictionary.Remove(user.Id);
                 return Task.FromResult(IdentityResult.Success);
             }
             return Task.FromResult(IdentityResult.Failed(new IdentityError { Description = "User did not exist" }));
@@ -59,7 +59,7 @@ namespace iCDataCenterClientHost.CustomIdentity
         public Task<DataCenterUser> FindByIdAsync(string userId, CancellationToken cancellationToken)
         {
             DataCenterUser user = null;
-            IList<DataCenterUser> users = DataCenterIdentityStore.Instance.UserDictionary.Values.ToList<DataCenterUser>();
+            IList<DataCenterUser> users = DataCenterIdentities.Instance.UserDictionary.Values.ToList<DataCenterUser>();
             user = users.SingleOrDefault(f => f.Id.ToString() == userId);
             return Task.FromResult(user);
         }
@@ -67,14 +67,14 @@ namespace iCDataCenterClientHost.CustomIdentity
         public Task<DataCenterUser> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken)
         {
             DataCenterUser user = null;
-            IList<DataCenterUser> users = DataCenterIdentityStore.Instance.UserDictionary.Values.ToList<DataCenterUser>();
+            IList<DataCenterUser> users = DataCenterIdentities.Instance.UserDictionary.Values.ToList<DataCenterUser>();
             user = users.SingleOrDefault(f => f.UserName.ToLower() == normalizedUserName.ToLower());
             return Task.FromResult(user);
         }
 
         public Task<string> GetNormalizedUserNameAsync(DataCenterUser user, CancellationToken cancellationToken)
         {
-            IList<DataCenterUser> users = DataCenterIdentityStore.Instance.UserDictionary.Values.ToList<DataCenterUser>();
+            IList<DataCenterUser> users = DataCenterIdentities.Instance.UserDictionary.Values.ToList<DataCenterUser>();
             user = users.SingleOrDefault(f => f.Id == user.Id);
             return Task.FromResult(user.NormalizedUserName);
         }
@@ -87,14 +87,14 @@ namespace iCDataCenterClientHost.CustomIdentity
 
         public Task<IList<string>> GetRolesAsync(DataCenterUser user, CancellationToken cancellationToken)
         {
-            IList<DataCenterUser> users = DataCenterIdentityStore.Instance.UserDictionary.Values.ToList<DataCenterUser>();
+            IList<DataCenterUser> users = DataCenterIdentities.Instance.UserDictionary.Values.ToList<DataCenterUser>();
             user = users.SingleOrDefault(f => f.Id == user.Id);
             return Task.FromResult(user.Roles);
         }
 
         public Task<string> GetUserIdAsync(DataCenterUser user, CancellationToken cancellationToken)
         {
-            IList<DataCenterUser> users = DataCenterIdentityStore.Instance.UserDictionary.Values.ToList<DataCenterUser>();
+            IList<DataCenterUser> users = DataCenterIdentities.Instance.UserDictionary.Values.ToList<DataCenterUser>();
             if (users == null || users.Count == 0)
             {
                 return Task.FromResult(String.Empty);
@@ -107,7 +107,7 @@ namespace iCDataCenterClientHost.CustomIdentity
 
         public Task<string> GetUserNameAsync(DataCenterUser user, CancellationToken cancellationToken)
         {
-            IList<DataCenterUser> users = DataCenterIdentityStore.Instance.UserDictionary.Values.ToList<DataCenterUser>();
+            IList<DataCenterUser> users = DataCenterIdentities.Instance.UserDictionary.Values.ToList<DataCenterUser>();
             if (users == null || users.Count == 0)
             {
                 return Task.FromResult(String.Empty);
@@ -135,21 +135,21 @@ namespace iCDataCenterClientHost.CustomIdentity
 
         public Task<bool> IsInRoleAsync(DataCenterUser user, string roleName, CancellationToken cancellationToken)
         {
-            IList<DataCenterUser> users = DataCenterIdentityStore.Instance.UserDictionary.Values.ToList<DataCenterUser>();
+            IList<DataCenterUser> users = DataCenterIdentities.Instance.UserDictionary.Values.ToList<DataCenterUser>();
             user = users.SingleOrDefault(f => f.Id == user.Id);
             return Task.FromResult(user.Roles.Contains(roleName));
         }
 
         public Task RemoveFromRoleAsync(DataCenterUser user, string roleName, CancellationToken cancellationToken)
         {
-            IList<DataCenterUser> users = DataCenterIdentityStore.Instance.UserDictionary.Values.ToList<DataCenterUser>();
+            IList<DataCenterUser> users = DataCenterIdentities.Instance.UserDictionary.Values.ToList<DataCenterUser>();
             user = users.SingleOrDefault(f => f.Id == user.Id);
             return Task.FromResult(user.Roles.Remove(roleName));
         }
 
         public Task SetNormalizedUserNameAsync(DataCenterUser user, string normalizedName, CancellationToken cancellationToken)
         {
-            IList<DataCenterUser> users = DataCenterIdentityStore.Instance.UserDictionary.Values.ToList<DataCenterUser>();
+            IList<DataCenterUser> users = DataCenterIdentities.Instance.UserDictionary.Values.ToList<DataCenterUser>();
             if (users == null || users.Count == 0)
             {
                 return Task.FromResult(String.Empty);
@@ -163,7 +163,7 @@ namespace iCDataCenterClientHost.CustomIdentity
 
         public Task SetPasswordHashAsync(DataCenterUser user, string passwordHash, CancellationToken cancellationToken)
         {
-            IList<DataCenterUser> users = DataCenterIdentityStore.Instance.UserDictionary.Values.ToList<DataCenterUser>();
+            IList<DataCenterUser> users = DataCenterIdentities.Instance.UserDictionary.Values.ToList<DataCenterUser>();
             user = users.SingleOrDefault(f => f.Id == user.Id);
             user.PasswordHash = passwordHash;
 
@@ -172,7 +172,7 @@ namespace iCDataCenterClientHost.CustomIdentity
 
         public Task SetUserNameAsync(DataCenterUser user, string userName, CancellationToken cancellationToken)
         {
-            IList<DataCenterUser> users = DataCenterIdentityStore.Instance.UserDictionary.Values.ToList<DataCenterUser>();
+            IList<DataCenterUser> users = DataCenterIdentities.Instance.UserDictionary.Values.ToList<DataCenterUser>();
             if (users == null || users.Count == 0)
             {
                 return Task.FromResult(String.Empty);
@@ -186,9 +186,9 @@ namespace iCDataCenterClientHost.CustomIdentity
 
         public Task<IdentityResult> UpdateAsync(DataCenterUser user, CancellationToken cancellationToken)
         {
-            if (DataCenterIdentityStore.Instance.UserDictionary.ContainsKey(user.Id))
+            if (DataCenterIdentities.Instance.UserDictionary.ContainsKey(user.Id))
             {
-                DataCenterIdentityStore.Instance.UserDictionary[user.Id] = user;
+                DataCenterIdentities.Instance.UserDictionary[user.Id] = user;
                 return Task.FromResult(IdentityResult.Success);
             }
             return Task.FromResult(IdentityResult.Failed(new IdentityError { Description = "User did not exist to update" }));

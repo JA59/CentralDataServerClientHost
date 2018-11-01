@@ -13,7 +13,7 @@ using System.Text;
 using System.Net.Http;
 using Newtonsoft.Json;
 using iCDataCenterClientHost.CustomIdentity;
-using iCDataCenterClientHost.ViewModels;
+using iCDataCenterClientHost.ViewModels.Token;
 using Microsoft.Extensions.Logging;
 
 namespace iCDataCenterClientHost.Controllers
@@ -38,7 +38,7 @@ namespace iCDataCenterClientHost.Controllers
         #endregion
 
         [HttpPost("Auth")]
-        public async Task<IActionResult> Auth([FromBody]TokenRequestViewModel model)
+        public async Task<IActionResult> Auth([FromBody]TokenRequestVM model)
         {
             _logger.LogInformation("Auth");
             // return a generic HTTP Status 500 (Server Error)
@@ -61,7 +61,7 @@ namespace iCDataCenterClientHost.Controllers
             }
         }
 
-        private async Task<IActionResult> GetToken(TokenRequestViewModel model)
+        private async Task<IActionResult> GetToken(TokenRequestVM model)
         {
             try
             {
@@ -109,7 +109,7 @@ namespace iCDataCenterClientHost.Controllers
                 var encodedToken = new JwtSecurityTokenHandler().WriteToken(token);
 
                 // build & return the response
-                var response = new TokenResponseViewModel()
+                var response = new TokenResponseVM()
                 {
                     token = encodedToken,
                     expiration = tokenExpirationMins,

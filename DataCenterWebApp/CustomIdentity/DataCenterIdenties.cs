@@ -10,17 +10,17 @@ using System.Xml;
 namespace iCDataCenterClientHost.CustomIdentity
 {
     /// <summary>
-    /// DataCenterIdentityStore stores the set of users and roles.
+    /// DataCenterIdentities stores the set of users and roles.
     /// Roles are hardcoded ("user" and "admin")
     /// Users are loaded from a text file.
     /// 
     /// Users are available in the UserDictionary
     /// Roles are available in the RoleDictionary
     /// </summary>
-    public class DataCenterIdentityStore
+    public class DataCenterIdentities
     {
         // Singleton instance
-        private static DataCenterIdentityStore instance = null;
+        private static DataCenterIdentities instance = null;
 
         /// <summary>
         /// Dictionary of Users
@@ -35,12 +35,12 @@ namespace iCDataCenterClientHost.CustomIdentity
         /// <summary>
         /// Singleton Instance
         /// </summary>
-        public static DataCenterIdentityStore Instance
+        public static DataCenterIdentities Instance
         {
             get
             {
                 if (instance == null)
-                    instance = new DataCenterIdentityStore();
+                    instance = new DataCenterIdentities();
                 return instance;
             }
         }
@@ -48,7 +48,7 @@ namespace iCDataCenterClientHost.CustomIdentity
         /// <summary>
         /// Constructor
         /// </summary>
-        public DataCenterIdentityStore()
+        public DataCenterIdentities()
         {
             UserDictionary = new Dictionary<int, DataCenterUser>();
             RoleDictionary = new Dictionary<string, DataCenterRole>();
