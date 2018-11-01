@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { IInstrumentVM } from '../../Instruments/IInstrumentVM';
+import { IInstrumentVM } from '../../ViewModels/Instruments/IInstrumentVM';
 
 @Component({
   selector: 'instrument-item',

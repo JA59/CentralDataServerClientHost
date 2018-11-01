@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../Services/auth.service';
 import { HttpClient } from '@angular/common/http';
-import { IInstrumentVM } from '../../Instruments/IInstrumentVM';
+import { IInstrumentVM } from '../../ViewModels/Instruments/IInstrumentVM';
 
 @Component({
     selector: "instruments-configure",

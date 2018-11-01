@@ -3,7 +3,7 @@ import { HttpHandler, HttpEvent, HttpInterceptor, HttpRequest } from "@angular/c
 import { AuthService } from "./auth.service";
 import { Observable } from "rxjs/Observable";
 
-// Injects a TokenResponse (for the logged in user if any) into the header of any http request
+// Injects a TokenResponseVM (for the logged in user if any) into the header of any http request
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
@@ -14,7 +14,7 @@ export class AuthInterceptor implements HttpInterceptor {
         next: HttpHandler): Observable<HttpEvent<any>> {
       console.log('intercept');
         var auth = this.injector.get(AuthService);
-        var token = (auth.isLoggedIn()) ? auth.getAuth()!.token : null;
+        var token = (auth.isLoggedIn()) ? auth.getAuth()!.vm_token : null;
         if (token) {
             request = request.clone({
                 setHeaders: {

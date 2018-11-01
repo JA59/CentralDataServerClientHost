@@ -46,7 +46,7 @@ namespace iCDataCenterClientHost.Controllers
             // if the client payload is invalid.
             if (model == null) return new StatusCodeResult(500);
 
-            switch (model.grant_type)
+            switch (model.vm_grant_type)
             {
                 case "password":
                     return await GetToken(model);
@@ -61,9 +61,9 @@ namespace iCDataCenterClientHost.Controllers
             try
             {
                 // check if there's an user with the given username
-                DataCenterUser user = await UserManager.FindByNameAsync(model.username);
+                DataCenterUser user = await UserManager.FindByNameAsync(model.vm_username);
 
-                if (user == null || !await UserManager.CheckPasswordAsync(user, model.password))
+                if (user == null || !await UserManager.CheckPasswordAsync(user, model.vm_password))
                 {
                     // user does not exists or password mismatch
                     return new UnauthorizedResult();
@@ -102,10 +102,10 @@ namespace iCDataCenterClientHost.Controllers
                 // build & return the response
                 var response = new TokenResponseVM()
                 {
-                    token = encodedToken,
-                    expiration = tokenExpirationMins,
-                    username = user.UserName,
-                    isadmin = user.Roles.Contains(DataCenterIdentities.AdminRole)
+                    vm_token = encodedToken,
+                    vm_expiration = tokenExpirationMins,
+                    vm_username = user.UserName,
+                    vm_isadmin = user.Roles.Contains(DataCenterIdentities.AdminRole)
                 };
                 return Json(response);
             }

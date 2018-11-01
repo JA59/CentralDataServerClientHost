@@ -1,6 +1,8 @@
 import { EventEmitter, Inject, Injectable, PLATFORM_ID } from "@angular/core";
 import { isPlatformBrowser } from '@angular/common';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { TokenRequestVM } from '../ViewModels/Authorization/TokenRequestVM';
+import { TokenResponseVM } from '../ViewModels/Authorization/TokenResponseVM';
 import { Observable } from "rxjs";
 import 'rxjs/Rx';
 
@@ -19,19 +21,18 @@ export class AuthService {
 
     // Performs the login
     login(username: string, password: string): Observable<boolean> {
-        var url = "api/token/auth";
-        var loginRequest = {
-            username: username,
-            password: password,
-            client_id: this.clientId,
-            grant_type: "password",                 // required when signing up with username/password
-            scope: "offline_access profile email"   // space-separated list of scopes for which the token is issued
+      var url = "api/token/auth";
+      var loginRequest = <TokenRequestVM>{
+            vm_username: username,
+            vm_password: password,
+            vm_client_id: this.clientId,
+            vm_grant_type: "password"                 
         };
 
-        return this.http.post<TokenResponse>(url, loginRequest)
+        return this.http.post<TokenResponseVM>(url, loginRequest)
             .map((res) => {
                 // if the token is there, login has been successful
-                if (res && res.token) {
+                if (res && res.vm_token) {
                     // success, so store the response
                     this.setAuth(res);
                     return true;
@@ -57,18 +58,18 @@ export class AuthService {
     }
 
     // Store token, username and isadmin into local variables
-    setAuth(auth: TokenResponse | null): boolean {
+    setAuth(auth: TokenResponseVM | null): boolean {
         if (auth) {
             this.userToken = JSON.stringify(auth);
-            this.loggedOnUser = auth.username;
-            this.displayName = auth.username;
-            this.isAdmin = auth.isadmin;
+            this.loggedOnUser = auth.vm_username;
+            this.displayName = auth.vm_username;
+            this.isAdmin = auth.vm_isadmin;
         } 
         return true;
     }
 
     // Retrieves the user token object (or NULL if none)
-    getAuth(): TokenResponse | null {
+    getAuth(): TokenResponseVM | null {
         if (this.userToken) {
             return JSON.parse(this.userToken);
         }

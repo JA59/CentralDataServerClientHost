@@ -17,10 +17,10 @@ namespace iCDataCenterClientHost.ViewModels.Token
         #endregion
 
         #region Properties
-        public string token { get; set; }
-        public int expiration { get; set; }
-        public string username { get; set; }
-        public bool isadmin { get; set; }
+        public string vm_token { get; set; }
+        public int vm_expiration { get; set; }
+        public string vm_username { get; set; }
+        public bool vm_isadmin { get; set; }
         #endregion
     }
 }

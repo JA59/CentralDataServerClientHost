@@ -30,10 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\src\app\interfaces\demouser.ts" />
-    <None Remove="ClientApp\src\app\interfaces\iinstrumentviewmodel.ts" />
-    <None Remove="ClientApp\src\app\interfaces\inewinstrumentviewmodel.ts" />
-    <None Remove="ClientApp\src\app\interfaces\newinstrumentviewmodel.ts" />
+    <None Remove="ClientApp\src\app\ViewModels\Authorization\TokenRequestVM.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,10 +39,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\app\interfaces\demouser.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Instruments\IInstrumentVM.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Instruments\IInstrumentIdVM.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Instruments\InstrumentIdVM.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\demo\demouser.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\ViewModels\Authorization\TokenRequestVM.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\ViewModels\Instruments\IInstrumentVM.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\ViewModels\Instruments\IInstrumentIdVM.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\ViewModels\Instruments\InstrumentIdVM.ts" />
   </ItemGroup>
 
   <ItemGroup>

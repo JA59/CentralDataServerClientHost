@@ -17,11 +17,11 @@ namespace iCDataCenterClientHost.ViewModels.Token
         #endregion
 
         #region Properties
-        public string grant_type { get; set; }
-        public string client_id { get; set; }
-        public string client_secret { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
+        public string vm_grant_type { get; set; }
+        public string vm_client_id { get; set; }
+        public string vm_client_secret { get; set; }
+        public string vm_username { get; set; }
+        public string vm_password { get; set; }
         #endregion
     }
 }

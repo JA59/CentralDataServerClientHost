@@ -1,8 +1,8 @@
 import { Component, Inject } from "@angular/core";
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
-import { AuthService } from '../services/auth.service';
-import { DemoUser } from '../interfaces/demouser';
+import { AuthService } from '../Services/auth.service';
+import { DemoUser } from '../demo/demouser';
 
 @Component({
     selector: "demo",
