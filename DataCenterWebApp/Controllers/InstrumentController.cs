@@ -25,25 +25,29 @@ namespace iCDataCenterClientHost.Controllers
     public class InstrumentController : BaseApiController
     {
         private readonly ILogger<InstrumentController> _logger;
-        #region Constructor
-        public InstrumentController(
-            RoleManager<MyRole> roleManager,            // role manager - ued to obtain roles for the currently logged on user
-            UserManager<MyUser> userManager,            // user manager - used to obtain the currently logged on user 
-            IConfiguration configuration,               // configuration - not used (needed to construct base class)
-            ILogger<InstrumentController> logger        // logger (not in base class because it is for type InstrumentController)
 
-            ) : base(roleManager, userManager, configuration)
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="roleManager">Role Manager - used to obtain roles for the currently logged on user</param>
+        /// <param name="userManager">User Manager - used to obtain the currently logged on user </param>
+        /// <param name="configuration">Configuration - not used (needed to construct base class)</param>
+        /// <param name="logger">logger (not in base class because it is for type InstrumentController)</param>
+        public InstrumentController(
+            RoleManager<DataCenterRole> roleManager,             
+            UserManager<DataCenterUser> userManager,             
+            IConfiguration configuration,                       
+            ILogger<InstrumentController> logger) : base(roleManager, userManager, configuration)
         {
             _logger = logger;
         }
-        #endregion
+
 
         /// <summary>
-        /// GET: api/SystemOverview/Summary}
-        /// Retrieves the specified page of planned experiments
+        /// GET: api/Instrument/RegisteredInstruments}
+        /// Retrieves the list of registered instrument
         /// </summary>
-        /// <param name="num">the number of planned experiments to retrieve</param>
-        /// <returns>{num} Planned Experiments sorted by User</returns>
+        /// <returns>List of registered instruments as IInstrumentViewModel[]</returns>
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         [HttpGet("RegisteredInstruments")]
         public async Task<IActionResult> RegisteredInstruments()
@@ -52,6 +56,12 @@ namespace iCDataCenterClientHost.Controllers
             {
                 // Log that we were called.
                 _logger.LogInformation("RegisteredInstruments");
+
+                // Caller must be a logged on user in order to request the list of registered instruments
+                if (!IsUser())
+                {
+                    return new UnauthorizedResult();
+                }
 
                 IEnumerable<LiveInstrumentInfo> enumerable;
                 InstrumentManagementClientAsync m_Client;
@@ -150,7 +160,7 @@ namespace iCDataCenterClientHost.Controllers
             {
                 // Log that we were called.
                 _logger.LogInformation("Delete");
-                if (!HasRole("admin"))
+                if (!IsAdmin())
                 {
                     return new UnauthorizedResult();
                 }
@@ -193,7 +203,11 @@ namespace iCDataCenterClientHost.Controllers
             try
             {
                 // Log that we were called.
-                _logger.LogInformation("AddInstrument");
+                _logger.LogInformation("Add");
+                if (!IsAdmin())
+                {
+                    return new UnauthorizedResult();
+                }
 
                 if (newInstrument == null)
                     return new StatusCodeResult(500);
@@ -221,67 +235,6 @@ namespace iCDataCenterClientHost.Controllers
                 _logger.LogError(exc.ToString());
                 throw;
             }
-        }
-
-        private bool HasRole(string role)
-        {
-            //return true;
-            try
-            {
-                var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                MyUser myUser = UserManager.FindByIdAsync(userId).Result;
-                return myUser.Roles.Contains(role);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Get a string that contains a comma separated set of roles for the current user (based on the ClaimsPrincipal)
-        /// </summary>
-        /// <returns></returns>
-        private string GetRoles()
-        {
-            try
-            {
-                var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                MyUser myUser = UserManager.FindByIdAsync(userId).Result;
-                string roles = String.Empty;
-                foreach (string role in myUser.Roles)
-                    roles = roles + role + ", ";
-                return roles.Substring(0, roles.Length - 2);
-            }
-            catch (Exception)
-            {
-                return "<none>";
-            }
-        }
-
-        /// <summary>
-        /// Get a string that represents the currently logged on user (based on the ClaimsPrincipal)
-        /// </summary>
-        /// <returns></returns>
-        private string GetUser()
-        {
-            try
-            {
-                var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                MyUser myUser = UserManager.FindByIdAsync(userId).Result;
-                return myUser.UserName;
-            }
-            catch (Exception)
-            {
-                return "Guest";
-            }
-        }
-
-        public static Uri GetServerURI()
-        {
-            Uri hostURI = new Uri("http://localhost");
-            Uri endPointUri = new Uri(hostURI + ProductHelper.UrlServiceRoot);
-            return endPointUri;
         }
     }
 }

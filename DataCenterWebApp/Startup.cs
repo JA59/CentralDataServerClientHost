@@ -49,11 +49,11 @@ namespace iCDataCenterClientHost
             });
 
             // Add identity types
-            services.AddIdentity<MyUser, MyRole>().AddDefaultTokenProviders();
+            services.AddIdentity<DataCenterUser, DataCenterRole>().AddDefaultTokenProviders();
 
             // Identity Services
-            services.AddTransient<IUserStore<MyUser>, MyUserStore>();
-            services.AddTransient<IRoleStore<MyRole>, MyRoleStore>();
+            services.AddTransient<IUserStore<DataCenterUser>, DataCenterUserStore>();
+            services.AddTransient<IRoleStore<DataCenterRole>, DataCenterRoleStore>();
 
             // additional configuration
             // Add Authentication

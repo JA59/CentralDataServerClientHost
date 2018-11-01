@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
 
 namespace iCDataCenterClientHost.CustomIdentity
 {
-    public class MyUser : IdentityUser<int>
+    public class DataCenterUser : IdentityUser<int>
     {
-        public MyUser()
+        public DataCenterUser()
         {
             this.Roles = new List<string>();
         }

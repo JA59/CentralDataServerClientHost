@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using AutoChem.Core.CentralDataServer.Config;
 using iCDataCenterClientHost.CustomIdentity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -15,8 +17,8 @@ namespace iCDataCenterClientHost.Controllers
     {
         #region Constructor
         public BaseApiController(
-            RoleManager<MyRole> roleManager,
-            UserManager<MyUser> userManager,
+            RoleManager<DataCenterRole> roleManager,
+            UserManager<DataCenterUser> userManager,
             IConfiguration configuration
             )
         {
@@ -36,10 +38,100 @@ namespace iCDataCenterClientHost.Controllers
         #endregion
 
         #region Shared Properties
-        protected RoleManager<MyRole> RoleManager { get; private set; }
-        protected UserManager<MyUser> UserManager { get; private set; }
+        protected RoleManager<DataCenterRole> RoleManager { get; private set; }
+        protected UserManager<DataCenterUser> UserManager { get; private set; }
         protected IConfiguration Configuration { get; private set; }
         protected JsonSerializerSettings JsonSettings { get; private set; }
         #endregion
+
+        protected static Uri GetServerURI()
+        {
+            Uri hostURI = new Uri("http://localhost");
+            Uri endPointUri = new Uri(hostURI + ProductHelper.UrlServiceRoot);
+            return endPointUri;
+        }
+
+        /// <summary>
+        /// Is the caller an administrator
+        /// </summary>
+        /// <returns></returns>
+        protected bool IsAdmin()
+        {
+            return HasRole("admin");
+        }
+
+        /// <summary>
+        /// Is the caller a logged on user
+        /// </summary>
+        /// <returns></returns>
+        protected bool IsUser()
+        {
+            return HasRole("user");
+        }
+
+        /// <summary>
+        /// Is the caller a guest (not logged on)
+        /// </summary>
+        /// <returns></returns>
+        protected bool IsGuest()
+        {
+            return (!IsUser());
+        }
+
+        private bool HasRole(string role)
+        {
+            try
+            {
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                DataCenterUser myUser = UserManager.FindByIdAsync(userId).Result;
+                return myUser.Roles.Contains(role);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+
+        /// <summary>
+        /// Get a string that contains a comma separated set of roles for the current user (based on the ClaimsPrincipal)
+        /// </summary>
+        /// <returns></returns>
+        private string GetRoles()
+        {
+            try
+            {
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                DataCenterUser myUser = UserManager.FindByIdAsync(userId).Result;
+                string roles = String.Empty;
+                foreach (string role in myUser.Roles)
+                    roles = roles + role + ", ";
+                return roles.Substring(0, roles.Length - 2);
+            }
+            catch (Exception)
+            {
+                return "<none>";
+            }
+        }
+
+        /// <summary>
+        /// Get a string that represents the currently logged on user (based on the ClaimsPrincipal)
+        /// </summary>
+        /// <returns></returns>
+        private string GetUser()
+        {
+            try
+            {
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                DataCenterUser myUser = UserManager.FindByIdAsync(userId).Result;
+                return myUser.UserName;
+            }
+            catch (Exception)
+            {
+                return "Guest";
+            }
+        }
+
+
     }
 }

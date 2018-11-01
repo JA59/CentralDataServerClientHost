@@ -27,8 +27,8 @@ namespace iCDataCenterClientHost.Controllers
 
         #region Constructor
         public TokenController(
-            RoleManager<MyRole> roleManager,
-            UserManager<MyUser> userManager,
+            RoleManager<DataCenterRole> roleManager,
+            UserManager<DataCenterUser> userManager,
             IConfiguration configuration,
             ILogger<TokenController> logger
             ) : base(roleManager, userManager, configuration)
@@ -66,7 +66,7 @@ namespace iCDataCenterClientHost.Controllers
             try
             {
                 // check if there's an user with the given username
-                MyUser user = await UserManager.FindByNameAsync(model.username);
+                DataCenterUser user = await UserManager.FindByNameAsync(model.username);
                 // fallback to support e-mail address instead of username
                 if (user == null && model.username.Contains("@"))
                     user = await UserManager.FindByEmailAsync(model.username);

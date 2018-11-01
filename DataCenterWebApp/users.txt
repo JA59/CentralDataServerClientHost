@@ -1,0 +1,13 @@
+﻿;  Users definition file
+;
+;  syntax:  role: username, password
+;
+;    where role is either "user" or "admin"
+;
+user:  SomeUser, USER1
+user:  Ed, ED
+admin: SomeAdmin, ADMIN1
+admin: Joe, JOE
+user:  Tim, TIM
+admin: a, a					; for quick admin access during development
+user:  u, u					; for quick user access during development

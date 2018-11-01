@@ -6,3 +6,4 @@ D:\Repos\CentralDataServerClientHost\AutoChem.Core\bin\Debug\netstandard2.0\Auto
 D:\Repos\CentralDataServerClientHost\AutoChem.Core\bin\Debug\netstandard2.0\AutoChem.Core.pdb
 D:\Repos\CentralDataServerClientHost\AutoChem.Core\obj\Debug\netstandard2.0\AutoChem.Core.dll
 D:\Repos\CentralDataServerClientHost\AutoChem.Core\obj\Debug\netstandard2.0\AutoChem.Core.pdb
+D:\Repos\CentralDataServerClientHost\AutoChem.Core\obj\Debug\netstandard2.0\AutoChem.Core.csprojAssemblyReference.cache
