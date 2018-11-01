@@ -1,17 +1,17 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { AuthService } from '../../Services/auth.service';
+import { AuthService } from '../../../Services/auth.service';
 import { HttpClient } from '@angular/common/http';
-import { IInstrumentVM } from '../../ViewModels/Instruments/IInstrumentVM';
+import { IInstrumentVM } from '../../../ViewModels/Instruments/IInstrumentVM';
 
 @Component({
-    selector: "instruments-configure",
-  templateUrl: "./instruments-configure.component.html",
-  styleUrls: ['./instruments-configure.component.css']
+    selector: "instruments-monitor",
+  templateUrl: "./instruments-monitor.component.html",
+  styleUrls: ['./instruments-monitor.component.css']
 })
 
-export class InstrumentsConfigureComponent implements OnInit {
-  title = "Configure Instruments";
+export class InstrumentsMonitorComponent implements OnInit {
+  title = "Monitor Instruments";
   instrumentCount: number = 0;
   instruments: IInstrumentVM[];
 
@@ -35,6 +35,24 @@ export class InstrumentsConfigureComponent implements OnInit {
       this.instruments = new Array(0);
       this.instrumentCount = -1;
     });
+  }
+
+  setSelectedName(event: IInstrumentVM) {
+    this.removeInstrument(event.vm_address);
+  }
+
+  private removeInstrument(address: string) {
+    console.log("address is " + address);
+
+    var url = this.baseUrl + "api/Instrument/"+address;
+    this.http.delete<string>(url)
+      .subscribe(this.extractData), error => console.log(error);
+  }
+
+  extractData(res: any) {
+    console.log("extract data: " + res);
+    //let body = res.json();
+    //return body || {};
   }
 
 

@@ -8,20 +8,20 @@ import { AuthService } from './Services/auth.service';
 import { AuthInterceptor } from './Services/auth.interceptor';
 
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { LoginComponent } from './login/login.component';
-import { ConfigurationComponent } from './configuration/configuration.component';
-import { DemoComponent } from './demo/demo.component';
-import { HeaderBarComponent } from './headerbar/headerbar.component';
-import { ExperimentComponent } from './experiments/experiment.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
-import { InstrumentsPageComponent } from './Instruments/instruments-page/instruments-page.component';
-import { InstrumentsConfigureComponent } from './Instruments/instruments-configure/instruments-configure.component';
-import { InstrumentEditorComponent } from './Instruments/instrument-editor/instrument-editor.component';
-import { InstrumentsMonitorComponent } from './Instruments/instruments-monitor/instruments-monitor.component';
-import { InstrumentItemComponent } from './Instruments/instrument-item/instrument-item.component';
-import { LogsEventsComponent } from './logs-events/logs-events.component';
+import { NavMenuComponent } from './Components/nav-menu/nav-menu.component';
+import { LoginComponent } from './Components/login/login.component';
+import { ConfigurationComponent } from './Components/configuration/configuration.component';
+import { DemoComponent } from './Components/demo/demo.component';
+import { HeaderBarComponent } from './Components/headerbar/headerbar.component';
+import { ExperimentComponent } from './Components/experiments/experiment.component';
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { PageNotFoundComponent } from './Components/pagenotfound/pagenotfound.component';
+import { InstrumentsPageComponent } from './Components/Instruments/instruments-page/instruments-page.component';
+import { InstrumentsConfigureComponent } from './Components/Instruments/instruments-configure/instruments-configure.component';
+import { InstrumentEditorComponent } from './Components/Instruments/instrument-editor/instrument-editor.component';
+import { InstrumentsMonitorComponent } from './Components/Instruments/instruments-monitor/instruments-monitor.component';
+import { InstrumentItemComponent } from './Components/Instruments/instrument-item/instrument-item.component';
+import { LogsEventsComponent } from './Components/logs-events/logs-events.component';
 
 
 @NgModule({

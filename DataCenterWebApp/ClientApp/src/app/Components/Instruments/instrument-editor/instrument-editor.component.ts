@@ -1,8 +1,8 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { InstrumentIdVM } from '../../ViewModels/Instruments/InstrumentIdVM';
+import { InstrumentIdVM } from '../../../ViewModels/Instruments/InstrumentIdVM';
 import { Component, Inject, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { AuthService } from '../../Services/auth.service';
+import { AuthService } from '../../../Services/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs";
 import 'rxjs/Rx';

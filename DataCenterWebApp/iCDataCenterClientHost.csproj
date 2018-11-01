@@ -39,7 +39,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\app\demo\demouser.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Components\demo\demouser.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\ViewModels\Authorization\TokenRequestVM.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\ViewModels\Instruments\IInstrumentVM.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\ViewModels\Instruments\IInstrumentIdVM.ts" />
