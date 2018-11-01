@@ -26,13 +26,10 @@ export class DemoComponent {
     }
 
     doLogin(username: string, password: string) {
-
-        var url = this.baseUrl + "api/token/auth";
-
         this.authService.login(username, password)
             .subscribe(res => {
                 // login successful - go show experiments
-              this.router.navigate(["experiments"]);
+              this.router.navigate(["instruments-page"]);
             },
                 err => {
                     // login failed

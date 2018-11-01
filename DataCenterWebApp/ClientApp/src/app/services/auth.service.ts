@@ -21,7 +21,7 @@ export class AuthService {
 
     // Performs the login
     login(username: string, password: string): Observable<boolean> {
-      var url = "api/token/auth";
+      var url = "api/authorization/authorize";
       var loginRequest = <TokenRequestVM>{
             vm_username: username,
             vm_password: password,

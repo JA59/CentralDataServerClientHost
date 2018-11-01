@@ -13,32 +13,32 @@ using System.Text;
 using System.Net.Http;
 using Newtonsoft.Json;
 using iCDataCenterClientHost.CustomIdentity;
-using iCDataCenterClientHost.ViewModels.Token;
+using iCDataCenterClientHost.ViewModels.Authorization;
 using Microsoft.Extensions.Logging;
 
 namespace iCDataCenterClientHost.Controllers
 {
-    public class TokenController : BaseApiController
+    public class AuthorizationController : BaseApiController
     {
         #region Private Members
-        private readonly ILogger<TokenController> _logger;
+        private readonly ILogger<AuthorizationController> _logger;
 
         #endregion Private Members
 
         #region Constructor
-        public TokenController(
+        public AuthorizationController(
             RoleManager<DataCenterRole> roleManager,
             UserManager<DataCenterUser> userManager,
             IConfiguration configuration,
-            ILogger<TokenController> logger
+            ILogger<AuthorizationController> logger
             ) : base(roleManager, userManager, configuration)
         {
             _logger = logger;
         }
         #endregion
 
-        [HttpPost("Auth")]
-        public async Task<IActionResult> Auth([FromBody]TokenRequestVM model)
+        [HttpPost("Authorize")]
+        public async Task<IActionResult> Authorize([FromBody]TokenRequestVM model)
         {
             _logger.LogInformation("Auth");
             

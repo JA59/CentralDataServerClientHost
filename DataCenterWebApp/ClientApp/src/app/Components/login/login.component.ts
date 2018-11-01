@@ -41,7 +41,6 @@ export class LoginComponent {
     onSubmit() {
         if (this.form == undefined)
             return;
-        var url = this.baseUrl + "api/token/auth";
         var username = this.form.value.Username;
         var password = this.form.value.Password;
 
@@ -60,7 +59,7 @@ export class LoginComponent {
 
               this.currentUser = this.authService.loggedOnUser;
               this.isAdmin = this.authService.isAdmin;
-                this.router.navigate(["experiments"]);
+              //this.router.navigate(["instruments"]);
             },
                 err => {
                     // login failed
@@ -74,8 +73,6 @@ export class LoginComponent {
     }
 
     doLogin(username: string, password: string) {
-
-        var url = this.baseUrl + "api/token/auth";
 
         this.authService.login(username, password)
             .subscribe(res => {
