@@ -1,8 +1,11 @@
-import { Component, Inject, OnInit } from "@angular/core";
+import { Component, Inject, OnInit, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthService } from '../../../Services/auth.service';
+import { InstrumentService } from '../../../Services/instrument.service';
 import { HttpClient } from '@angular/common/http';
 import { IInstrumentVM } from '../../../ViewModels/Instruments/IInstrumentVM';
+import { InstrumentData } from '../../../ViewModels/Instruments/InstrumentData';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector: "instruments-monitor",
@@ -10,31 +13,34 @@ import { IInstrumentVM } from '../../../ViewModels/Instruments/IInstrumentVM';
   styleUrls: ['./instruments-monitor.component.css']
 })
 
-export class InstrumentsMonitorComponent implements OnInit {
+export class InstrumentsMonitorComponent implements OnInit, OnDestroy {
   title = "Monitor Instruments";
-  instrumentCount: number = 0;
-  instruments: IInstrumentVM[];
+  instrumentData: InstrumentData;
+  instrumentSubscription: Subscription | null = null;
 
-    constructor(private router: Router,
-        private authService: AuthService,
+  constructor(private router: Router,
+      private authService: AuthService,
+      private instrumentService: InstrumentService,
       @Inject('BASE_URL') private baseUrl: string,
       private http: HttpClient) {
   }
 
   ngOnInit() {
-    // subscribe to changes from the SystemOverviewService
-    this.doFetch();
+    // subscribe to changes from the InstrumentService
+    this.instrumentData = this.instrumentService.getInstrumentData();
+    this.instrumentSubscription = this.instrumentService.instrumentObservable.subscribe(data => {
+      this.instrumentData = data;
+    });
   }
 
-  private doFetch() {
-    // Get the latest experiment count from the SystemOverview controller
-    this.http.get<IInstrumentVM[]>('api/Instrument/RegisteredInstruments').subscribe(result => {
-      this.instruments = result;
-      this.instrumentCount = this.instruments.length;
-    }, error => {
-      this.instruments = new Array(0);
-      this.instrumentCount = -1;
-    });
+  // ngOnDestroy()
+  // Ask the service to stop collecting, and
+  // unsubscribe from the service
+  //
+  ngOnDestroy() {
+    if (this.instrumentSubscription != null) {
+      this.instrumentSubscription.unsubscribe();
+    }
   }
 
   setSelectedName(event: IInstrumentVM) {

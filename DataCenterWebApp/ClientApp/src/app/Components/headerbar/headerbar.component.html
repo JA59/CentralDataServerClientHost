@@ -6,10 +6,10 @@
       </div>
       <div class='col-sm-4'>
         <div *ngIf="this.authService.isLoggedInAsAdmin()">
-            <a class='adminName headerUserStyle' [routerLink]="['/login']"><span class='glyphicon glyphicon-user'></span><span>{{authService.displayName}} (Admin)</span> </a>
+            <a class='adminName headerUserStyle' [routerLink]="['/login']"><span class='glyphicon glyphicon-user'></span><span>{{authService.authData.displayName}} (Admin)</span> </a>
         </div>
         <div *ngIf="this.authService.isLoggedInAsUser()">
-            <a class='userName headerUserStyle' [routerLink]="['/login']"><span class='glyphicon glyphicon-user'></span><span>{{authService.displayName}} </span> </a>
+            <a class='userName headerUserStyle' [routerLink]="['/login']"><span class='glyphicon glyphicon-user'></span><span>{{authService.authData.displayName}} </span> </a>
         </div>
         <div *ngIf="this.authService.isLoggedInAsGuest()">
             <a class='guestName headerUserStyle' [routerLink]="['/login']"><span class='glyphicon glyphicon-user'></span>Guest </a>

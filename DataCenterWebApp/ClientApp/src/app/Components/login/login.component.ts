@@ -21,8 +21,8 @@ export class LoginComponent {
         @Inject('BASE_URL') private baseUrl: string) {
 
         this.title = "Login";
-        this.currentUser = authService.loggedOnUser;
-        this.isAdmin = authService.isAdmin;
+      this.currentUser = authService.authData.loggedOnUser;
+      this.isAdmin = authService.authData.isAdmin;
 
         // initialize the form
         this.createForm();
@@ -57,8 +57,8 @@ export class LoginComponent {
                 //    + this.authService.getAuth()!.token
                 //);
 
-              this.currentUser = this.authService.loggedOnUser;
-              this.isAdmin = this.authService.isAdmin;
+              this.currentUser = this.authService.authData.loggedOnUser;
+              this.isAdmin = this.authService.authData.isAdmin;
               //this.router.navigate(["instruments"]);
             },
                 err => {
@@ -87,8 +87,8 @@ export class LoginComponent {
                 //    + this.authService.getAuth()!.token
                 //);
 
-                this.currentUser = this.authService.loggedOnUser;
-              this.isAdmin = this.authService.isAdmin;
+              this.currentUser = this.authService.authData.loggedOnUser;
+              this.isAdmin = this.authService.authData.isAdmin;
                 //this.router.navigate(["home"]);
             },
                 err => {
@@ -129,7 +129,7 @@ export class LoginComponent {
 
     logout() {
         this.authService.logout();
-        this.currentUser = this.authService.loggedOnUser;
+      this.currentUser = this.authService.authData.loggedOnUser;
         if (this.form == undefined)
             return;
         this.form.value.Password = '';

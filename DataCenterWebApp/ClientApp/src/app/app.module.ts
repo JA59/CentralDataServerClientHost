@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AuthService } from './Services/auth.service';
+import { InstrumentService } from './Services/instrument.service';
 import { AuthInterceptor } from './Services/auth.interceptor';
 
 import { AppComponent } from './app.component';
@@ -63,6 +64,7 @@ import { LogsEventsComponent } from './Components/logs-events/logs-events.compon
   ],
   providers: [
     AuthService,
+    InstrumentService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

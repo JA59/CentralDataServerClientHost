@@ -1,22 +1,27 @@
 import { EventEmitter, Inject, Injectable, PLATFORM_ID } from "@angular/core";
+import { Subject } from 'rxjs/Subject';
 import { isPlatformBrowser } from '@angular/common';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { TokenRequestVM } from '../ViewModels/Authorization/TokenRequestVM';
 import { TokenResponseVM } from '../ViewModels/Authorization/TokenResponseVM';
+import { AuthData } from '../ViewModels/Authorization/AuthData';
 import { Observable } from "rxjs";
 import 'rxjs/Rx';
 
 @Injectable()
 export class AuthService {
     clientId: string = "iCDataCenterClientHost";  // client identifier passed in login request
-    userToken: string | null = null;        // token for the logged on user
-    loggedOnUser: string | null = null;     // user name of the logged on user, or null if not logged on
-    displayName: string | null = "Guest";   // display name for logged on user (Guest if not logged on)
-    isAdmin: boolean = false;               // is the current usr an administrator
+
+    authData: AuthData;
+  private authSubject = new Subject<AuthData>();                            // subject for observation
+  public authObservable = this.authSubject.asObservable();                  // Observable IInstrumentVM[] stream
+
+
 
 
     constructor(private http: HttpClient,
-        @Inject(PLATFORM_ID) private platformId: any) {
+      @Inject(PLATFORM_ID) private platformId: any) {
+      this.authData = new AuthData(null, null, null, false);
     }
 
     // Performs the login
@@ -34,7 +39,7 @@ export class AuthService {
                 // if the token is there, login has been successful
                 if (res && res.vm_token) {
                     // success, so store the response
-                    this.setAuth(res);
+                  this.setAuth(res);
                     return true;
                 }
 
@@ -50,28 +55,24 @@ export class AuthService {
     // Performs the logout
     logout(): boolean {
         // Clear fields, and set display name to Guest (not logged in)
-        this.loggedOnUser = null;
-        this.userToken = null;
-        this.displayName = "Guest";
-        this.isAdmin = false;
-        return true;
+      this.authData = new AuthData(null, null, "Guest", false);
+      this.Notify();
+      return true;
     }
 
     // Store token, username and isadmin into local variables
     setAuth(auth: TokenResponseVM | null): boolean {
-        if (auth) {
-            this.userToken = JSON.stringify(auth);
-            this.loggedOnUser = auth.vm_username;
-            this.displayName = auth.vm_username;
-            this.isAdmin = auth.vm_isadmin;
-        } 
-        return true;
+      if (auth) {
+        this.authData = new AuthData(JSON.stringify(auth), auth.vm_username, auth.vm_username, auth.vm_isadmin);
+        this.Notify();
+      } 
+      return true;
     }
 
     // Retrieves the user token object (or NULL if none)
     getAuth(): TokenResponseVM | null {
-        if (this.userToken) {
-            return JSON.parse(this.userToken);
+      if (this.authData.userToken) {
+        return JSON.parse(this.authData.userToken);
         }
         else {
             return null;
@@ -80,19 +81,23 @@ export class AuthService {
 
     // Returns true if the user is logged in, false otherwise.
     isLoggedIn(): boolean {
-        return (this.loggedOnUser && this.userToken) ? true : false;
+      return (this.authData.loggedOnUser && this.authData.userToken) ? true : false;
     }
 
     isLoggedInAsAdmin(): boolean {
-        return (this.isLoggedIn() && this.isAdmin);
+      return (this.isLoggedIn() && this.authData.isAdmin);
     }
 
     isLoggedInAsUser(): boolean {
-        return (this.isLoggedIn() && !this.isAdmin);
+      return (this.isLoggedIn() && !this.authData.isAdmin);
     }
 
     isLoggedInAsGuest(): boolean {
         return (!this.isLoggedIn());
-    }
+  }
+
+  private Notify() {
+    this.authSubject.next(this.authData);
+  }
 } 
 

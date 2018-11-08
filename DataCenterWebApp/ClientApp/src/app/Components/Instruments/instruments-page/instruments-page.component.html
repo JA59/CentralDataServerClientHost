@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="row" *ngIf="authService.isAdmin">
+  <div class="row" *ngIf="authService.authData.isAdmin">
     <instrument-editor></instrument-editor>
   </div>
 
