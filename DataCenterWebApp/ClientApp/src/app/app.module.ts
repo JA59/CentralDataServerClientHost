@@ -18,7 +18,6 @@ import { ExperimentComponent } from './Components/experiments/experiment.compone
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './Components/pagenotfound/pagenotfound.component';
 import { InstrumentsPageComponent } from './Components/Instruments/instruments-page/instruments-page.component';
-import { InstrumentsConfigureComponent } from './Components/Instruments/instruments-configure/instruments-configure.component';
 import { InstrumentEditorComponent } from './Components/Instruments/instrument-editor/instrument-editor.component';
 import { InstrumentsMonitorComponent } from './Components/Instruments/instruments-monitor/instruments-monitor.component';
 import { InstrumentItemComponent } from './Components/Instruments/instrument-item/instrument-item.component';
@@ -33,7 +32,6 @@ import { LogsEventsComponent } from './Components/logs-events/logs-events.compon
     ConfigurationComponent,
     DemoComponent,
     InstrumentsPageComponent,
-    InstrumentsConfigureComponent,
     InstrumentEditorComponent,
     InstrumentsMonitorComponent,
     InstrumentItemComponent,

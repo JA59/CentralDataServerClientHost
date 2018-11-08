@@ -1,5 +1,6 @@
 import { IInstrumentIdVM } from '../Instruments/IInstrumentIdVM';
 
+// ViewModel passed to the InstrumentController when adding or deleting an instrument.
 export class InstrumentIdVM implements IInstrumentIdVM {
   vm_address: string;
   vm_description: string;

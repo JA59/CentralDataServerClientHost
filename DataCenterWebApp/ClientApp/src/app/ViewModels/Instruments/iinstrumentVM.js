@@ -1,3 +1,3 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-//# sourceMappingURL=iinstrumentVM.js.map
+//# sourceMappingURL=IInstrumentVM.js.map

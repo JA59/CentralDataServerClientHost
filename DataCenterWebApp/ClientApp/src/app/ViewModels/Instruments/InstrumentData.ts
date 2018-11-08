@@ -1,5 +1,6 @@
 import { IInstrumentVM } from '../Instruments/IInstrumentVM';
 
+// Object provided by InstrumentService subscription
 export class InstrumentData {
   instrumentArray: IInstrumentVM[];
   instrumentCount: number;

@@ -1,5 +1,6 @@
 import { IInstrumentVM } from '../Instruments/IInstrumentVM';
 
+// ViewModel describing an instrument received from the InstrumentController when obtaining registered instruments.
 export class InstrumentVM implements IInstrumentVM {
   vm_address: string;
   vm_description: string;

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+// ViewModel passed to the InstrumentController when adding or deleting an instrument.
 var InstrumentIdVM = /** @class */ (function () {
     function InstrumentIdVM(address, description) {
         this.vm_address = address;

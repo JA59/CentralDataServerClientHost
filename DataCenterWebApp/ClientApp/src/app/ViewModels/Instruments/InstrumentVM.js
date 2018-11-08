@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+// ViewModel describing an instrument received from the InstrumentController when obtaining registered instruments.
 var InstrumentVM = /** @class */ (function () {
     function InstrumentVM(address, description, instrument, last_update, reactor_1, reactor_2, serial_number, status, time_difference, version) {
         this.vm_address = address;

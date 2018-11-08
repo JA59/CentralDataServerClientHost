@@ -1,3 +1,4 @@
+// interface for InstrumentVM View model
 export interface IInstrumentVM {
   vm_address: string;
   vm_description: string;
