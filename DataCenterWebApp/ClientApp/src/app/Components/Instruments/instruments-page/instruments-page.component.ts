@@ -1,8 +1,7 @@
 import { Component, Inject, OnInit, OnDestroy } from "@angular/core";
 import { InstrumentService } from '../../../Services/instrument.service';
 import { AuthService } from '../../../Services/auth.service';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import { timer, Observable, Subscription} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { IInstrumentVM } from '../../../ViewModels/Instruments/IInstrumentVM';
 
@@ -24,7 +23,6 @@ export class InstrumentsPageComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService,
     private instrumentService: InstrumentService,
-    @Inject('BASE_URL') private baseUrl: string,
     private http: HttpClient) {
   }
 
@@ -32,7 +30,7 @@ export class InstrumentsPageComponent implements OnInit, OnDestroy {
     this.authSubscription = this.authService.authObservable.subscribe(() => {
       this.instrumentService.doFetch(this.authService.isLoggedInAsGuest());
     });
-    this.timer = Observable.timer(2000, 1000); // after two seconds, fire every second
+    this.timer = timer(2000, 1000); // after two seconds, fire every second
     // subscribing to a observable returns a subscription object
     this.sub = this.timer.subscribe(() => this.instrumentService.doFetch(this.authService.isLoggedInAsGuest()));
 

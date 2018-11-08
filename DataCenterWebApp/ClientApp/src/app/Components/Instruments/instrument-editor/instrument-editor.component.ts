@@ -5,7 +5,6 @@ import { Router } from "@angular/router";
 import { AuthService } from '../../../Services/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs";
-import 'rxjs/Rx';
 
 @Component({
   selector: 'instrument-editor',
@@ -23,7 +22,6 @@ export class InstrumentEditorComponent implements OnInit {
     (private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
-    @Inject('BASE_URL') private baseUrl: string,
     private http: HttpClient) {
 
   }
@@ -40,7 +38,7 @@ export class InstrumentEditorComponent implements OnInit {
     tempInstrument.vm_description = this.instrumentForm.value.description;
     console.log("address is " + tempInstrument.vm_address);
     console.log("description is " + tempInstrument.vm_description);
-    var url = this.baseUrl + "api/Instrument/Add";
+    var url = "api/Instrument/Add";
     this.http.post<InstrumentIdVM>(url, tempInstrument)
       .subscribe(this.extractData), error => console.log(error);
   }

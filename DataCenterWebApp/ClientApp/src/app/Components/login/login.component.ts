@@ -17,8 +17,7 @@ export class LoginComponent {
 
     constructor(private router: Router,
         private fb: FormBuilder,
-        private authService: AuthService,
-        @Inject('BASE_URL') private baseUrl: string) {
+        private authService: AuthService) {
 
         this.title = "Login";
       this.currentUser = authService.authData.loggedOnUser;
@@ -44,57 +43,57 @@ export class LoginComponent {
         var username = this.form.value.Username;
         var password = this.form.value.Password;
 
-        this.authService.login(username, password)
-            .subscribe(res => {
-                // login successful
+      this.authService.login7(username, password);
+            //.subscribe(res => {
+            //    // login successful
 
-                // outputs the login info through a JS alert.
-                // IMPORTANT: remove this when test is done.
-                //alert("Login successful! "
-                //    + "USERNAME: "
-                //    + username
-                //    + " TOKEN: "
-                //    + this.authService.getAuth()!.token
-                //);
+            //    // outputs the login info through a JS alert.
+            //    // IMPORTANT: remove this when test is done.
+            //    //alert("Login successful! "
+            //    //    + "USERNAME: "
+            //    //    + username
+            //    //    + " TOKEN: "
+            //    //    + this.authService.getAuth()!.token
+            //    //);
 
-              this.currentUser = this.authService.authData.loggedOnUser;
-              this.isAdmin = this.authService.authData.isAdmin;
-              //this.router.navigate(["instruments"]);
-            },
-                err => {
-                    // login failed
-                    console.log(err)
-                    if (this.form == undefined)
-                        return;
-                    this.form.setErrors({
-                        "auth": "Incorrect username or password"
-                    });
-                });
+            //  this.currentUser = this.authService.authData.loggedOnUser;
+            //  this.isAdmin = this.authService.authData.isAdmin;
+            //  //this.router.navigate(["instruments"]);
+            //},
+            //    err => {
+            //        // login failed
+            //        console.log(err)
+            //        if (this.form == undefined)
+            //            return;
+            //        this.form.setErrors({
+            //            "auth": "Incorrect username or password"
+            //        });
+            //    });
     }
 
     doLogin(username: string, password: string) {
 
-        this.authService.login(username, password)
-            .subscribe(res => {
-                // login successful
+      this.authService.login7(username, password);
+            //.subscribe(res => {
+            //    // login successful
 
-                // outputs the login info through a JS alert.
-                // IMPORTANT: remove this when test is done.
-                //alert("Login successful! "
-                //    + "USERNAME: "
-                //    + username
-                //    + " TOKEN: "
-                //    + this.authService.getAuth()!.token
-                //);
+            //    // outputs the login info through a JS alert.
+            //    // IMPORTANT: remove this when test is done.
+            //    //alert("Login successful! "
+            //    //    + "USERNAME: "
+            //    //    + username
+            //    //    + " TOKEN: "
+            //    //    + this.authService.getAuth()!.token
+            //    //);
 
-              this.currentUser = this.authService.authData.loggedOnUser;
-              this.isAdmin = this.authService.authData.isAdmin;
-                //this.router.navigate(["home"]);
-            },
-                err => {
-                    // login failed
-                    console.log(err)
-                });
+            //  this.currentUser = this.authService.authData.loggedOnUser;
+            //  this.isAdmin = this.authService.authData.isAdmin;
+            //    //this.router.navigate(["home"]);
+            //},
+            //    err => {
+            //        // login failed
+            //        console.log(err)
+            //    });
 
     }
 

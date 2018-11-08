@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Subject } from 'rxjs/Subject';
-import { Observable } from "rxjs/Observable";
+import { Subject, Observable } from 'rxjs';
 import { AuthData } from '../ViewModels/Authorization/AuthData';
 import { TokenRequestVM } from '../ViewModels/Authorization/TokenRequestVM';
 import { TokenResponseVM } from '../ViewModels/Authorization/TokenResponseVM';
@@ -32,23 +31,51 @@ export class AuthService {
           vm_grant_type: "password"                 
     };
 
-    // send the request and process the response
-    return this.http.post<TokenResponseVM>(url, loginRequest)
-      .map((res) => {
-          // if the token is there, login has been successful
-          if (res && res.vm_token) {
-              // success, so store the response
-            this.setAuth(res);
-              return true;
-          }
+    return Observable.throw('Unauthorized');
 
-          // failed login
-          return Observable.throw('Unauthorized');
-      })
-      .catch(error => {
-          console.log("auth.service login() error ");
-          return new Observable<any>(error);
+    // send the request and process the response
+    //return this.http.post<TokenResponseVM>(url, loginRequest)
+    //  .map((res) => {
+    //      // if the token is there, login has been successful
+    //      if (res && res.vm_token) {
+    //          // success, so store the response
+    //        this.setAuth(res);
+    //          return true;
+    //      }
+
+    //      // failed login
+    //      return Observable.throw('Unauthorized');
+    //  })
+    //  .catch(error => {
+    //      console.log("auth.service login() error ");
+    //      return new Observable<any>(error);
+    //  });
+  }
+
+  // Performs the login (the angular 7 way !!!)
+  public login7(username: string, password: string) : boolean {
+    var url = "api/authorization/authorize";
+
+    // build the request view model
+    var loginRequest = <TokenRequestVM>{
+      vm_username: username,
+      vm_password: password,
+      vm_client_id: this.clientId,
+      vm_grant_type: "password"
+    };
+
+
+    // send the request and process the response
+    this.http.post<TokenResponseVM>(url, loginRequest)
+      .subscribe((res) => {
+        // if the token is there, login has been successful
+        if (res && res.vm_token) {
+          // success, so store the response
+          this.setAuth(res);
+        }
       });
+
+    return true;
   }
 
   // Logout the currently logged on user

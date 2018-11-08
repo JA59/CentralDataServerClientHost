@@ -14,8 +14,7 @@ export class HeaderBarComponent {
 
     constructor(private router: Router,
         private fb: FormBuilder,
-        public authService: AuthService,
-        @Inject('BASE_URL') private baseUrl: string) {
+        public authService: AuthService) {
 
         this.title = "Header Bar";
     }

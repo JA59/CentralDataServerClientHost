@@ -16,8 +16,7 @@ export class DemoComponent {
 
 
     constructor(private router: Router,
-        private authService: AuthService,
-        @Inject('BASE_URL') private baseUrl: string) {
+        private authService: AuthService) {
       this.items = new Array(4);
       this.items[0] = new DemoUser("SomeUser", "USER1");
       this.items[1] = new DemoUser("SomeAdmin", "ADMIN1");
@@ -26,15 +25,6 @@ export class DemoComponent {
     }
 
     doLogin(username: string, password: string) {
-        this.authService.login(username, password)
-            .subscribe(res => {
-                // login successful - go show experiments
-              this.router.navigate(["instruments-page"]);
-            },
-                err => {
-                    // login failed
-
-            });
-
+      this.authService.login7(username, password);
     }
 }

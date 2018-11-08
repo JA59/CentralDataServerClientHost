@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { InstrumentData } from '../ViewModels/Instruments/InstrumentData';
 import { IInstrumentVM } from '../ViewModels/Instruments/IInstrumentVM';
 
@@ -13,8 +13,7 @@ export class InstrumentService {
   public instrumentObservable = this.instrumentSubject.asObservable();                  // Observable IInstrumentVM[] stream
 
   // constructor
-  constructor(  @Inject('BASE_URL') private baseUrl: string,
-                private http: HttpClient)
+  constructor(private http: HttpClient)
   {
     this.lastInstrumentData = new InstrumentData(undefined, -2, 'Initializing ...');
   }

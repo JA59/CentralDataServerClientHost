@@ -5,7 +5,7 @@ import { InstrumentService } from '../../../Services/instrument.service';
 import { HttpClient } from '@angular/common/http';
 import { IInstrumentVM } from '../../../ViewModels/Instruments/IInstrumentVM';
 import { InstrumentData } from '../../../ViewModels/Instruments/InstrumentData';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: "instruments-monitor",
@@ -21,7 +21,6 @@ export class InstrumentsMonitorComponent implements OnInit, OnDestroy {
   constructor(private router: Router,
       private authService: AuthService,
       private instrumentService: InstrumentService,
-      @Inject('BASE_URL') private baseUrl: string,
       private http: HttpClient) {
   }
 
@@ -50,7 +49,7 @@ export class InstrumentsMonitorComponent implements OnInit, OnDestroy {
   private removeInstrument(address: string) {
     console.log("address is " + address);
 
-    var url = this.baseUrl + "api/Instrument/"+address;
+    var url = "api/Instrument/"+address;
     this.http.delete<string>(url)
       .subscribe(this.extractData), error => console.log(error);
   }

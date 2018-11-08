@@ -1,7 +1,7 @@
 import { Injectable, Injector } from "@angular/core";
 import { HttpHandler, HttpEvent, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { AuthService } from "./auth.service";
-import { Observable } from "rxjs/Observable";
+import { Observable } from "rxjs";
 
 // Injects a JWT token (for the logged in user if any) into the header of any http request
 @Injectable()
