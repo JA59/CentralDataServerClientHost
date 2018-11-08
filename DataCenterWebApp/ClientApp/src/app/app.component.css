@@ -1,13 +1,1 @@
 
-.body-content {
-  padding-top: 40px;
-}
-
-
-/* Because we show a headerbar in all but xs size, we alwats have 40px of header, so we can comment out the lines below */
-/*@media (max-width: 767px) {
-  /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. 
-  .body-content {
-    padding-top: 40px;
-  }
-}*/
