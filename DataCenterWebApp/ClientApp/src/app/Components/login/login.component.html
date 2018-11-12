@@ -2,24 +2,24 @@
   <div class="row">
     <h2>{{title}}</h2>
   </div>
-  <div *ngIf="this.currentUser && !this.isAdmin">
+  <div *ngIf="this.authService.authData.loggedOnUser && !this.authService.authData.isAdmin">
     <div class="row">
-      <h4 class="home-title">Currently logged on as a <span style="color: #5bc0de;">user</span> named &quot;{{currentUser}}&quot;.</h4>
+      <h4 class="home-title">Currently logged on as a <span style="color: #5bc0de;">user</span> named &quot;{{authService.authData.loggedOnUser}}&quot;.</h4>
     </div>
     <div class="row loginform">
       <button (click)="logout()" class="btn btn-md btn-primary btn-block btn-signin">Log Out</button>
     </div>
   </div>
-    <div *ngIf="this.currentUser && this.isAdmin">
+    <div *ngIf="this.authService.authData.loggedOnUser && this.authService.authData.isAdmin">
     <div class="row">
-      <h4 class="home-title">Currently logged on as an <span style="color: #d9534f;">administrator</span> named &quot;{{currentUser}}&quot;.</h4>
+      <h4 class="home-title">Currently logged on as an <span style="color: #d9534f;">administrator</span> named &quot;{{authService.authData.loggedOnUser}}&quot;.</h4>
     </div>
     <div class="row loginform">
       <button (click)="logout()" class="btn btn-md btn-primary btn-block btn-signin">Log Out</button>
     </div>
   </div>
     
-    <div *ngIf="!this.currentUser">
+    <div *ngIf="!this.authService.authData.loggedOnUser">
       <div class="row">
         <h4 class="home-title">Currently not logged on <span style="color: #f0ad4e;">(Guest)</span>.</h4>
         <p>You must log in to view ELN Linked Experiments.</p>
@@ -40,7 +40,7 @@
                    class="form-control"
                    placeholder="Username or Email address" />
             <span *ngIf="hasError('Username')"
-                  class="glyphicon glyphicon-remove form-control-feedback"
+                  class="fa fa-remove form-control-feedback"
                   aria-hidden="true"></span>
             <div *ngIf="hasError('Username')"
                  class="help-block">
@@ -54,7 +54,7 @@
                    class="form-control"
                    placeholder="Password" />
             <span *ngIf="hasError('Password')"
-                  class="glyphicon glyphicon-remove form-control-feedback"
+                  class="fa fa-remove form-control-feedback"
                   aria-hidden="true"></span>
             <div *ngIf="hasError('Password')"
                  class="help-block">
@@ -69,4 +69,13 @@
     </form>
       </div>
     </div>
+
+    <div class="row">
+      <fieldset>
+      <legend class="my-legend-border">Quick logins (for demo only)</legend>
+      <div *ngFor="let item of items">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><button (click)="quickLogin(item.Name, item.Password)" [disabled]="!item.Enabled" class="btn-default" style="width: 200px; margin-top: 5px;">{{item.Name}}</button></div>
+      </div>
+      </fieldset>
+  </div>
 </div>

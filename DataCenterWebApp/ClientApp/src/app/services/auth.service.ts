@@ -20,7 +20,7 @@ export class AuthService {
   }
 
   // Performs the login
-  public login(username: string, password: string): Observable<boolean> {
+  public login(username: string, password: string): Observable<TokenResponseVM> {
     var url = "api/authorization/authorize";
 
     // build the request view model
@@ -31,29 +31,13 @@ export class AuthService {
           vm_grant_type: "password"                 
     };
 
-    return Observable.throw('Unauthorized');
+    //send the request and process the response
+    return this.http.post<TokenResponseVM>(url, loginRequest);
 
-    // send the request and process the response
-    //return this.http.post<TokenResponseVM>(url, loginRequest)
-    //  .map((res) => {
-    //      // if the token is there, login has been successful
-    //      if (res && res.vm_token) {
-    //          // success, so store the response
-    //        this.setAuth(res);
-    //          return true;
-    //      }
-
-    //      // failed login
-    //      return Observable.throw('Unauthorized');
-    //  })
-    //  .catch(error => {
-    //      console.log("auth.service login() error ");
-    //      return new Observable<any>(error);
-    //  });
   }
 
   // Performs the login (the angular 7 way !!!)
-  public login7(username: string, password: string) : boolean {
+  public loginNoWait(username: string, password: string) : boolean {
     var url = "api/authorization/authorize";
 
     // build the request view model
@@ -117,7 +101,7 @@ export class AuthService {
 
   // Private methods
 
-  private setAuth(auth: TokenResponseVM | null): boolean {
+  public setAuth(auth: TokenResponseVM | null): boolean {
     if (auth) {
       this.authData = new AuthData(JSON.stringify(auth), auth.vm_username, auth.vm_username, auth.vm_isadmin);
       this.Notify();
@@ -125,7 +109,7 @@ export class AuthService {
     return true;
   }
 
-  private setAsGuest() {
+  public setAsGuest() {
     this.authData = new AuthData(null, null, "Guest", false);
   }
 

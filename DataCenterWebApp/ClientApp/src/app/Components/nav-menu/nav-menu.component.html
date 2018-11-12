@@ -1,55 +1,53 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <div *ngIf="this.authService.isLoggedInAsAdmin()">
-        <a class='adminName headerUserStyle' [routerLink]="['/login']"><span class='glyphicon glyphicon-user'></span><span>{{authService.authData.displayName}} (Admin)</span> </a>
+        <a class='adminName headerUserStyle' [routerLink]="['/login']"><span class='fa fa-user fa-fw'></span><span>{{authService.authData.displayName}} (Admin)</span> </a>
     </div>
     <div *ngIf="this.authService.isLoggedInAsUser()">
-        <a class='userName headerUserStyle' [routerLink]="['/login']"><span class='glyphicon glyphicon-user'></span><span>{{authService.authData.displayName}} </span> </a>
+        <a class='userName headerUserStyle' [routerLink]="['/login']"><span class='fa fa-user fa-fw'></span><span>{{authService.authData.displayName}} </span> </a>
     </div>
     <div *ngIf="this.authService.isLoggedInAsGuest()">
-        <a class='guestName headerUserStyle' [routerLink]="['/login']"><span class='glyphicon glyphicon-user'></span>Guest </a>
+        <a class='guestName headerUserStyle' [routerLink]="['/login']"><span class='fa fa-user fa-fw'></span>Guest </a>
     </div>
     <button type='button' class='navbar-toggler' data-toggle='collapse' data-target='.navbar-collapse' [attr.aria-expanded]='isExpanded' (click)='toggle()'>
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class='navbar-collapse collapse' [ngClass]='{ "in": isExpanded }'>
-        <ul class='nav navbar-nav'>
+        <ul class='nav navbar-nav mr-auto'>
             <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
                 <a [routerLink]='["/login"]' (click)='collapse()'>
-                    <span class='glyphicon glyphicon-log-in'></span> Login
+                    <span class='fa fa-sign-in'></span> Login
                 </a>
             </li>
             <li [routerLinkActive]='["link-active"]' class="nav-item">
                 <a [routerLink]='["/dashboard"]' (click)='collapse()'>
-                    <span class='glyphicon glyphicon-dashboard'></span> Dashboard
+                    <span class='fa fa-dashboard'></span> Dashboard
                 </a>
             </li>
             <li [routerLinkActive]='["link-active"]' class="nav-item">
                 <a [routerLink]='["/instruments-page"]' (click)='collapse()'>
-                    <span class='glyphicon glyphicon-th-list'></span> Instruments
+                    <span class='fa fa-thermometer'></span> Instruments
                 </a>
             </li>
             <li [routerLinkActive]='["link-active"]' class="nav-item">
                 <a [routerLink]='["/experiments"]' (click)='collapse()'>
-                    <span class='glyphicon glyphicon-th-list'></span> Experiments
+                    <span class='fa fa-flask'></span> Experiments
                 </a>
             </li>
             <li [routerLinkActive]='["link-active"]' class="nav-item">
                 <a [routerLink]='["/configuration"]' (click)='collapse()'>
-                    <span class='glyphicon glyphicon-th-list'></span> Configuration
+                    <span class='fa fa-edit'></span> Configuration
                 </a>
             </li>
 
             <li [routerLinkActive]='["link-active"]' class="nav-item">
                 <a [routerLink]='["/logs-events"]' (click)='collapse()'>
-                    <span class='glyphicon glyphicon-info-sign'></span> Logs And Events
-                </a>
-            </li>
-            <li [routerLinkActive]='["link-active"]' class="nav-item">
-                <a [routerLink]='["/demo"]' (click)='collapse()'>
-                    <span class='glyphicon glyphicon-blackboard'></span> Demo
+                    <span class='fa fa-info'></span> Logs And Events
                 </a>
             </li>
         </ul>
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        </form>
     </div>
 </nav>
 

@@ -46,7 +46,7 @@ namespace iCDataCenterClientHost.Controllers
 
         protected static Uri GetServerURI()
         {
-            Uri hostURI = new Uri("http://localhost");
+            Uri hostURI = new Uri("http://localhost:8080");
             Uri endPointUri = new Uri(hostURI + ProductHelper.UrlServiceRoot);
             return endPointUri;
         }

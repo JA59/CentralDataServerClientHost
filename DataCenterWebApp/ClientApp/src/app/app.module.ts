@@ -12,7 +12,6 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './Components/nav-menu/nav-menu.component';
 import { LoginComponent } from './Components/login/login.component';
 import { ConfigurationComponent } from './Components/configuration/configuration.component';
-import { DemoComponent } from './Components/demo/demo.component';
 import { ExperimentComponent } from './Components/experiments/experiment.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './Components/pagenotfound/pagenotfound.component';
@@ -29,7 +28,6 @@ import { LogsEventsComponent } from './Components/logs-events/logs-events.compon
     NavMenuComponent,
     LoginComponent,
     ConfigurationComponent,
-    DemoComponent,
     InstrumentsPageComponent,
     InstrumentEditorComponent,
     InstrumentsMonitorComponent,
@@ -49,7 +47,6 @@ import { LogsEventsComponent } from './Components/logs-events/logs-events.compon
     RouterModule.forRoot([
       { path: '', component: LoginComponent, pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
-      { path: 'demo', component: DemoComponent },
       { path: 'instruments-page', component: InstrumentsPageComponent },
       { path: 'experiments', component: ExperimentComponent },
       { path: 'dashboard', component: DashboardComponent },

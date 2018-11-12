@@ -2,6 +2,7 @@ import { Component, Inject } from "@angular/core";
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
 import { AuthService } from '../../Services/auth.service';
+import { DemoUser } from '../login/demouser';
 
 @Component({
     selector: "login",
@@ -12,19 +13,26 @@ import { AuthService } from '../../Services/auth.service';
 export class LoginComponent {
     title: string;
     form: FormGroup | undefined;
-  currentUser: string | null;
-  isAdmin: boolean;
+  //currentUser: string | null;
+  //isAdmin: boolean;
+  public items: DemoUser[];
 
     constructor(private router: Router,
         private fb: FormBuilder,
         private authService: AuthService) {
 
         this.title = "Login";
-      this.currentUser = authService.authData.loggedOnUser;
-      this.isAdmin = authService.authData.isAdmin;
+      //this.currentUser = authService.authData.loggedOnUser;
+      //this.isAdmin = authService.authData.isAdmin;
 
         // initialize the form
-        this.createForm();
+      this.createForm();
+
+      this.items = new Array(4);
+      this.items[0] = new DemoUser("SomeUser", "USER1");
+      this.items[1] = new DemoUser("SomeAdmin", "ADMIN1");
+      this.items[2] = new DemoUser("Joe", "JOE");
+      this.items[3] = new DemoUser("Ed", "ED");
 
     }
 
@@ -43,58 +51,67 @@ export class LoginComponent {
         var username = this.form.value.Username;
         var password = this.form.value.Password;
 
-      this.authService.login7(username, password);
-            //.subscribe(res => {
-            //    // login successful
+      this.authService.login(username, password)
+            .subscribe(res => {
+                // login successful
 
-            //    // outputs the login info through a JS alert.
-            //    // IMPORTANT: remove this when test is done.
-            //    //alert("Login successful! "
-            //    //    + "USERNAME: "
-            //    //    + username
-            //    //    + " TOKEN: "
-            //    //    + this.authService.getAuth()!.token
-            //    //);
-
-            //  this.currentUser = this.authService.authData.loggedOnUser;
-            //  this.isAdmin = this.authService.authData.isAdmin;
-            //  //this.router.navigate(["instruments"]);
-            //},
-            //    err => {
-            //        // login failed
-            //        console.log(err)
-            //        if (this.form == undefined)
-            //            return;
-            //        this.form.setErrors({
-            //            "auth": "Incorrect username or password"
-            //        });
-            //    });
+                // outputs the login info through a JS alert.
+                // IMPORTANT: remove this when test is done.
+                //alert("Login successful! "
+                //    + "USERNAME: "
+                //    + username
+                //    + " TOKEN: "
+                //    + this.authService.getAuth()!.token
+                //);
+              this.authService.setAuth(res);
+              //this.currentUser = this.authService.authData.loggedOnUser;
+              //this.isAdmin = this.authService.authData.isAdmin;
+              //this.router.navigate(["instruments"]);
+            },
+                err => {
+                    // login failed
+                    console.log(err)
+                    if (this.form == undefined)
+                        return;
+                    this.form.setErrors({
+                        "auth": "Incorrect username or password"
+                    });
+                });
     }
 
     doLogin(username: string, password: string) {
 
-      this.authService.login7(username, password);
-            //.subscribe(res => {
-            //    // login successful
+      this.authService.login(username, password)
+        .subscribe(res => {
+          // login successful
 
-            //    // outputs the login info through a JS alert.
-            //    // IMPORTANT: remove this when test is done.
-            //    //alert("Login successful! "
-            //    //    + "USERNAME: "
-            //    //    + username
-            //    //    + " TOKEN: "
-            //    //    + this.authService.getAuth()!.token
-            //    //);
+          // outputs the login info through a JS alert.
+          // IMPORTANT: remove this when test is done.
+          //alert("Login successful! "
+          //    + "USERNAME: "
+          //    + username
+          //    + " TOKEN: "
+          //    + this.authService.getAuth()!.token
+          //);
+          this.authService.setAuth(res);
+          //this.currentUser = this.authService.authData.loggedOnUser;
+          //this.isAdmin = this.authService.authData.isAdmin;
+          //this.router.navigate(["instruments"]);
+        },
+          err => {
+            // login failed
+            console.log(err)
+            if (this.form == undefined)
+              return;
+            this.form.setErrors({
+              "auth": "Incorrect username or password"
+            });
+          });
 
-            //  this.currentUser = this.authService.authData.loggedOnUser;
-            //  this.isAdmin = this.authService.authData.isAdmin;
-            //    //this.router.navigate(["home"]);
-            //},
-            //    err => {
-            //        // login failed
-            //        console.log(err)
-            //    });
+  }
 
+    quickLogin(username: string, password: string) {
+      this.authService.loginNoWait(username, password);
     }
 
     onBack() {
@@ -128,7 +145,7 @@ export class LoginComponent {
 
     logout() {
         this.authService.logout();
-      this.currentUser = this.authService.authData.loggedOnUser;
+      //this.currentUser = this.authService.authData.loggedOnUser;
         if (this.form == undefined)
             return;
         this.form.value.Password = '';

@@ -25,3 +25,16 @@
   }
 }
 
+fieldset {
+  margin: 8px;
+  border: 1px solid silver;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+legend.my-legend-border {
+  width: inherit; /* Or auto */
+  padding: 0 10px; /* To give a bit of padding on the left and right */
+  border-bottom: none;
+}
+
