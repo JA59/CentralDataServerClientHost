@@ -15,6 +15,7 @@ using System.ServiceModel;
 using AutoChem.Core.CentralDataServer.Config;
 using System.Linq;
 using System.Threading.Tasks;
+using iCDataCenterClientHost.Controllers.Simulated;
 
 namespace iCDataCenterClientHost.Controllers
 {
@@ -25,6 +26,7 @@ namespace iCDataCenterClientHost.Controllers
     public class InstrumentController : BaseApiController
     {
         private readonly ILogger<InstrumentController> _logger;
+        private static SimulatedInstruments m_simulatedInstruments;
 
         /// <summary>
         /// Constructor
@@ -40,6 +42,10 @@ namespace iCDataCenterClientHost.Controllers
             ILogger<InstrumentController> logger) : base(roleManager, userManager, configuration)
         {
             _logger = logger;
+            if (Configuration["DataCenter:Location:Simulated"] == "true" && m_simulatedInstruments == null)
+            {
+                m_simulatedInstruments = new SimulatedInstruments();
+            }
         }
 
 
@@ -63,18 +69,26 @@ namespace iCDataCenterClientHost.Controllers
                     return new UnauthorizedResult();
                 }
 
-                IEnumerable<LiveInstrumentInfo> enumerable;
-                InstrumentManagementClientAsync m_Client;
+                LiveInstrumentInfo[] array;
+                if (Configuration["DataCenter:Location:Simulated"] == "true")
+                {
+                    array = m_simulatedInstruments.Instruments.Cast<LiveInstrumentInfo>().ToArray();
+                }
+                else
+                {
+                    IEnumerable<LiveInstrumentInfo> enumerable;
+                    InstrumentManagementClientAsync m_Client;
 
-                string serverUriString = string.Format("{0}{1}", GetServerURI(), ProductHelper.UrlInstrumentManagement);
-                m_Client = new InstrumentManagementClientAsync(ServicesHelper.GetDefaultBinding(),
-                    new EndpointAddress(serverUriString));
+                    string serverUriString = string.Format("{0}{1}", GetServerURI(), ProductHelper.UrlInstrumentManagement);
+                    m_Client = new InstrumentManagementClientAsync(ServicesHelper.GetDefaultBinding(),
+                        new EndpointAddress(serverUriString));
 
-                enumerable = await m_Client.GetRegisteredInstrumentsAsync();
-                LiveInstrumentInfo[] array = enumerable.Cast<LiveInstrumentInfo>().ToArray();
+                    enumerable = await m_Client.GetRegisteredInstrumentsAsync();
+                    array = enumerable.Cast<LiveInstrumentInfo>().ToArray();
+                }
 
                 List<IInstrumentVM> list = new List<IInstrumentVM>();
-                foreach(var liveInstrumentInfo in array)
+                foreach (var liveInstrumentInfo in array)
                 {
                     var instrumentViewModel = new InstrumentVM();
                     instrumentViewModel.vm_address = liveInstrumentInfo.HostAddress;
@@ -121,17 +135,26 @@ namespace iCDataCenterClientHost.Controllers
                 // Log that we were called.
                 _logger.LogInformation("Count");
 
-                IEnumerable<LiveInstrumentInfo> enumerable;
-                InstrumentManagementClientAsync m_Client;
+                LiveInstrumentInfo[] array;
+                if (Configuration["DataCenter:Location:Simulated"] == "true")
+                {
+                    array = m_simulatedInstruments.Instruments.Cast<LiveInstrumentInfo>().ToArray();
+                }
+                else
+                {
+                    IEnumerable<LiveInstrumentInfo> enumerable;
+                    InstrumentManagementClientAsync m_Client;
 
-                string serverUriString = string.Format("{0}{1}", GetServerURI(), ProductHelper.UrlInstrumentManagement);
-                m_Client = new InstrumentManagementClientAsync(ServicesHelper.GetDefaultBinding(),
-                    new EndpointAddress(serverUriString));
+                    string serverUriString = string.Format("{0}{1}", GetServerURI(), ProductHelper.UrlInstrumentManagement);
+                    m_Client = new InstrumentManagementClientAsync(ServicesHelper.GetDefaultBinding(),
+                        new EndpointAddress(serverUriString));
 
-                enumerable = await m_Client.GetRegisteredInstrumentsAsync();
-                LiveInstrumentInfo[] array = enumerable.Cast<LiveInstrumentInfo>().ToArray();
+                    enumerable = await m_Client.GetRegisteredInstrumentsAsync();
+                    array = enumerable.Cast<LiveInstrumentInfo>().ToArray();
+                    
+                }
+
                 int count = array.Length;
-
                 // Return the result in JSON format
                 return new JsonResult(
                     count,
@@ -168,13 +191,21 @@ namespace iCDataCenterClientHost.Controllers
                 if (address == null)
                     return new StatusCodeResult(500);
 
-                InstrumentManagementAdminClientAsync m_Client;
+                if (Configuration["DataCenter:Location:Simulated"] == "true")
+                {
+                    m_simulatedInstruments.DeleteInstrument(address);
+                }
+                else
+                {
 
-                string serverUriString = string.Format("{0}{1}", GetServerURI(), ProductHelper.UrlInstrumentManagementAdmin);
-                m_Client = new InstrumentManagementAdminClientAsync(ServicesHelper.GetDefaultBinding(),
-                    new EndpointAddress(serverUriString));
+                    InstrumentManagementAdminClientAsync m_Client;
 
-                await m_Client.RemoveInstrumentAsync(address);
+                    string serverUriString = string.Format("{0}{1}", GetServerURI(), ProductHelper.UrlInstrumentManagementAdmin);
+                    m_Client = new InstrumentManagementAdminClientAsync(ServicesHelper.GetDefaultBinding(),
+                        new EndpointAddress(serverUriString));
+
+                    await m_Client.RemoveInstrumentAsync(address);
+                }
 
                 // Return the result in JSON format
                 return new JsonResult(
@@ -213,13 +244,20 @@ namespace iCDataCenterClientHost.Controllers
                     return new StatusCodeResult(500);
 
                 InstrumentInfo instrumentInfo;
-                InstrumentManagementAdminClientAsync m_Client;
+                if (Configuration["DataCenter:Location:Simulated"] == "true")
+                {
+                    instrumentInfo = m_simulatedInstruments.AddInstrument(newInstrument.vm_address, newInstrument.vm_description).InstrumentInfo;
+                }
+                else
+                {
+                    InstrumentManagementAdminClientAsync m_Client;
 
-                string serverUriString = string.Format("{0}{1}", GetServerURI(), ProductHelper.UrlInstrumentManagementAdmin);
-                m_Client = new InstrumentManagementAdminClientAsync(ServicesHelper.GetDefaultBinding(),
-                    new EndpointAddress(serverUriString));
+                    string serverUriString = string.Format("{0}{1}", GetServerURI(), ProductHelper.UrlInstrumentManagementAdmin);
+                    m_Client = new InstrumentManagementAdminClientAsync(ServicesHelper.GetDefaultBinding(),
+                        new EndpointAddress(serverUriString));
 
-                instrumentInfo = await m_Client.AddInstrumentAsync(newInstrument.vm_address, newInstrument.vm_description);
+                    instrumentInfo = await m_Client.AddInstrumentAsync(newInstrument.vm_address, newInstrument.vm_description);
+                }
 
                 // Return the result in JSON format
                 return new JsonResult(

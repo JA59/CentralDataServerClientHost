@@ -13,36 +13,30 @@ import { DemoUser } from '../login/demouser';
 export class LoginComponent {
     title: string;
     form: FormGroup | undefined;
-  //currentUser: string | null;
-  //isAdmin: boolean;
-  public items: DemoUser[];
+    items: DemoUser[];
+
 
     constructor(private router: Router,
         private fb: FormBuilder,
         private authService: AuthService) {
 
         this.title = "Login";
-      //this.currentUser = authService.authData.loggedOnUser;
-      //this.isAdmin = authService.authData.isAdmin;
 
         // initialize the form
-      this.createForm();
+        this.createForm();
 
-      this.items = new Array(4);
-      this.items[0] = new DemoUser("SomeUser", "USER1");
-      this.items[1] = new DemoUser("SomeAdmin", "ADMIN1");
-      this.items[2] = new DemoUser("Joe", "JOE");
-      this.items[3] = new DemoUser("Ed", "ED");
-
+        this.items = new Array(5);
+        this.items[0] = new DemoUser("Guest", "");
+        this.items[1] = new DemoUser("SomeUser", "USER1");
+        this.items[2] = new DemoUser("SomeAdmin", "ADMIN1");
+        this.items[3] = new DemoUser("Joe", "JOE");
+        this.items[4] = new DemoUser("Ed", "ED");
     }
 
     createForm() {
         this.form = this.fb.group({
             Username: ['', Validators.required],
-            Password: ['', Validators.required]
-        });
-
-
+            Password: ['', Validators.required]});
     }
 
     onSubmit() {
@@ -51,67 +45,34 @@ export class LoginComponent {
         var username = this.form.value.Username;
         var password = this.form.value.Password;
 
-      this.authService.login(username, password)
-            .subscribe(res => {
-                // login successful
-
-                // outputs the login info through a JS alert.
-                // IMPORTANT: remove this when test is done.
-                //alert("Login successful! "
-                //    + "USERNAME: "
-                //    + username
-                //    + " TOKEN: "
-                //    + this.authService.getAuth()!.token
-                //);
-              this.authService.setAuth(res);
-              //this.currentUser = this.authService.authData.loggedOnUser;
-              //this.isAdmin = this.authService.authData.isAdmin;
-              //this.router.navigate(["instruments"]);
-            },
-                err => {
-                    // login failed
-                    console.log(err)
-                    if (this.form == undefined)
-                        return;
-                    this.form.setErrors({
-                        "auth": "Incorrect username or password"
-                    });
-                });
+        this.doLogin(username, password);
     }
 
     doLogin(username: string, password: string) {
 
-      this.authService.login(username, password)
-        .subscribe(res => {
-          // login successful
-
-          // outputs the login info through a JS alert.
-          // IMPORTANT: remove this when test is done.
-          //alert("Login successful! "
-          //    + "USERNAME: "
-          //    + username
-          //    + " TOKEN: "
-          //    + this.authService.getAuth()!.token
-          //);
-          this.authService.setAuth(res);
-          //this.currentUser = this.authService.authData.loggedOnUser;
-          //this.isAdmin = this.authService.authData.isAdmin;
-          //this.router.navigate(["instruments"]);
-        },
-          err => {
-            // login failed
-            console.log(err)
-            if (this.form == undefined)
-              return;
-            this.form.setErrors({
-              "auth": "Incorrect username or password"
+        this.authService.login(username, password)
+            .subscribe(res => {
+                // login successful
+                this.authService.setAuth(res);
+            },
+            err => {
+                // login failed
+                console.log(err)
+                if (this.form == undefined)
+                return;
+                this.form.setErrors({
+                    "auth": "Incorrect username or password"
+                });
             });
-          });
-
-  }
+    }
 
     quickLogin(username: string, password: string) {
-      this.authService.loginNoWait(username, password);
+        if (username == "Guest") {
+            this.authService.logout();
+        }
+        else {
+            this.authService.loginNoWait(username, password);
+        }
     }
 
     onBack() {
@@ -125,29 +86,28 @@ export class LoginComponent {
         return this.form.get(name);
     }
 
-    // returns TRUE if the FormControl is valid
-    isValid(name: string) {
-        var e = this.getFormControl(name);
-        return e && e.valid;
-    }
+      // returns TRUE if the FormControl is valid
+      isValid(name: string) {
+          var e = this.getFormControl(name);
+          return e && e.valid;
+      }
 
-    // returns TRUE if the FormControl has been changed
-    isChanged(name: string) {
-        var e = this.getFormControl(name);
-        return e && (e.dirty || e.touched);
-    }
+      // returns TRUE if the FormControl has been changed
+      isChanged(name: string) {
+          var e = this.getFormControl(name);
+          return e && (e.dirty || e.touched);
+      }
 
-    // returns TRUE if the FormControl is invalid after user changes
-    hasError(name: string) {
-        var e = this.getFormControl(name);
-        return e && (e.dirty || e.touched) && !e.valid;
-    }
+      // returns TRUE if the FormControl is invalid after user changes
+      hasError(name: string) {
+          var e = this.getFormControl(name);
+          return e && (e.dirty || e.touched) && !e.valid;
+      }
 
-    logout() {
+      logout() {
         this.authService.logout();
-      //this.currentUser = this.authService.authData.loggedOnUser;
         if (this.form == undefined)
             return;
         this.form.value.Password = '';
-    }
+      }
 }

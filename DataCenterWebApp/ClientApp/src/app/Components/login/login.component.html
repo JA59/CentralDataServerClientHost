@@ -72,9 +72,9 @@
 
     <div class="row">
       <fieldset>
-      <legend class="my-legend-border">Quick logins (for demo only)</legend>
+      <legend class="my-legend-border">Select Logged In User (for demo only)</legend>
       <div *ngFor="let item of items">
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><button (click)="quickLogin(item.Name, item.Password)" [disabled]="!item.Enabled" class="btn-default" style="width: 200px; margin-top: 5px;">{{item.Name}}</button></div>
+        <div class="row"><button (click)="quickLogin(item.Name, item.Password)" [disabled]="(item.Name == this.authService.authData.displayName)" class="btn-default" style="width: 200px; margin-top: 5px; margin-left: 20px;">{{item.Name}}</button><div *ngIf="item.Name == this.authService.authData.displayName"><span style="margin-top: 10px;" class='fa fa-fw fa-check'></span></div></div>
       </div>
       </fieldset>
   </div>
