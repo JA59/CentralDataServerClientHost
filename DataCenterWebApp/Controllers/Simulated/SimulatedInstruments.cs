@@ -10,11 +10,9 @@ namespace iCDataCenterClientHost.Controllers.Simulated
     {
 
         private readonly Dictionary<string, LiveInstrumentInfo> m_instruments;
-        private int m_nextIndex;
 
         public SimulatedInstruments()
         {
-            m_nextIndex = 1;
             m_instruments = new Dictionary<string, LiveInstrumentInfo>();
             AddInstrument("localhost", "local instrument");
             AddInstrument("117.24.56.6", "another instrument");

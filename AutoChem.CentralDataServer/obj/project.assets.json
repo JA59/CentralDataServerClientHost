@@ -478,7 +478,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\amato-1\\.nuget\\packages\\": {},
+    "C:\\Users\\Joe\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -487,14 +487,14 @@
       "projectUniqueName": "D:\\Repos\\CentralDataServerClientHost\\AutoChem.CentralDataServer\\AutoChem.CentralDataServer.csproj",
       "projectName": "AutoChem.CentralDataServer",
       "projectPath": "D:\\Repos\\CentralDataServerClientHost\\AutoChem.CentralDataServer\\AutoChem.CentralDataServer.csproj",
-      "packagesPath": "C:\\Users\\amato-1\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\Joe\\.nuget\\packages\\",
       "outputPath": "D:\\Repos\\CentralDataServerClientHost\\AutoChem.CentralDataServer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\amato-1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Joe\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
